@@ -15,6 +15,12 @@ import androidx.navigation.ui.NavigationUI;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -45,7 +51,42 @@ public class MainActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
+//        initializeDisplayContent();
     }
+
+//    private void initializeDisplayContent() {
+//        final RecyclerView recyclerView = findViewById(R.id.recycler_services);
+//        //LayoutManager
+//        final GridLayoutManager gridLayoutManager = new GridLayoutManager(this,2);
+//        recyclerView.setLayoutManager(gridLayoutManager);
+//        List<Integer> imageList = new ArrayList<>();
+//        imageList.add(R.drawable.song);
+//        imageList.add(R.drawable.development);
+//        imageList.add(R.drawable.multimedia);
+//        imageList.add(R.drawable.paint);
+//        imageList.add(R.drawable.development);
+//        imageList.add(R.drawable.song);
+//        imageList.add(R.drawable.song);
+//        imageList.add(R.drawable.development);
+//        imageList.add(R.drawable.multimedia);
+//        imageList.add(R.drawable.paint);
+//        imageList.add(R.drawable.development);
+//        imageList.add(R.drawable.song);
+//        List<String>  serviceName = new ArrayList<>();
+//        serviceName.add("Paint");
+//        serviceName.add("Artist");
+//        serviceName.add("Music");
+//        serviceName.add("Paint");
+//        serviceName.add("Artist");
+//        serviceName.add("Music");
+//        serviceName.add("Paint");
+//        serviceName.add("Artist");
+//        serviceName.add("Music");
+//        serviceName.add("Paint");
+//        serviceName.add("Artist");
+//        serviceName.add("Music");
+//        recyclerView.setAdapter(new ServicesAdapter(this,serviceName,imageList));
+//    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
