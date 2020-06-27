@@ -8,8 +8,15 @@
     <string name="action_settings">Settings</string>
 
     <string name="menu_home">Home</string>
-    <string name="menu_gallery">Gallery</string>
-    <string name="menu_slideshow">Slideshow</string>
+    <string name="menu_gallery">Home</string>
+    <string name="menu_slideshow">Home</string>
+
+    <string name="menu_free_lancer">Freelancer</string>
+    <string name="menu_invites">Invites</string>
+    <string name="menu_projects">Projects</string>
+    <string name="menu_profile">Profile</string>
+
+
 
     <string name="home_second">Home Second</string>
 </resources>

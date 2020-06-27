@@ -40,10 +40,10 @@ public class FreelanceServiceManager {
         //TODO:These objects will be processed from the data gotten from getServicesData
         List<String> servicesNames = new ArrayList<>();
         servicesNames.add("Music");
-        servicesNames.add("Videos & Animations");
-        servicesNames.add("Design");
         servicesNames.add("Programming");
-        servicesNames.add("Photoshop");
+        servicesNames.add("Video & Animations");
+        servicesNames.add("Art & Design");
+        servicesNames.add("ETC");
         return servicesNames;
     }
     public List<Integer> getServicesImages(){
