@@ -4,4 +4,11 @@
     <color name="colorPrimaryDark">#0095a8</color>
     <color name="colorAccent">#6ff9ff</color>
 
+    <color name="dark_blue">#3023AE</color>
+    <color name="purple">#c86dd7</color>
+
+    <color name="login_form_details">#ccffffff</color>
+    <color name="login_form_details_light">#1affffff</color>
+    <color name="login_form_details_medium">#66ffffff</color>
+
 </resources>
