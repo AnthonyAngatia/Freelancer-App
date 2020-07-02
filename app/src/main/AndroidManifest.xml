@@ -9,6 +9,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".ProjectView2Activity"></activity>
+        <activity android:name=".ProjectViewActivity" />
+        <activity android:name=".ProjectsActivity" />
+        <activity android:name=".FreelancerHome" />
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name"
