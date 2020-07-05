@@ -41,8 +41,8 @@ public class FreelanceServiceManager {
         List<String> servicesNames = new ArrayList<>();
         servicesNames.add("Music");
         servicesNames.add("Programming");
-        servicesNames.add("Video & Animations");
-        servicesNames.add("Art & Design");
+        servicesNames.add("Animations");
+        servicesNames.add("Drawing");
         servicesNames.add("ETC");
         return servicesNames;
     }
@@ -56,4 +56,29 @@ public class FreelanceServiceManager {
         return imageList;
     }
 
+    public List<String> getSubCategory(int id) {
+        getServicesNames().get(id);
+        //Should we pass the id or the string as the URL
+        List<String> subCategoryName = new ArrayList<>();
+        subCategoryName.add("VoiceOver");
+        subCategoryName.add("Mixing");
+        subCategoryName.add("Producers");
+        subCategoryName.add("Instrumentalist");
+        subCategoryName.add("Singers");
+        //In real sense it should retutn an object
+        return subCategoryName;
+
+    }
+
+    public List<String> getFreelancer(int subCategoryId) {
+        //Get a list of Freelancers doing this job
+        List<String> freelancerNames = new ArrayList<>();
+        freelancerNames.add("Anthony Angatia");
+        freelancerNames.add("Anthony Angatia");
+        freelancerNames.add("Anthony Angatia");
+        freelancerNames.add("Anthony Angatia");
+        freelancerNames.add("Anthony Angatia");
+        freelancerNames.add("Anthony Angatia");
+        return freelancerNames;
+    }
 }
