@@ -23,4 +23,9 @@
     <string name="dont_have_an_account">Don\'t have an account?</string>
     <string name="sign_in_with_facebook">Sign in with Facebook</string>
     <string name="or">or</string>
+    <string name="sign_in_with_google">Sign in with Google</string>
+    <string name="phone_number">Phone Number</string>
+    <string name="have_an_account_login">Have an account? Login</string>
+    <string name="sign_up">Sign up</string>
+    <string name="confirm_password">Confirm Password</string>
 </resources>
