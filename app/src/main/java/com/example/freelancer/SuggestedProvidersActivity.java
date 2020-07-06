@@ -16,7 +16,7 @@ import java.util.List;
 * subcategory of freelance service
 * We should be able to filter and search from this Activity
 * */
-public class SuggestedProviders extends AppCompatActivity {
+public class SuggestedProvidersActivity extends AppCompatActivity {
 
     public final static String SUB_CATEGORY_ID = "com.example.freelancer.SUB_CATEGORY_ID";
     private static final int POSITION_NOT_SET = -1;

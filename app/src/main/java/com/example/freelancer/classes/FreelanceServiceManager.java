@@ -1,5 +1,8 @@
 package com.example.freelancer.classes;
 
+import android.content.Context;
+import android.content.res.TypedArray;
+
 import com.example.freelancer.R;
 
 import java.util.ArrayList;
@@ -56,17 +59,23 @@ public class FreelanceServiceManager {
         return imageList;
     }
 
-    public List<String> getSubCategory(int id) {
+    public ServiceSubCategory getSubCategory(Context context, int id) {
         getServicesNames().get(id);
-        //Should we pass the id or the string as the URL
+        //Should we pass the id or the string as the URLi.e app.com/0, app.com/1 or app/music, app.com/art
+        //This data should be replaced by data from the Api
         List<String> subCategoryName = new ArrayList<>();
         subCategoryName.add("VoiceOver");
         subCategoryName.add("Mixing");
         subCategoryName.add("Producers");
         subCategoryName.add("Instrumentalist");
         subCategoryName.add("Singers");
-        //In real sense it should retutn an object
-        return subCategoryName;
+        TypedArray subCategoryImages = context.getResources().obtainTypedArray(R.array.music);
+        List<Integer> imageIdList = new ArrayList<>();
+        for( int i=0; i < subCategoryImages.length();i++){
+            imageIdList.add(subCategoryImages.getResourceId(i, -1));
+        }
+        subCategoryImages.recycle();
+        return new ServiceSubCategory(subCategoryName, imageIdList );
 
     }
 

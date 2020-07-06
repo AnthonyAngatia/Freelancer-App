@@ -8,13 +8,12 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import com.example.freelancer.classes.FreelanceServiceManager;
-
-import java.util.List;
+import com.example.freelancer.classes.ServiceSubCategory;
 
 /*
 * This is an Activity contains
 * */
-public class SpecificCategory extends AppCompatActivity {
+public class SpecificCategoryActivity extends AppCompatActivity {
 //    The category ID is the position of the category in its datastructure i.e the arraylist index
     public static final String CATEGORY_ID = "com.example.freelancer.CATEGORY_ID";
     private static final int POSITION_NOT_SET = -1;//Helps in debugging
@@ -32,18 +31,17 @@ public class SpecificCategory extends AppCompatActivity {
         //get The items under the general category
         Intent intent = getIntent();
         int id = intent.getIntExtra(CATEGORY_ID, POSITION_NOT_SET);
-        if(id <= 0){
+        if(id <= 0) {
             //The intent was not passed from the ServiceAdapter
         }
+        ;
         //Use id to fetch from the API //For now I get fromFreeLanceServiceManager
-        final List<String> subCategoryNames =  FreelanceServiceManager.getInstance().getSubCategory(id);
-        //Pass the data to the adapter
-        ServiceSubCategoryAdapter subCategoryAdapter = new ServiceSubCategoryAdapter(this,subCategoryNames);
+        ServiceSubCategory serviceSubCategory = FreelanceServiceManager.getInstance()
+                .getSubCategory( SpecificCategoryActivity.this, id);//Returns an object of subCategory
+
+        //Pass the SubCategory Object to the adapter
+        ServiceSubCategoryAdapter subCategoryAdapter = new ServiceSubCategoryAdapter(this,serviceSubCategory);
         recyclerSubCategories.setAdapter(subCategoryAdapter);
-
-
-
-        
 
 
     }

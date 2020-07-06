@@ -30,4 +30,14 @@
     <string name="dont_have_an_account">Don\'t have an account?</string>
     <string name="sign_in_with_facebook">Sign in with Facebook</string>
     <string name="or">or</string>
+
+    <array name="music">
+        <item>@drawable/voice_over</item>
+        <item>@drawable/pianogrand</item>
+        <item>@drawable/voice_over</item>
+        <item>@drawable/composers_producers</item>
+        <item>@drawable/singers_vocalist</item>
+        <item>@drawable/voice_over</item>
+    </array>
+
 </resources>

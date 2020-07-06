@@ -11,7 +11,6 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.util.ArrayList;
 import java.util.List;
 /*
 * This file is an adapter that binds the VIEW and DATA to a VIEWHOLDER
@@ -61,9 +60,9 @@ public class ServicesAdapter extends RecyclerView.Adapter<ServicesAdapter.ViewHo
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent intent = new Intent(mContext, SpecificCategory.class);
+                    Intent intent = new Intent(mContext, SpecificCategoryActivity.class);
                     //The id of the general category
-                    intent.putExtra(SpecificCategory.CATEGORY_ID, mCurrentPosition);
+                    intent.putExtra(SpecificCategoryActivity.CATEGORY_ID, mCurrentPosition);
                     mContext.startActivity(intent);
                 }
             });

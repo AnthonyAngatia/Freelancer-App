@@ -25,7 +25,7 @@ public class SuggestedProvidersAdapter extends RecyclerView.Adapter<SuggestedPro
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater layoutInflater = LayoutInflater.from(mContext);
-        View itemView = layoutInflater.inflate(R.layout.suggested_provider, parent, false);
+        View itemView = layoutInflater.inflate(R.layout.item_suggested_provider, parent, false);
         return new ViewHolder(itemView);
     }
 

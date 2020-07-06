@@ -10,8 +10,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".LoginActivity"></activity>
-        <activity android:name=".SuggestedProviders" />
-        <activity android:name=".SpecificCategory" />
+        <activity android:name=".SuggestedProvidersActivity" />
+        <activity android:name=".SpecificCategoryActivity" />
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name"

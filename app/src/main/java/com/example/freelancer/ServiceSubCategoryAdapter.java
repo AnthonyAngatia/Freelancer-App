@@ -11,37 +11,36 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.util.ArrayList;
-import java.util.List;
+import com.example.freelancer.classes.ServiceSubCategory;
 
 public class ServiceSubCategoryAdapter extends RecyclerView.Adapter<ServiceSubCategoryAdapter.ViewHolder> {
     private Context mContext;
-    private List<String> subCategoryNames = new ArrayList<>();
+    private ServiceSubCategory mServiceSubCategory;
 
-    public ServiceSubCategoryAdapter(Context context, List<String> subCategoryNames) {
+    public ServiceSubCategoryAdapter(Context context, ServiceSubCategory mServiceSubCategory) {
         mContext = context;
-        this.subCategoryNames = subCategoryNames;
+        this.mServiceSubCategory = mServiceSubCategory;
     }
 
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater layoutInflater = LayoutInflater.from(mContext);
-        View itemView = layoutInflater.inflate(R.layout.specific_category, parent, false);
+        View itemView = layoutInflater.inflate(R.layout.item_specific_category, parent, false);
         return new ViewHolder(itemView);
     }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        holder.mTextSubCategory.setText(subCategoryNames.get(position));
-        holder.mImageSubCategory.setImageResource(R.drawable.development);
+        holder.mTextSubCategory.setText(mServiceSubCategory.getSubCategoryTitles().get(position));
+        holder.mImageSubCategory.setImageResource(mServiceSubCategory.getSubCategoryImages().get(position));
         holder.mCurrentPosition = position;
 
     }
 
     @Override
     public int getItemCount() {
-        return subCategoryNames.size();
+        return mServiceSubCategory.getSubCategoryTitles().size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder{
@@ -58,8 +57,8 @@ public class ServiceSubCategoryAdapter extends RecyclerView.Adapter<ServiceSubCa
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent intent = new Intent(mContext, SuggestedProviders.class);
-                    intent.putExtra(SuggestedProviders.SUB_CATEGORY_ID, mCurrentPosition);
+                    Intent intent = new Intent(mContext, SuggestedProvidersActivity.class);
+                    intent.putExtra(SuggestedProvidersActivity.SUB_CATEGORY_ID, mCurrentPosition);
                     mContext.startActivity(intent);
                 }
             });

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SpecificCategory">
+    tools:context=".SpecificCategoryActivity">
 
 
 
@@ -25,7 +25,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@id/category"
-        tools:listitem="@layout/specific_category" />
+        tools:listitem="@layout/item_specific_category" />
 
 
 
