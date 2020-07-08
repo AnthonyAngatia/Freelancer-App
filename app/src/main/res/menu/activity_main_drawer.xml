@@ -8,13 +8,37 @@
             android:id="@+id/nav_home"
             android:icon="@drawable/ic_menu_camera"
             android:title="@string/menu_home" />
+<!--        <item-->
+<!--            android:id="@+id/nav_gallery"-->
+<!--            android:icon="@drawable/ic_menu_gallery"-->
+<!--            android:title="@string/menu_gallery" />-->
+<!--        <item-->
+<!--            android:id="@+id/nav_slideshow"-->
+<!--            android:icon="@drawable/ic_menu_slideshow"-->
+<!--            android:title="@string/menu_slideshow" />-->
+    </group>
+    <group
+        android:id="@+id/navgroup_freelancer"
+        android:checkableBehavior="single">
         <item
-            android:id="@+id/nav_gallery"
-            android:icon="@drawable/ic_menu_gallery"
-            android:title="@string/menu_gallery" />
+            android:id="@+id/nav_freelancer"
+            android:icon="@drawable/ic_baseline_work_24"
+            android:title="@string/menu_free_lancer" />
         <item
-            android:id="@+id/nav_slideshow"
-            android:icon="@drawable/ic_menu_slideshow"
-            android:title="@string/menu_slideshow" />
+            android:id="@+id/nav_invites"
+            android:icon="@drawable/ic_baseline_insert_invitation_24"
+            android:title="@string/menu_invites" />
+        <item
+            android:id="@+id/nav_projects"
+            android:icon="@drawable/ic_baseline_amp_stories_24"
+            android:title="@string/menu_projects" />
+    </group>
+    <group
+        android:id="@+id/navgroup_profile"
+        android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_profile"
+            android:icon="@drawable/ic_baseline_person_outline_24"
+            android:title="@string/menu_profile" />
     </group>
 </menu>

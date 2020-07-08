@@ -24,7 +24,9 @@ import java.util.List;
 
 public class ProjectsActivity extends AppCompatActivity {
     //api
-    private static final String URL_DATA = "";
+    //get userid from eg sharedPreference...(for now I'm using static data)
+    private static int userId = 1;
+    private static final String URL_DATA = "http://localhost:8000/api/projects/" + userId;
     //declare recycler view
     private RecyclerView projectsRecyclerView;
     //declare adapter
