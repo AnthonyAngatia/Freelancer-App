@@ -26,7 +26,7 @@ public class ProjectsActivity extends AppCompatActivity {
     //api
     //get userid from eg sharedPreference...(for now I'm using static data)
     private static int userId = 1;
-    private static final String URL_DATA = "http://localhost:8000/api/projects/" + userId;
+    private static final String URL_DATA = "http://localhost:8000/api/appusers/" + userId+"/projects";
     //declare recycler view
     private RecyclerView projectsRecyclerView;
     //declare adapter
@@ -75,6 +75,7 @@ public class ProjectsActivity extends AppCompatActivity {
                                                       projectJSONObject.getString("project_description"),
                                                       Double.parseDouble(projectJSONObject.getString("project_price")),
                                                       projectJSONObject.getString("project_delivery_time"),
+                                                      projectJSONObject.getString("project_progress"),
                                                       Integer.parseInt(projectJSONObject.getString("appuser_inviter_id")),
                                                       Integer.parseInt(projectJSONObject.getString("appuser_freelancer_id")),
                                                       projectJSONObject.getString("project_item_requestor_name"),

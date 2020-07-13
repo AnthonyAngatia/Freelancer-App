@@ -8,6 +8,7 @@ public class Project {
     private String projectDescription;
     private double projectPrice;
     private String projectDeliveryTime;
+    private String projectProgress;
     private int appuser_inviter_id;
     private int appuser_freelancer_id;
 
@@ -16,13 +17,14 @@ public class Project {
     private String projectItemRequestorLocation;
     private String projectItemRequestorPhone;
 
-    public Project(int projectId, String projectStatus, String projectReview, String projectDescription, double projectPrice, String projectDeliveryTime, int appuser_inviter_id, int appuser_freelancer_id, String projectItemRequestorName, String projectItemRequestorLocation, String projectItemRequestorPhone) {
+    public Project(int projectId, String projectStatus, String projectReview, String projectDescription, double projectPrice, String projectDeliveryTime, String projectProgress, int appuser_inviter_id, int appuser_freelancer_id, String projectItemRequestorName, String projectItemRequestorLocation, String projectItemRequestorPhone) {
         this.projectId = projectId;
         this.projectStatus = projectStatus;
         this.projectReview = projectReview;
         this.projectDescription = projectDescription;
         this.projectPrice = projectPrice;
         this.projectDeliveryTime = projectDeliveryTime;
+        this.projectProgress = projectProgress;
         this.appuser_inviter_id = appuser_inviter_id;
         this.appuser_freelancer_id = appuser_freelancer_id;
 
@@ -128,5 +130,17 @@ public class Project {
 
     public void setProjectItemRequestorPhone(String projectItemRequestorPhone) {
         this.projectItemRequestorPhone = projectItemRequestorPhone;
+    }
+
+    public void setProjectPrice(double projectPrice) {
+        this.projectPrice = projectPrice;
+    }
+
+    public String getProjectProgress() {
+        return projectProgress;
+    }
+
+    public void setProjectProgress(String projectProgress) {
+        this.projectProgress = projectProgress;
     }
 }

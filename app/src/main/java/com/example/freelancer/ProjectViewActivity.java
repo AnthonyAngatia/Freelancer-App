@@ -27,35 +27,25 @@ public class ProjectViewActivity extends AppCompatActivity {
     TextView projectRequestorLocation;
     RequestQueue queue = Volley.newRequestQueue(this);
 
-    //get projectid from eg sharedPreference...(for now I'm using static data)
-    private static int projectId = 1;
-    private static final String URL_DATA = "http://localhost:8000/api/projects/" + projectId;
-    private static final String URL_DATA2 = "http://localhost:8000/api/projects/" + projectId;
+    //(TO DO LATER)store project id in a shared preference for easier access
+    private static int projectId;
+    private static String URL_DATA_FINISH_PROJECT;
+    private static String URL_DATA_UPDATE_PROGRESS;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_project_view);
 
-        projectViewIntent.putExtra(KEY_PROJECT_ID, currentProject.getProjectId());
-        projectViewIntent.putExtra(KEY_PROJECT_STATUS, currentProject.getProjectStatus());
-        projectViewIntent.putExtra(KEY_PROJECT_REVIEW, currentProject.getProjectItemRequestorName());
-        projectViewIntent.putExtra(KEY_PROJECT_DESCRIPTION, currentProject.getProjectItemRequestorLocation());
-        projectViewIntent.putExtra(KEY_PROJECT_PRICE, currentProject.getProjectItemRequestorPhone());
-        projectViewIntent.putExtra(KEY_PROJECT_DELIVERY_TIME, currentProject.getProjectItemRequestorName());
-        projectViewIntent.putExtra(KEY_APPUSER_INVITER_ID, currentProject.getProjectItemRequestorLocation());
-        projectViewIntent.putExtra(KEY_APPUSER_FREELANCER_ID, currentProject.getProjectItemRequestorPhone());
-        projectViewIntent.putExtra(KEY_PROJECT_REQUESTOR_NAME, currentProject.getProjectItemRequestorName());
-        projectViewIntent.putExtra(KEY_PROJECT_REQUESTOR_LOCATION, currentProject.getProjectItemRequestorLocation());
-        projectViewIntent.putExtra(KEY_PROJECT_REQUESTOR_PHONE, currentProject.getProjectItemRequestorPhone());
 
-        //others
-        projectViewIntent.putExtra(KEY_PROJECT_REQUESTOR_NAME, currentProject.getProjectItemRequestorName());
-        projectViewIntent.putExtra(KEY_PROJECT_REQUESTOR_LOCATION, currentProject.getProjectItemRequestorLocation());
-        projectViewIntent.putExtra(KEY_PROJECT_REQUESTOR_PHONE, currentProject.getProjectItemRequestorPhone());
 
         // receive intent from Projects view
         Intent openProjectViewIntent = getIntent();
+        //get project id to URLs
+        projectId = openProjectViewIntent.getIntExtra("project_id", 1);
+        URL_DATA_FINISH_PROJECT = "http://localhost:8000/api/projects/finish/" + projectId;
+        URL_DATA_UPDATE_PROGRESS = "http://localhost:8000/api/projects/progress" + projectId;
+
         String projectItemDescription = openProjectViewIntent.getStringExtra("project_description");
         String projectItemRequestorName = openProjectViewIntent.getStringExtra("project_requestor_name");
         String projectItemRequestorPhone = openProjectViewIntent.getStringExtra("project_requestor_phone");
@@ -86,7 +76,7 @@ public class ProjectViewActivity extends AppCompatActivity {
             tvProgressLabel.setText("Progress: "+ progress);
 
             // code below to call API to update progress in backend
-            changeProjectProgress();
+            updateProjectProgress(String.valueOf(progress));
         }
 
         @Override
@@ -111,8 +101,8 @@ public class ProjectViewActivity extends AppCompatActivity {
 
     }
 
-    public void changeProjectProgress(){
-        StringRequest putRequest = new StringRequest(Request.Method.PUT, URL_DATA2,
+    public void updateProjectProgress(final String projectProgress){
+        StringRequest putRequest = new StringRequest(Request.Method.PUT, URL_DATA_UPDATE_PROGRESS,
                 new Response.Listener<String>()
                 {
                     @Override
@@ -137,7 +127,7 @@ public class ProjectViewActivity extends AppCompatActivity {
             protected Map<String, String> getParams()
             {
                 Map<String, String>  params = new HashMap<String, String>();
-                params.put("projectStatus", "pending");
+                params.put("project_progress", projectProgress);
                 //params.put("domain", "http://itsalif.info");
 
                 return params;
@@ -149,7 +139,7 @@ public class ProjectViewActivity extends AppCompatActivity {
     }
 
     public void finishProject(){
-        StringRequest putRequest = new StringRequest(Request.Method.PUT, URL_DATA,
+        StringRequest putRequest = new StringRequest(Request.Method.PUT, URL_DATA_FINISH_PROJECT,
                 new Response.Listener<String>()
                 {
                     @Override
@@ -174,7 +164,7 @@ public class ProjectViewActivity extends AppCompatActivity {
             protected Map<String, String> getParams()
             {
                 Map<String, String>  params = new HashMap<String, String>();
-                params.put("projectStatus", "pending");
+                params.put("project_status", "pending");
                 //params.put("domain", "http://itsalif.info");
 
                 return params;

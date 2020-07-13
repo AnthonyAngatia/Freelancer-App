@@ -29,6 +29,7 @@ public class ProjectsAdapter extends RecyclerView.Adapter<ProjectsAdapter.ViewHo
     public static final String KEY_PROJECT_DESCRIPTION = "project_description";
     public static final String KEY_PROJECT_PRICE = "project_price";
     public static final String KEY_PROJECT_DELIVERY_TIME = "project_delivery_time";
+    public static final String KEY_PROJECT_PROGRESS = "project_progress";
     public static final String KEY_APPUSER_INVITER_ID = "appuser_inviter_id";
     public static final String KEY_APPUSER_FREELANCER_ID = "appuser_freelancer_id";
     //others
@@ -90,8 +91,9 @@ public class ProjectsAdapter extends RecyclerView.Adapter<ProjectsAdapter.ViewHo
                 projectViewIntent.putExtra(KEY_PROJECT_STATUS, currentProject.getProjectStatus());
                 projectViewIntent.putExtra(KEY_PROJECT_REVIEW, currentProject.getProjectItemRequestorName());
                 projectViewIntent.putExtra(KEY_PROJECT_DESCRIPTION, currentProject.getProjectItemRequestorLocation());
-                projectViewIntent.putExtra(KEY_PROJECT_PRICE, currentProject.getProjectItemRequestorPhone());
+                projectViewIntent.putExtra(KEY_PROJECT_PRICE, currentProject.getProjectPrice());
                 projectViewIntent.putExtra(KEY_PROJECT_DELIVERY_TIME, currentProject.getProjectItemRequestorName());
+                projectViewIntent.putExtra(KEY_PROJECT_PROGRESS, currentProject.getProjectProgress());
                 projectViewIntent.putExtra(KEY_APPUSER_INVITER_ID, currentProject.getProjectItemRequestorLocation());
                 projectViewIntent.putExtra(KEY_APPUSER_FREELANCER_ID, currentProject.getProjectItemRequestorPhone());
                 projectViewIntent.putExtra(KEY_PROJECT_REQUESTOR_NAME, currentProject.getProjectItemRequestorName());
