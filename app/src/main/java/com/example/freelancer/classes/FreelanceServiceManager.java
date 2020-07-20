@@ -81,6 +81,8 @@ public class FreelanceServiceManager {
 
     public List<String> getFreelancer(int subCategoryId) {
         //Get a list of Freelancers doing this job
+        //TODO : Getting freelancers
+        //Ideally, it should get the object from the  API
         List<String> freelancerNames = new ArrayList<>();
         freelancerNames.add("Anthony Angatia");
         freelancerNames.add("Anthony Angatia");

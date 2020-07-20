@@ -1,7 +1,10 @@
 package com.example.freelancer.classes;
 
 import java.util.List;
-
+/*
+* This model class is used ti store information that populated the
+* recyclerview in ServiceSubCategoryAdapter
+* */
 public class ServiceSubCategory {
     //TODO Add subcategory name
     private List<String> subCategoryTitles;

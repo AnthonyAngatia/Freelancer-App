@@ -34,7 +34,7 @@ public class SuggestedProvidersActivity extends AppCompatActivity {
         Intent intent = getIntent();
         int subCategoryId = intent.getIntExtra(SUB_CATEGORY_ID, POSITION_NOT_SET);
 
-        List<String> freelancerNames = FreelanceServiceManager.getInstance().getFreelancer(subCategoryId);
+        List<String> freelancerNames = FreelanceServiceManager.getInstance().getFreelancer(subCategoryId);//Ideally it should be alist of objects
         SuggestedProvidersAdapter freelancerAdapter = new SuggestedProvidersAdapter(this, freelancerNames);
         freelancersRecycler.setAdapter(freelancerAdapter);
     }
