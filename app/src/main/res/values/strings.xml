@@ -40,4 +40,9 @@
         <item>@drawable/voice_over</item>
     </array>
 
+    <string name="sign_in_with_google">Sign in with Google</string>
+    <string name="phone_number">Phone Number</string>
+    <string name="have_an_account_login">Have an account? Login</string>
+    <string name="sign_up">Sign up</string>
+    <string name="confirm_password">Confirm Password</string>
 </resources>
