@@ -31,19 +31,19 @@ public class FreelancerHome extends AppCompatActivity {
     }
 
     public void openRequests(View view) {
-        // LATER
+        // TODO LATER
         // Israel will create this class
         // Go to Requests
-        Intent openRequestsIntent = new Intent(this, RequestsActivity.class);
-        startActivity(openRequestsIntent);
+//        Intent openRequestsIntent = new Intent(this, RequestsActivity.class);
+//        startActivity(openRequestsIntent);
     }
 
     public void openAddSkill(View view) {
-        // LATER
+        // TODO LATER
         // Israel will create this class
         // Go to AddSkill
-        Intent openAddSkillIntent = new Intent(this, AddSkillActivity.class);
-        startActivity(openAddSkillIntent);
+//        Intent openAddSkillIntent = new Intent(this, AddSkillActivity.class);
+//        startActivity(openAddSkillIntent);
     }
 
     public void openProjects(View view) {
