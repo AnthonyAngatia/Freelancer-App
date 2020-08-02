@@ -11,6 +11,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.freelancer.classes.ServiceSuperCategory;
+
 import java.util.List;
 /*
 * This file is an adapter that binds the VIEW and DATA to a VIEWHOLDER
@@ -20,12 +22,14 @@ public class ServicesAdapter extends RecyclerView.Adapter<ServicesAdapter.ViewHo
     private final Context mContext;
     private List<String> servicesList;
     private List<Integer> imageList;
+    private  List<ServiceSuperCategory> mServiceSuperCategoryList;
     private int mCurrentPosition;
 
-    public ServicesAdapter(Context mContext, List<String> servicesList, List<Integer> imageList) {
+    public ServicesAdapter(Context mContext, List<String> servicesList, List<Integer> imageList,  List<ServiceSuperCategory> serviceSuperCategory) {
         this.mContext = mContext;
         this.servicesList = servicesList;
         this.imageList = imageList;
+        this.mServiceSuperCategoryList = serviceSuperCategory;
     }
 
     @NonNull
@@ -39,8 +43,9 @@ public class ServicesAdapter extends RecyclerView.Adapter<ServicesAdapter.ViewHo
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.imageView.setImageResource(imageList.get(position));
-        holder.textView.setText(servicesList.get(position));
-        holder.mCurrentPosition = position;
+//        holder.textView.setText(servicesList.get(position));
+    holder.textView.setText(mServiceSuperCategoryList.get(position).getName());
+    holder.mCurrentPosition = position;
     }
 
     @Override
