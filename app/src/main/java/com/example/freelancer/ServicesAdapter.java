@@ -11,6 +11,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.freelancer.classes.ServiceSuperCategory;
+
 import java.util.List;
 /*
 * This file is an adapter that binds the VIEW and DATA to a VIEWHOLDER
@@ -62,7 +64,7 @@ public class ServicesAdapter extends RecyclerView.Adapter<ServicesAdapter.ViewHo
                 public void onClick(View v) {
                     Intent intent = new Intent(mContext, SpecificCategoryActivity.class);
                     //The id of the general category
-                    intent.putExtra(SpecificCategoryActivity.CATEGORY_ID, mCurrentPosition);
+                    intent.putExtra(SpecificCategoryActivity.CATEGORY_NAME, servicesList.get(mCurrentPosition));
                     mContext.startActivity(intent);
                 }
             });
