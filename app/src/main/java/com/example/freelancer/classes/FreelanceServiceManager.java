@@ -3,16 +3,13 @@ package com.example.freelancer.classes;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.util.Log;
-import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
-import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.example.freelancer.MainActivity;
 import com.example.freelancer.R;
 
 import org.json.JSONArray;
@@ -26,7 +23,7 @@ import java.util.List;
 public class FreelanceServiceManager {
 
     private static FreelanceServiceManager ourinstance = null;
-    public static final String BASE_API_URL = "http://localhost:8000/api";
+    public static final String BASE_API_URL = "https://sheltered-plains-24359.herokuapp.com/api/";
 
     public static FreelanceServiceManager getInstance(){
         if(ourinstance == null){
@@ -74,26 +71,6 @@ public class FreelanceServiceManager {
         return imageList;
     }
 
-    public ServiceSubCategory getSubCategory(Context context, int id) {
-        getServicesNames().get(id);
-        //Should we pass the id or the string as the URLi.e app.com/0, app.com/1 or app/music, app.com/art
-        //This data should be replaced by data from the Api
-        List<String> subCategoryName = new ArrayList<>();
-        subCategoryName.add("VoiceOver");
-        subCategoryName.add("Mixing");
-        subCategoryName.add("Producers");
-        subCategoryName.add("Instrumentalist");
-        subCategoryName.add("Singers");
-        TypedArray subCategoryImages = context.getResources().obtainTypedArray(R.array.music);
-        List<Integer> imageIdList = new ArrayList<>();
-        for( int i=0; i < subCategoryImages.length();i++){
-            imageIdList.add(subCategoryImages.getResourceId(i, -1));
-        }
-        subCategoryImages.recycle();
-        return new ServiceSubCategory(subCategoryName, imageIdList );
-
-    }
-
     public List<String> getFreelancer(int subCategoryId) {
         //Get a list of Freelancers doing this job
         //TODO : Getting freelancers
@@ -107,12 +84,11 @@ public class FreelanceServiceManager {
         freelancerNames.add("Anthony Angatia");
         return freelancerNames;
     }
-
+//TODO try use it in the sub categories stuff
     public String volleyRequest(String url, Context context){
         final String TAG = "VolleyRequest";
         final String[] responseString = {"No request made to the API"};
         RequestQueue requestQueue = Volley.newRequestQueue(context);
-        url ="https://api.github.com/search/users?q=language:java+location:nairobi";
         JsonObjectRequest getRequest = new JsonObjectRequest(Request.Method.GET, url, null,
                 new Response.Listener<JSONObject>() {
                     @Override
@@ -131,32 +107,37 @@ public class FreelanceServiceManager {
         requestQueue.add(getRequest);
         return responseString[0];
     }
-//    public String volleyRequest(String url, Context context){
-//        final String URL_DATA =  "https://api.github.com/search/users?q=language:java+location:nairobi";
-////        final String URL_DATA =  "http://localhost:8000/api/categories";
-//
-//        RequestQueue queue = Volley.newRequestQueue(context);
-//
-//        JsonObjectRequest req = new JsonObjectRequest(Request.Method.GET, URL_DATA, null, new Response.Listener<JSONObject>() {
-//            @Override
-//            public void onResponse(JSONObject response) {
-//                Log.d("Tag", response.toString());
-//            }
-//        }, new Response.ErrorListener() {
-//            @Override
-//            public void onErrorResponse(VolleyError error) {
-//                Log.d("TAG", error.getMessage());
-//
-//            }
-//        });
-//        queue.add(req);
-//        return "vhbj";
-//
-//    }
+//Not in use
+    public ArrayList<ServiceSubCategory> processSubCategories(String jsonStringResponse){
+        final String DATA = "data";
+        final String NAME = "name";
+        final String IMAGE = "image_url";
+        final String DESCRIPTION = "description";
+        ArrayList<ServiceSubCategory> serviceSubCategoriesArrayList = new ArrayList<>();
+
+        try {
+            JSONObject jsonObject  = new JSONObject(jsonStringResponse);
+            JSONArray arrayOfSubCategories = jsonObject.getJSONArray(DATA);
+            int numberOfSubCategories = arrayOfSubCategories.length();
+            for (int i=0; i< numberOfSubCategories; i++){
+                JSONObject subCategoryJson = arrayOfSubCategories.getJSONObject(i);
+                ServiceSubCategory subCategories = new ServiceSubCategory(
+                        subCategoryJson.getString(NAME),
+                        subCategoryJson.getString(IMAGE),
+                        subCategoryJson.getString(DESCRIPTION)
+                );
+                serviceSubCategoriesArrayList.add(subCategories);
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return serviceSubCategoriesArrayList;
 
 
 
+    }
 
+//Not in use deprecated
     public ArrayList<ServiceSuperCategory> processCategories(String requestString)  {
         final String DATA = "data";
         final String NAME = "name";

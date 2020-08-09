@@ -22,14 +22,12 @@ public class ServicesAdapter extends RecyclerView.Adapter<ServicesAdapter.ViewHo
     private final Context mContext;
     private List<String> servicesList;
     private List<Integer> imageList;
-    private  List<ServiceSuperCategory> mServiceSuperCategoryList;
     private int mCurrentPosition;
 
-    public ServicesAdapter(Context mContext, List<String> servicesList, List<Integer> imageList,  List<ServiceSuperCategory> serviceSuperCategory) {
+    public ServicesAdapter(Context mContext, List<String> servicesList, List<Integer> imageList) {
         this.mContext = mContext;
         this.servicesList = servicesList;
         this.imageList = imageList;
-        this.mServiceSuperCategoryList = serviceSuperCategory;
     }
 
     @NonNull
@@ -43,9 +41,8 @@ public class ServicesAdapter extends RecyclerView.Adapter<ServicesAdapter.ViewHo
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.imageView.setImageResource(imageList.get(position));
-//        holder.textView.setText(servicesList.get(position));
-    holder.textView.setText(mServiceSuperCategoryList.get(position).getName());
-    holder.mCurrentPosition = position;
+        holder.textView.setText(servicesList.get(position));
+        holder.mCurrentPosition = position;
     }
 
     @Override
@@ -67,7 +64,7 @@ public class ServicesAdapter extends RecyclerView.Adapter<ServicesAdapter.ViewHo
                 public void onClick(View v) {
                     Intent intent = new Intent(mContext, SpecificCategoryActivity.class);
                     //The id of the general category
-                    intent.putExtra(SpecificCategoryActivity.CATEGORY_ID, mCurrentPosition);
+                    intent.putExtra(SpecificCategoryActivity.CATEGORY_NAME, servicesList.get(mCurrentPosition));
                     mContext.startActivity(intent);
                 }
             });

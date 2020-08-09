@@ -55,7 +55,7 @@ public class HomeFragment extends Fragment {
         final GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(),2);
         recyclerView.setLayoutManager(gridLayoutManager);
 
-        String requestString = FreelanceServiceManager.getInstance().volleyRequest(buildUrl(), getContext());
+//        String requestString = FreelanceServiceManager.getInstance().volleyRequest(buildUrl(), getContext());
 //        Log.d("TAG", requestString);//TODO Remove
         //Process the string
 //        List<ServiceSuperCategory> categoryList = FreelanceServiceManager.getInstance().processCategories(requestString);
@@ -64,7 +64,7 @@ public class HomeFragment extends Fragment {
         List<String>  serviceName =  FreelanceServiceManager.getInstance().getServicesNames();
 
         List<ServiceSuperCategory> categoryList;
-//        recyclerView.setAdapter(new ServicesAdapter(getContext(),serviceName,imageList, categoryList));
+        recyclerView.setAdapter(new ServicesAdapter(getContext(),serviceName,imageList));
     }
 
     private String buildUrl(){

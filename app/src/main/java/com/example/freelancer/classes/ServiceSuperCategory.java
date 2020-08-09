@@ -1,5 +1,5 @@
 package com.example.freelancer.classes;
-
+// deprecated not in use
 public class ServiceSuperCategory {
     private String name;
     private String imageUrl;
