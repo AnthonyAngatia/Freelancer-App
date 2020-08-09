@@ -1,14 +1,17 @@
 package com.example.freelancer;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.DialogInterface;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.widget.Toast;
 import android.util.Log;
 
 import com.android.volley.Request;
@@ -87,7 +90,6 @@ public class SuggestedProvidersActivity extends AppCompatActivity {
                         progressDialog.dismiss();
                         Log.d(TAG, response.toString());
                         freeLancers = processFreelancer(response.toString());
-
                         SuggestedProvidersAdapter freelancerAdapter = new SuggestedProvidersAdapter(SuggestedProvidersActivity.this, freeLancers);
                         mFreelancersRecycler.setAdapter(freelancerAdapter);
                     }
