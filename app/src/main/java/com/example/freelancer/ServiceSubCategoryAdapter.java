@@ -13,13 +13,16 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.freelancer.classes.ServiceSubCategory;
 
+import java.util.List;
+
 public class ServiceSubCategoryAdapter extends RecyclerView.Adapter<ServiceSubCategoryAdapter.ViewHolder> {
     private Context mContext;
-    private ServiceSubCategory mServiceSubCategory;
+//    private ServiceSubCategory mServiceSubCategory;
+    private List<ServiceSubCategory> mServiceSubCategoryList;
 
-    public ServiceSubCategoryAdapter(Context context, ServiceSubCategory mServiceSubCategory) {
+    public ServiceSubCategoryAdapter(Context context, List<ServiceSubCategory> serviceSubCategoryList) {
         mContext = context;
-        this.mServiceSubCategory = mServiceSubCategory;
+        mServiceSubCategoryList = serviceSubCategoryList;
     }
 
     @NonNull
@@ -32,15 +35,16 @@ public class ServiceSubCategoryAdapter extends RecyclerView.Adapter<ServiceSubCa
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        holder.mTextSubCategory.setText(mServiceSubCategory.getSubCategoryTitles().get(position));
-        holder.mImageSubCategory.setImageResource(mServiceSubCategory.getSubCategoryImages().get(position));
+        holder.mTextSubCategory.setText(mServiceSubCategoryList.get(position).getName());
+//        holder.mImageSubCategory.setImageResource(mServiceSubCategoryList.get(position).getImageUrl());
+        holder.mImageSubCategory.setImageResource(R.drawable.song);
         holder.mCurrentPosition = position;
 
     }
 
     @Override
     public int getItemCount() {
-        return mServiceSubCategory.getSubCategoryTitles().size();
+        return mServiceSubCategoryList.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder{
@@ -58,7 +62,7 @@ public class ServiceSubCategoryAdapter extends RecyclerView.Adapter<ServiceSubCa
                 @Override
                 public void onClick(View v) {
                     Intent intent = new Intent(mContext, SuggestedProvidersActivity.class);
-                    intent.putExtra(SuggestedProvidersActivity.SUB_CATEGORY_ID, mCurrentPosition);
+                    intent.putExtra(SuggestedProvidersActivity.SUB_CATEGORY_NAME, mServiceSubCategoryList.get(mCurrentPosition).getName());
                     mContext.startActivity(intent);
                 }
             });
