@@ -18,6 +18,7 @@ public class FreelancerHome extends AppCompatActivity {
 
         // LATER//
         // Anto group feedback on toolbar to use
+        //Already discussed
         Toolbar toolbar = findViewById(R.id.freelancer_toolbar);
         setSupportActionBar(toolbar);
     }

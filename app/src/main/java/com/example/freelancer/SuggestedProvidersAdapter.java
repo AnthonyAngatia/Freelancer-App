@@ -2,17 +2,18 @@ package com.example.freelancer;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.freelancer.classes.FreeLancer;
-import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -37,6 +38,8 @@ public class SuggestedProvidersAdapter extends RecyclerView.Adapter<SuggestedPro
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.mTextDescription.setText(mFreeLancers.get(position).toString());
         holder.mUserImage.setImageResource(R.drawable.song);
+        holder.mCurrentPosition = position;
+
 //        Picasso.with(mContext).load(mFreeLancers.get(position).getImageUrl()).into(holder.mUserImage);
     }
 
@@ -49,20 +52,24 @@ public class SuggestedProvidersAdapter extends RecyclerView.Adapter<SuggestedPro
 
         public final ImageView mUserImage;
         public final TextView mTextDescription;
+        public int mCurrentPosition;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            mUserImage = itemView.findViewById(R.id.freelancer_profile_image);
+//            itemView.setBackgroundColor(Color.parseColor("#00ff00"));
+            mUserImage = itemView.findViewById(R.id.freelancer_profile_image); .
             mTextDescription = itemView.findViewById(R.id.text_description);
             //TODO More descriptions are to come
 
-            itemView.setOnClickListener(new View.OnClickListener() {
+            itemView .setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent intent = new Intent(mContext, SpecificCategoryActivity.class);
+                    Intent anotherIntent = new Intent(mContext, FreelancerProfileActivity.class);
+                    Toast.makeText(mContext, "I am toasting", Toast.LENGTH_SHORT).show();
+
                     //The id of the general category
-//                    intent.putExtra(SpecificCategoryActivity.CATEGORY_NAME, servicesList.get(mCurrentPosition));
-//                    mContext.startActivity(intent);
+                    anotherIntent.putExtra(FreelancerProfileActivity.LIST_POSITION, mCurrentPosition);//ID of the user
+                    mContext.startActivity(anotherIntent);
                 }
             });
 

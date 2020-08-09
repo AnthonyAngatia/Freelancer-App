@@ -1,15 +1,21 @@
 package com.example.freelancer.classes;
 
 public class FreeLancer  {
+    private int id;
     private String name;
     private String imageUrl;
+    private String location;
+    private String phone_no;
     private String rating;
     private String qualification;
     private String portfolio;
 
-    public FreeLancer(String name, String imageUrl, String rating, String qualification, String portfolio) {
+    public FreeLancer(int id, String name, String imageUrl, String location, String phone_no, String rating, String qualification, String portfolio) {
+        this.id = id;
         this.name = name;
         this.imageUrl = imageUrl;
+        this.location = location;
+        this.phone_no = phone_no;
         this.rating = rating;
         this.qualification = qualification;
         this.portfolio = portfolio;
@@ -53,6 +59,26 @@ public class FreeLancer  {
 
     public void setPortfolio(String portfolio) {
         this.portfolio = portfolio;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
+    }
+
+    public String getPhone_no() {
+        return phone_no;
+    }
+
+    public void setPhone_no(String phone_no) {
+        this.phone_no = phone_no;
     }
 
     @Override

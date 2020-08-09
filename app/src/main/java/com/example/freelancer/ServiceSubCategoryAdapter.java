@@ -2,6 +2,7 @@ package com.example.freelancer;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -55,9 +56,11 @@ public class ServiceSubCategoryAdapter extends RecyclerView.Adapter<ServiceSubCa
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
+            itemView.setBackgroundColor(Color.parseColor("#00bcd4"));
             mImageSubCategory = itemView.findViewById(R.id.category_image);
             //Rename to subcategory title
             mTextSubCategory = itemView.findViewById(R.id.specific_title);
+
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
