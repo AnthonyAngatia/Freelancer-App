@@ -62,7 +62,7 @@ public class ServiceSubCategoryAdapter extends RecyclerView.Adapter<ServiceSubCa
                 @Override
                 public void onClick(View v) {
                     Intent intent = new Intent(mContext, SuggestedProvidersActivity.class);
-                    intent.putExtra(SuggestedProvidersActivity.SUB_CATEGORY_ID, mCurrentPosition);
+                    intent.putExtra(SuggestedProvidersActivity.SUB_CATEGORY_NAME, mServiceSubCategoryList.get(mCurrentPosition).getName());
                     mContext.startActivity(intent);
                 }
             });
