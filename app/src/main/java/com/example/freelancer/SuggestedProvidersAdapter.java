@@ -57,17 +57,13 @@ public class SuggestedProvidersAdapter extends RecyclerView.Adapter<SuggestedPro
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 //            itemView.setBackgroundColor(Color.parseColor("#00ff00"));
-            mUserImage = itemView.findViewById(R.id.freelancer_profile_image); .
+            mUserImage = itemView.findViewById(R.id.freelancer_profile_image);
             mTextDescription = itemView.findViewById(R.id.text_description);
             //TODO More descriptions are to come
-
             itemView .setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     Intent anotherIntent = new Intent(mContext, FreelancerProfileActivity.class);
-                    Toast.makeText(mContext, "I am toasting", Toast.LENGTH_SHORT).show();
-
-                    //The id of the general category
                     anotherIntent.putExtra(FreelancerProfileActivity.LIST_POSITION, mCurrentPosition);//ID of the user
                     mContext.startActivity(anotherIntent);
                 }
