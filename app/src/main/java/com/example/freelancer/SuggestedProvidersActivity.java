@@ -104,11 +104,14 @@ public class SuggestedProvidersActivity extends AppCompatActivity {
     }
     public ArrayList<FreeLancer> processFreelancer(String jsonStringResponse){
         final String DATA = "data";
+        final String ID = "appuser_id";
         final String NAME = "appuser_name";
         final String QUALIFICATION = "appuser_qualifications";
         final String PORTFOLIO ="appuser_portfolio";
         final String RATING ="appuser_rating";
         final String IMAGE = "appuser_profile_img";
+        final String PHONE = "appuser_phone";
+        final String LOCATION = "appuser_location";
         ArrayList<FreeLancer> freeLancerArrayList = new ArrayList<>();
 
         try {
@@ -118,13 +121,18 @@ public class SuggestedProvidersActivity extends AppCompatActivity {
             for (int i=0; i< noOfFreelancers; i++){
                 JSONObject freelancerJsonObject = arrayOfFreelancer.getJSONObject(i);
                 FreeLancer freeLancer = new FreeLancer(
+                        freelancerJsonObject.getInt(ID),
                         freelancerJsonObject.getString(NAME),
                         freelancerJsonObject.getString(IMAGE),
+                        freelancerJsonObject.getString(LOCATION),
+                        freelancerJsonObject.getString(PHONE),
                         freelancerJsonObject.getString(RATING),
                         freelancerJsonObject.getString(QUALIFICATION),
                         freelancerJsonObject.getString(PORTFOLIO)
+
                 );
                 freeLancerArrayList.add(freeLancer);
+                FreelanceServiceManager.getInstance().setFreelancersList(freeLancer);//A list of freelancers in the class
             }
         } catch (JSONException e) {
             e.printStackTrace();

@@ -1,7 +1,6 @@
 package com.example.freelancer.classes;
 
 import android.content.Context;
-import android.content.res.TypedArray;
 import android.util.Log;
 
 import com.android.volley.Request;
@@ -24,6 +23,18 @@ public class FreelanceServiceManager {
 
     private static FreelanceServiceManager ourinstance = null;
     public static final String BASE_API_URL = "https://sheltered-plains-24359.herokuapp.com/api/";
+    private ArrayList<FreeLancer> mFreeLancers = new ArrayList<>();
+
+    public ArrayList<FreeLancer> getFreelancersList(){
+        return mFreeLancers;
+    }
+    public ArrayList<FreeLancer> setFreelancersList(ArrayList<FreeLancer> freelancers){
+        this.mFreeLancers = freelancers;
+        return this.mFreeLancers;
+    }
+    public void setFreelancersList(FreeLancer freeLancer){
+        this.mFreeLancers.add(freeLancer);
+    }
 
     public static FreelanceServiceManager getInstance(){
         if(ourinstance == null){
