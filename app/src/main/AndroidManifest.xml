@@ -21,7 +21,7 @@
         <activity android:name=".SuggestedProvidersActivity" />
         <activity android:name=".SpecificCategoryActivity" />
         <activity android:name=".ProfileActivity" />
-        <activity android:name=".Signup" />
+        <activity android:name=".SignupActivity" />
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name"
