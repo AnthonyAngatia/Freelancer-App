@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,7 +7,10 @@
     android:background="@drawable/bg"
     tools:context=".LoginActivity">
 
-
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline_left"
@@ -23,18 +26,14 @@
         android:orientation="vertical"
         app:layout_constraintGuide_end="24dp" />
 
-    <ScrollView
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
 
-        tools:ignore="MissingConstraints">
 
     <ImageView
         android:id="@+id/icon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="80dp"
-        android:contentDescription="logo"
+        android:contentDescription="@string/logo"
         android:src="@drawable/logo"
         app:layout_constraintEnd_toStartOf="@+id/guideline_right"
         app:layout_constraintStart_toStartOf="@+id/guideline_left"
@@ -76,7 +75,7 @@
         android:id="@+id/btn_login"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="40dp"
         android:background="@android:color/holo_blue_light"
         android:text="@string/login_now"
         android:textAllCaps="false"
@@ -87,85 +86,42 @@
 
 
 
-    <TextView
-        android:id="@+id/forgot_password"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="@string/don_t_remember_password"
-        android:textColor="#812196F3"
-        android:textSize="16sp"
-        app:layout_constraintEnd_toStartOf="@id/guideline_right"
-        app:layout_constraintStart_toStartOf="@id/guideline_left"
-        app:layout_constraintTop_toBottomOf="@id/btn_login" />
 
-    <View
-        android:id="@+id/footer_line"
-        android:layout_width="0dp"
-        android:layout_height="1dp"
-        android:layout_marginBottom="50dp"
-        android:background="#fff"
-        app:layout_constraintBottom_toBottomOf="parent"
-        tools:ignore="MissingConstraints" />
+
+
 
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
         android:text="@string/dont_have_an_account"
         android:textColor="@color/colorPrimary"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/footer_line" />
+        app:layout_constraintTop_toBottomOf="@id/facebook_login" />
 
     <TextView
         android:id="@+id/facebook_login"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
+        android:layout_marginTop="70dp"
         android:text="@string/sign_in_with_google"
         android:drawablePadding="8dp"
 
         android:textColor="@color/colorPrimary"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@id/footer_line"
+        app:layout_constraintTop_toBottomOf="@id/btn_login"
         app:layout_constraintEnd_toStartOf="@id/guideline_right"
         app:layout_constraintStart_toStartOf="@id/guideline_left" />
 
-    <View
-        android:id="@+id/line1"
-        android:layout_width="120dp"
-        android:layout_height="1dp"
-        android:background="@color/login_form_details_medium"
-        app:layout_constraintBottom_toTopOf="@+id/facebook_login"
-        app:layout_constraintEnd_toStartOf="@+id/or"
-        app:layout_constraintHorizontal_chainStyle="spread_inside"
-        app:layout_constraintStart_toStartOf="@id/guideline_left"
-        app:layout_constraintTop_toBottomOf="@+id/forgot_password" />
 
-    <TextView
-        android:id="@+id/or"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/or"
-        android:textColor="@color/colorPrimary"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="@+id/line1"
-        app:layout_constraintEnd_toStartOf="@+id/line2"
-        app:layout_constraintStart_toEndOf="@+id/line1"
-        app:layout_constraintTop_toTopOf="@+id/line1" />
 
-    <View
-        android:id="@+id/line2"
-        android:layout_width="120dp"
-        android:layout_height="1dp"
-        android:background="@color/login_form_details_medium"
-        app:layout_constraintBottom_toBottomOf="@+id/or"
-        app:layout_constraintEnd_toEndOf="@id/guideline_right"
-        app:layout_constraintStart_toEndOf="@+id/or"
-        app:layout_constraintTop_toTopOf="@+id/or" />
 
-    </ScrollView>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.core.widget.NestedScrollView>
