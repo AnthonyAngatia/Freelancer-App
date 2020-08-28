@@ -22,6 +22,12 @@
         android:orientation="vertical"
         app:layout_constraintGuide_end="24dp" />
 
+    <ScrollView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+
+        tools:ignore="MissingConstraints">
+
     <TextView
         android:id="@+id/text_intro"
         android:layout_width="wrap_content"
@@ -161,5 +167,7 @@
         app:layout_constraintEnd_toEndOf="@id/guideline_right"
         app:layout_constraintStart_toEndOf="@+id/or"
         app:layout_constraintTop_toTopOf="@+id/or" />
+
+    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
