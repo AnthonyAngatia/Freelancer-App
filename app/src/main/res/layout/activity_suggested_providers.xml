@@ -18,11 +18,14 @@
         android:textColor="@android:color/black"
         android:textStyle="italic"
         android:textSize="16sp" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_providers"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/provider"/>
+        android:layout_below="@id/provider"
+        tools:itemCount="4"
+        tools:listitem="@layout/item_suggested_provider" />
 
 
 </RelativeLayout>

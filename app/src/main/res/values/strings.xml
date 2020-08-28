@@ -41,7 +41,7 @@
 
     <string name="list">
         <li>What the deliverable is</li>\n
-        <li>Type of freelancer or agency you're looking for</li>\n
+        <li>Type of freelancer or agency you\'re looking for</li>\n
         <li>Anything unique about the project, team, or your company</li>\n
     </string>
 
