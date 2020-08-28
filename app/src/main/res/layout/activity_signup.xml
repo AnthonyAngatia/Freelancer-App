@@ -6,8 +6,8 @@
     android:layout_height="match_parent"
     android:fillViewport="true"
     android:background="@drawable/bg"
-
     tools:context=".Signup">
+
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"

@@ -1,5 +1,7 @@
 package com.example.freelancer;
 
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -32,7 +34,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
-
+    public static final String myPreference = "login";
+    public static final String name = "NameKey";
+    public static final String isUserLogged = "IsUserLoggedIn";
+    public static final String email = "EmailKey";
     private AppBarConfiguration mAppBarConfiguration;
 
     @Override
@@ -41,6 +46,18 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        //Sigin intent
+        final SharedPreferences sharedPreferences = getSharedPreferences(myPreference, MODE_PRIVATE);
+        if(sharedPreferences.contains(isUserLogged)){
+//            Intent intent = new Intent(this, LoginActivity.class);
+//            startActivity(intent);
+        }
+        else{
+            Intent intent = new Intent(this, LoginActivity.class);
+            startActivity(intent);
+
+        }
+
         FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -48,6 +65,7 @@ public class MainActivity extends AppCompatActivity {
                 Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
             }
+
         });
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
