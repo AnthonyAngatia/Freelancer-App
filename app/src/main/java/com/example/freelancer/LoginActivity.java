@@ -37,6 +37,8 @@ public class LoginActivity extends AppCompatActivity {
     private EditText mUserPasswordEditText;
     private String mEmail;
     private String mPass;
+    private TextView mRegister;
+    private Button mLoginbtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,10 +46,17 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
         mUserEmailEditText = findViewById(R.id.username);
         mUserPasswordEditText = findViewById(R.id.password);
-        Button loginbtn = findViewById(R.id.btn_login);
-        loginbtn.setOnClickListener(new View.OnClickListener() {
+        mRegister = findViewById(R.id.textView_signup);
+        mLoginbtn = findViewById(R.id.btn_login);
+        login();
+        signUp();
+    }
+
+    private void login() {
+        mLoginbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //TODO:Check if the textviews are empty
                 mEmail = mUserEmailEditText.getText().toString();
                 mPass = mUserPasswordEditText.getText().toString();
                 String url = buildUrl();
@@ -57,6 +66,16 @@ public class LoginActivity extends AppCompatActivity {
                 editor.putBoolean("IsUserLoggedIn", true);
                 editor.commit();
                 Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                startActivity(intent);
+            }
+        });
+    }
+
+    private void signUp() {
+        mRegister.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(LoginActivity.this, SignupActivity.class);
                 startActivity(intent);
             }
         });

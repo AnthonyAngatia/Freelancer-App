@@ -2,6 +2,7 @@ package com.example.freelancer;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -23,15 +24,23 @@ import java.util.Map;
 
 public class SignupActivity extends AppCompatActivity {
 
+    private EditText mEmailAddress;
+    private EditText mPhoneNo;
+    private EditText mPassword;
+    private EditText mPasswordConfirm;
+    private TextView mLoginText;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup);
-        EditText emailAddress = findViewById(R.id.username);
-        EditText phoneNo = findViewById(R.id.phone);
-    final EditText password = findViewById(R.id.password);
-final EditText passwordConfirm = findViewById(R.id.confirmPassword);
+        mEmailAddress = findViewById(R.id.username);
+        mPhoneNo = findViewById(R.id.phone);
+        mPassword = findViewById(R.id.password);
+        mPasswordConfirm = findViewById(R.id.confirmPassword);
+        mLoginText = findViewById(R.id.textView_login);
         Button btn = findViewById(R.id.btn_signUp);
+        login();
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -40,7 +49,6 @@ final EditText passwordConfirm = findViewById(R.id.confirmPassword);
 //                }
 //                else{
                     //Write code to make a post request to the api
-
 
                     String url = "https://sheltered-plains-24359.herokuapp.com/api/appusers";
                     RequestQueue queue = Volley.newRequestQueue(SignupActivity.this);
@@ -82,6 +90,16 @@ final EditText passwordConfirm = findViewById(R.id.confirmPassword);
                     //Redirect to the login page
 //                }
 
+            }
+        });
+    }
+
+    private void login() {
+        mLoginText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(SignupActivity.this, LoginActivity.class);
+                startActivity(intent);
             }
         });
     }

@@ -34,7 +34,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
-    public static final String myPreference = "login";
+    public static final String myPreference = "LOGIN";
     public static final String name = "NameKey";
     public static final String isUserLogged = "IsUserLoggedIn";
     public static final String email = "EmailKey";
@@ -48,14 +48,18 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         //Sigin intent
         final SharedPreferences sharedPreferences = getSharedPreferences(myPreference, MODE_PRIVATE);
-        if(sharedPreferences.contains(isUserLogged)){
-//            Intent intent = new Intent(this, LoginActivity.class);
-//            startActivity(intent);
+        if( sharedPreferences.getBoolean(isUserLogged, false)){
+            //Continue
+            //For now edit it to false
+            SharedPreferences.Editor editor = sharedPreferences.edit();
+            editor.remove(isUserLogged);
+            editor.commit();
         }
         else{
+            //Login
             Intent intent = new Intent(this, LoginActivity.class);
             startActivity(intent);
-
+            finish();
         }
 
         FloatingActionButton fab = findViewById(R.id.fab);
