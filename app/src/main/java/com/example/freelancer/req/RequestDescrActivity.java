@@ -15,56 +15,145 @@ import com.squareup.picasso.Picasso;
 
 public class RequestDescrActivity extends AppCompatActivity {
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.request_descr);
+    private int projectId;
+    private String projectStatus;
+    private String projectReview;
+    private String projectDescription;
+    private double projectPrice;
+    private String projectDeliveryTime;
+    private String projectProgress;
+    private int appuser_inviter_id;
+    private int appuser_freelancer_id;
+
+    //others
+    private String projectItemRequestorName;
+    private String projectItemRequestorLocation;
+    private String projectItemRequestorPhone;
+
+    public RequestDescrActivity(int projectId, String projectStatus, String projectReview, String projectDescription, double projectPrice, String projectDeliveryTime, String projectProgress, int appuser_inviter_id, int appuser_freelancer_id, String projectItemRequestorName, String projectItemRequestorLocation, String projectItemRequestorPhone) {
+        this.projectId = projectId;
+        this.projectStatus = projectStatus;
+        this.projectReview = projectReview;
+        this.projectDescription = projectDescription;
+        this.projectPrice = projectPrice;
+        this.projectDeliveryTime = projectDeliveryTime;
+        this.projectProgress = projectProgress;
+        this.appuser_inviter_id = appuser_inviter_id;
+        this.appuser_freelancer_id = appuser_freelancer_id;
+
+        //
+        this.projectItemRequestorName = projectItemRequestorName;
+        this.projectItemRequestorLocation = projectItemRequestorLocation;
+        this.projectItemRequestorPhone = projectItemRequestorPhone;
+    }
+
+    public RequestDescrActivity( String projectItemRequestorName, String projectItemRequestorLocation, String projectItemRequestorPhone) {
+        this.projectItemRequestorName = projectItemRequestorName;
+        this.projectItemRequestorLocation = projectItemRequestorLocation;
+        this.projectItemRequestorPhone = projectItemRequestorPhone;
+    }
 
 
 
-        ImageView profileImageView = findViewById(R.id.profileImageView);
-        TextView userNameTextView = findViewById(R.id.usernameTextView);
-        ImageButton shareProfile = findViewById(R.id.shareProfile);
-        TextView developerUrl = findViewById(R.id.developerUrl);
 
-        Intent intent = getIntent();
-        final String userName = intent.getStringExtra(RequestsAdapter.KEY_NAME);
-        String image = intent.getStringExtra(RequestsAdapter.KEY_IMAGE);
-        final String profileUrl = intent.getStringExtra(RequestsAdapter.KEY_URL);
+    public int getProjectId() {
+        return projectId;
+    }
 
+    public void setProjectId(int projectId) {
+        this.projectId = projectId;
+    }
 
-        Picasso.with(this)
-                .load(image)
-                .into(profileImageView);
+    public String getProjectStatus() {
+        return projectStatus;
+    }
 
-        userNameTextView.setText(userName);
-        developerUrl.setText(profileUrl);
+    public void setProjectStatus(String projectStatus) {
+        this.projectStatus = projectStatus;
+    }
 
-        developerUrl.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String url = profileUrl;
-                Intent i = new Intent(Intent.ACTION_VIEW);
-                i.setData(Uri.parse(url));
-                startActivity(i);
-            }
-        });
+    public String getProjectReview() {
+        return projectReview;
+    }
 
-        shareProfile.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent shareIntent = new Intent(Intent.ACTION_SEND);
-                shareIntent.setType("text/plain");
-                shareIntent.putExtra(Intent.EXTRA_TEXT, "Check out this awesome developer " + userName + ", " + profileUrl);
-                Intent chooser = Intent.createChooser(shareIntent, "Share via");
-                if (shareIntent.resolveActivity(getPackageManager()) != null){
-                    startActivity(chooser);
-                }
+    public void setProjectReview(String projectReview) {
+        this.projectReview = projectReview;
+    }
 
-            }
-        });
+    public String getProjectDescription() {
+        return projectDescription;
+    }
 
+    public void setProjectDescription(String projectDescription) {
+        this.projectDescription = projectDescription;
+    }
 
+    public Double getProjectPrice() {
+        return projectPrice;
+    }
 
+    public void setProjectPrice(Double projectPrice) {
+        this.projectPrice = projectPrice;
+    }
+
+    public String getProjectDeliveryTime() {
+        return projectDeliveryTime;
+    }
+
+    public void setProjectDeliveryTime(String projectDeliveryTime) {
+        this.projectDeliveryTime = projectDeliveryTime;
+    }
+
+    public int getAppuser_inviter_id() {
+        return appuser_inviter_id;
+    }
+
+    public void setAppuser_inviter_id(int appuser_inviter_id) {
+        this.appuser_inviter_id = appuser_inviter_id;
+    }
+
+    public int getAppuser_freelancer_id() {
+        return appuser_freelancer_id;
+    }
+
+    public void setAppuser_freelancer_id(int appuser_freelancer_id) {
+        this.appuser_freelancer_id = appuser_freelancer_id;
+    }
+
+    //others
+    public String getProjectItemRequestorName() {
+        return projectItemRequestorName;
+    }
+
+    public void setProjectItemRequestorName(String projectItemRequestorName) {
+        this.projectItemRequestorName = projectItemRequestorName;
+    }
+
+    public String getProjectItemRequestorLocation() {
+        return projectItemRequestorLocation;
+    }
+
+    public void setProjectItemRequestorLocation(String projectItemRequestorLocation) {
+        this.projectItemRequestorLocation = projectItemRequestorLocation;
+    }
+
+    public String getProjectItemRequestorPhone() {
+        return projectItemRequestorPhone;
+    }
+
+    public void setProjectItemRequestorPhone(String projectItemRequestorPhone) {
+        this.projectItemRequestorPhone = projectItemRequestorPhone;
+    }
+
+    public void setProjectPrice(double projectPrice) {
+        this.projectPrice = projectPrice;
+    }
+
+    public String getProjectProgress() {
+        return projectProgress;
+    }
+
+    public void setProjectProgress(String projectProgress) {
+        this.projectProgress = projectProgress;
     }
 }

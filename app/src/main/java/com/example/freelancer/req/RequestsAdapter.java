@@ -7,11 +7,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.freelancer.Project;
+import com.example.freelancer.ProjectViewActivity;
+import com.example.freelancer.ProjectsAdapter;
 import com.example.freelancer.R;
 import com.squareup.picasso.Picasso;
 
@@ -19,70 +23,108 @@ import java.util.List;
 
 public class RequestsAdapter extends RecyclerView.Adapter<RequestsAdapter.ViewHolder> {
 
-    private List<RequestsList> developerList;
-    private Context mContext;
+        // declare Projects private member variable
+        private List<Project> projectsList;
+        // context variable
+        private Context mContext;
+        // keys for the intents(these will be needed when one clicks on the image view,
+        // to be directed to a specific project's dashboard activity )
+        public static final String KEY_PROJECT_ID = "project_id";
+        // KEY_PROJECT_STATUS will change after click
+        public static final String KEY_PROJECT_STATUS = "project_status";
+        // not available yet
+        public static final String KEY_PROJECT_REVIEW = "project_review";
+        public static final String KEY_PROJECT_DESCRIPTION = "project_description";
+        public static final String KEY_PROJECT_PRICE = "project_price";
+        public static final String KEY_PROJECT_DELIVERY_TIME = "project_delivery_time";
+        public static final String KEY_PROJECT_PROGRESS = "project_progress";
+        public static final String KEY_APPUSER_INVITER_ID = "appuser_inviter_id";
+        public static final String KEY_APPUSER_FREELANCER_ID = "appuser_freelancer_id";
+        //others
+        public static final String KEY_PROJECT_REQUESTOR_NAME = "project_requestor_name";
+        public static final String KEY_PROJECT_REQUESTOR_LOCATION = "project_requestor_location";
+        public static final String KEY_PROJECT_REQUESTOR_PHONE = "project_requestor_phone";
 
-    public static final String KEY_NAME = "name";
-    public static final String KEY_IMAGE = "image";
-    public static final String KEY_URL = "url";
-
-    public RequestsAdapter(List<RequestsList>developerList, Context context){
-        this.developerList = developerList;
-        this.mContext = context;
-    }
-
-
-
-    @NonNull
-    @Override
-    public RequestsAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return new
-                ViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.request_list,parent, false));
-    }
-
-    @Override
-    public void onBindViewHolder(@NonNull RequestsAdapter.ViewHolder holder, final int position) {
-
-        final RequestsList currentDeveloper = developerList.get(position);
-        holder.login.setText(currentDeveloper.getLogin());
-        holder.html_url.setText(currentDeveloper.getHtml_url());
-
-        Picasso.with(mContext)
-                .load(currentDeveloper.getAvatar_url())
-                .into(holder.avatar_url);
-
-        holder.linearLayout.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v){
-                RequestsList requestsList1 = developerList.get(position);
-                Intent skipIntent = new Intent(v.getContext(), RequestDescrActivity.class);
-                skipIntent.putExtra(KEY_NAME, requestsList1.getLogin());
-                skipIntent.putExtra(KEY_URL, requestsList1.getHtml_url());
-                skipIntent.putExtra(KEY_IMAGE, requestsList1.getAvatar_url());
-                v.getContext().startActivity(skipIntent);
-            }
-        });
-
-    }
-
-    @Override
-    public int getItemCount() {
-        return developerList.size();
-    }
-
-    public class ViewHolder extends RecyclerView.ViewHolder{
-
-        public TextView login;
-        public ImageView avatar_url;
-        public TextView html_url;
-        public LinearLayout linearLayout;
-
-        public ViewHolder(@NonNull View itemView) {
-            super(itemView);
-            login=itemView.findViewById(R.id.username);
-            avatar_url = itemView.findViewById(R.id.imageView);
-            html_url = itemView.findViewById(R.id.html_url);
-            linearLayout = itemView.findViewById(R.id.linearLayout);
+        public RequestsAdapter(List<Project> projectsList, Context context) {
+            this.projectsList = projectsList;
+            this.mContext = context;
         }
+
+        // inner class ViewHolder
+        public class ViewHolder extends RecyclerView.ViewHolder{
+            // define view objects
+            public RelativeLayout project_item_rellayout;
+            public ImageView project_item_imageView;
+            public TextView project_item_requestor_location;
+            public TextView project_item_requestor_name;
+            public TextView project_item_requestor_phone;
+
+            // inner class Viewholder constructor
+            public ViewHolder(@NonNull View itemView){
+                super(itemView);
+                project_item_rellayout = itemView.findViewById(R.id.project_item_rellayout);
+                project_item_imageView = itemView.findViewById(R.id.project_item_imageView);
+                project_item_requestor_location = itemView.findViewById(R.id.project_item_requestor_location);
+                project_item_requestor_name = itemView.findViewById(R.id.project_item_requestor_name);
+                project_item_requestor_phone = itemView.findViewById(R.id.project_item_requestor_phone);
+            }
+        }
+
+        @NonNull
+        @Override
+        public com.example.freelancer.req.RequestsAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+            return new com.example.freelancer.req.RequestsAdapter.ViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.item_project, parent, false));
+        }
+
+        @Override
+        public void onBindViewHolder(@NonNull com.example.freelancer.req.RequestsAdapter.ViewHolder holder, final int position) {
+            //create a variable that gets the current instance of the project in the list
+            final Project currentProject = projectsList.get(position);
+            //populate Text Views with data, Image View has static image
+            holder.project_item_requestor_name.setText(currentProject.getProjectItemRequestorName());
+            holder.project_item_requestor_location.setText(currentProject.getProjectItemRequestorLocation());
+            holder.project_item_requestor_phone.setText(currentProject.getProjectItemRequestorPhone());
+
+            //set onclick listener to handle click events
+            holder.project_item_rellayout.setOnClickListener(new View.OnClickListener(){
+                @Override
+                //ensure you override the onClick method
+                public void onClick(View v){
+                    //create an instance of thr developer list and initialize it
+                    Project currentProject = projectsList.get(position);
+                    //create an intent and specify the target class as Profile Activity
+                    Intent projectViewIntent = new Intent(v.getContext(), ProjectViewActivity.class);
+                    //use intent EXTRA to pass data from RequestActivity to RequestDescrActivity
+                    projectViewIntent.putExtra(KEY_PROJECT_ID, currentProject.getProjectId());
+                    projectViewIntent.putExtra(KEY_PROJECT_STATUS, currentProject.getProjectStatus());
+                    projectViewIntent.putExtra(KEY_PROJECT_REVIEW, currentProject.getProjectItemRequestorName());
+                    projectViewIntent.putExtra(KEY_PROJECT_DESCRIPTION, currentProject.getProjectItemRequestorLocation());
+                    projectViewIntent.putExtra(KEY_PROJECT_PRICE, currentProject.getProjectPrice());
+                    projectViewIntent.putExtra(KEY_PROJECT_DELIVERY_TIME, currentProject.getProjectItemRequestorName());
+                    projectViewIntent.putExtra(KEY_PROJECT_PROGRESS, currentProject.getProjectProgress());
+                    projectViewIntent.putExtra(KEY_APPUSER_INVITER_ID, currentProject.getProjectItemRequestorLocation());
+                    projectViewIntent.putExtra(KEY_APPUSER_FREELANCER_ID, currentProject.getProjectItemRequestorPhone());
+                    projectViewIntent.putExtra(KEY_PROJECT_REQUESTOR_NAME, currentProject.getProjectItemRequestorName());
+                    projectViewIntent.putExtra(KEY_PROJECT_REQUESTOR_LOCATION, currentProject.getProjectItemRequestorLocation());
+                    projectViewIntent.putExtra(KEY_PROJECT_REQUESTOR_PHONE, currentProject.getProjectItemRequestorPhone());
+
+                    //others
+                    projectViewIntent.putExtra(KEY_PROJECT_REQUESTOR_NAME, currentProject.getProjectItemRequestorName());
+                    projectViewIntent.putExtra(KEY_PROJECT_REQUESTOR_LOCATION, currentProject.getProjectItemRequestorLocation());
+                    projectViewIntent.putExtra(KEY_PROJECT_REQUESTOR_PHONE, currentProject.getProjectItemRequestorPhone());
+                    v.getContext().startActivity(projectViewIntent);
+
+                    //Code to make PUT request to update status of project clicked
+
+                }
+            });
+        }
+
+        @Override
+        public int getItemCount() {
+            //return size of developer list
+            return projectsList.size();
+        }
+
+
     }
-}
