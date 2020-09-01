@@ -12,20 +12,21 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.freelancer.R;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
-public class DevelopersAdapter extends RecyclerView.Adapter<DevelopersAdapter.ViewHolder> {
+public class RequestsAdapter extends RecyclerView.Adapter<RequestsAdapter.ViewHolder> {
 
-    private List<DevelopersList> developerList;
+    private List<RequestsList> developerList;
     private Context mContext;
 
     public static final String KEY_NAME = "name";
     public static final String KEY_IMAGE = "image";
     public static final String KEY_URL = "url";
 
-    public DevelopersAdapter(List<DevelopersList>developerList, Context context){
+    public RequestsAdapter(List<RequestsList>developerList, Context context){
         this.developerList = developerList;
         this.mContext = context;
     }
@@ -34,15 +35,15 @@ public class DevelopersAdapter extends RecyclerView.Adapter<DevelopersAdapter.Vi
 
     @NonNull
     @Override
-    public DevelopersAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public RequestsAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         return new
-                ViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.developers_list,parent, false));
+                ViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.request_list,parent, false));
     }
 
     @Override
-    public void onBindViewHolder(@NonNull DevelopersAdapter.ViewHolder holder, final int position) {
+    public void onBindViewHolder(@NonNull RequestsAdapter.ViewHolder holder, final int position) {
 
-        final DevelopersList currentDeveloper = developerList.get(position);
+        final RequestsList currentDeveloper = developerList.get(position);
         holder.login.setText(currentDeveloper.getLogin());
         holder.html_url.setText(currentDeveloper.getHtml_url());
 
@@ -53,11 +54,11 @@ public class DevelopersAdapter extends RecyclerView.Adapter<DevelopersAdapter.Vi
         holder.linearLayout.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                DevelopersList developersList1 = developerList.get(position);
-                Intent skipIntent = new Intent(v.getContext(), ProfileActivity.class);
-                skipIntent.putExtra(KEY_NAME, developersList1.getLogin());
-                skipIntent.putExtra(KEY_URL, developersList1.getHtml_url());
-                skipIntent.putExtra(KEY_IMAGE, developersList1.getAvatar_url());
+                RequestsList requestsList1 = developerList.get(position);
+                Intent skipIntent = new Intent(v.getContext(), RequestDescrActivity.class);
+                skipIntent.putExtra(KEY_NAME, requestsList1.getLogin());
+                skipIntent.putExtra(KEY_URL, requestsList1.getHtml_url());
+                skipIntent.putExtra(KEY_IMAGE, requestsList1.getAvatar_url());
                 v.getContext().startActivity(skipIntent);
             }
         });

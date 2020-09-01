@@ -16,6 +16,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.freelancer.R;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -31,13 +32,13 @@ public class RequestActivity extends AppCompatActivity {
 
 
     private RecyclerView recyclerView;
-    private DevelopersAdapter myAdapter;
-    private List<DevelopersList> developerList;
+    private RequestsAdapter myAdapter;
+    private List<RequestsList> developerList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_request);
         recyclerView = findViewById(R.id.recycler_view);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -59,11 +60,11 @@ public class RequestActivity extends AppCompatActivity {
                     JSONArray array = jsonObject.getJSONArray("items");
                     for(int i = 0; i < array.length(); i++){
                         JSONObject jo = array.getJSONObject(i);
-                        DevelopersList developers = new DevelopersList(jo.getString("login"),jo.getString("html_url"), jo.getString("avatar_url"));
+                        RequestsList developers = new RequestsList(jo.getString("login"),jo.getString("html_url"), jo.getString("avatar_url"));
                         developerList.add(developers);
                         Log.d("res","developers"+ developers);
                     }
-                    myAdapter = new DevelopersAdapter(developerList, getApplicationContext());
+                    myAdapter = new RequestsAdapter(developerList, getApplicationContext());
                     recyclerView.setAdapter(myAdapter);
 
                 } catch (JSONException e){

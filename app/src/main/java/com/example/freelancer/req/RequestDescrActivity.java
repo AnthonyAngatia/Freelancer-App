@@ -10,14 +10,15 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.freelancer.R;
 import com.squareup.picasso.Picasso;
 
-public class ProfileActivity extends AppCompatActivity {
+public class RequestDescrActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_profile);
+        setContentView(R.layout.request_descr);
 
 
 
@@ -27,9 +28,9 @@ public class ProfileActivity extends AppCompatActivity {
         TextView developerUrl = findViewById(R.id.developerUrl);
 
         Intent intent = getIntent();
-        final String userName = intent.getStringExtra(DevelopersAdapter.KEY_NAME);
-        String image = intent.getStringExtra(DevelopersAdapter.KEY_IMAGE);
-        final String profileUrl = intent.getStringExtra(DevelopersAdapter.KEY_URL);
+        final String userName = intent.getStringExtra(RequestsAdapter.KEY_NAME);
+        String image = intent.getStringExtra(RequestsAdapter.KEY_IMAGE);
+        final String profileUrl = intent.getStringExtra(RequestsAdapter.KEY_URL);
 
 
         Picasso.with(this)

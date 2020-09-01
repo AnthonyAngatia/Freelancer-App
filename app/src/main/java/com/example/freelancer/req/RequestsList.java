@@ -1,10 +1,10 @@
 package com.example.freelancer.req;
 
-public class DevelopersList {
+public class RequestsList {
     private String login;
     private String avatar_url;
     private String html_url;
-    public DevelopersList(String login, String gitUrl, String avatar_url){
+    public RequestsList(String login, String gitUrl, String avatar_url){
         this.login = login;
         this.avatar_url = avatar_url;
         this.html_url = gitUrl;

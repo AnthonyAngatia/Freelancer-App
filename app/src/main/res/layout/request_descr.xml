@@ -7,7 +7,7 @@
     android:background="#FFFFFF"
     android:orientation="vertical"
     android:padding="16dp"
-    tools:context=".req.ProfileActivity">
+    tools:context=".req.RequestDescrActivity">
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
