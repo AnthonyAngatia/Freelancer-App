@@ -1,4 +1,4 @@
-package com.izere.myvolley;
+package com.example.freelancer.req;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -24,7 +24,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity {
+public class RequestActivity extends AppCompatActivity {
     //api
     private static final String URL_DATA =
             "https://api.github.com/search/users?q=language:java+location:nairobi";
@@ -74,7 +74,7 @@ public class MainActivity extends AppCompatActivity {
             }, new Response.ErrorListener(){
             @Override
             public void onErrorResponse(VolleyError error){
-                Toast.makeText(MainActivity.this,"Error"+error.toString(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(RequestActivity.this,"Error"+error.toString(), Toast.LENGTH_SHORT).show();
             }
 
         });

@@ -1,4 +1,4 @@
-package com.izere.myvolley;
+package com.example.freelancer.req;
 
 public class DevelopersList {
     private String login;
