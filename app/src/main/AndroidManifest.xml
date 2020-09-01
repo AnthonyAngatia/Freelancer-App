@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.freelancer">
-    <uses-permission android:name="android.permission.INTERNET"/>
+
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -10,19 +11,20 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".FreelancerProfile"></activity>
+        <activity android:name=".FreelancerSignUp"></activity>
+        <activity android:name=".FreelancerProfileActivity" />
         <activity android:name=".ProjectDescription" />
         <activity android:name=".ProjectView2Activity" />
         <activity android:name=".ProjectViewActivity" />
         <activity android:name=".ProjectsActivity" />
         <activity android:name=".FreelancerHome" />
-        <activity android:name=".LoginActivity" />
+        <activity android:name=".MainActivity" />
         <activity android:name=".SuggestedProvidersActivity" />
         <activity android:name=".SpecificCategoryActivity" />
         <activity android:name=".ProfileActivity" />
-        <activity android:name=".Signup" />
+        <activity android:name=".LoginActivity" />
         <activity
-            android:name=".MainActivity"
+            android:name=".Signup"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
