@@ -2,6 +2,7 @@ package com.example.freelancer;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.TypedArray;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,6 +20,9 @@ public class ProjectsAdapter extends RecyclerView.Adapter<ProjectsAdapter.ViewHo
     private List<Project> projectsList;
     // context variable
     private Context mContext;
+
+
+
     // keys for the intents(these will be needed when one clicks on the image view,
     // to be directed to a specific project's dashboard activity )
     public static final String KEY_PROJECT_ID = "project_id";
@@ -40,6 +44,7 @@ public class ProjectsAdapter extends RecyclerView.Adapter<ProjectsAdapter.ViewHo
     public ProjectsAdapter(List<Project> projectsList, Context context) {
         this.projectsList = projectsList;
         this.mContext = context;
+
     }
 
     // inner class ViewHolder
@@ -68,8 +73,15 @@ public class ProjectsAdapter extends RecyclerView.Adapter<ProjectsAdapter.ViewHo
         return new ViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.item_project, parent, false));
     }
 
+
     @Override
     public void onBindViewHolder(@NonNull ProjectsAdapter.ViewHolder holder, final int position) {
+        // dealing with the images
+        // get array from strings.xml file
+        TypedArray projectImagesArray = this.mContext.getResources().obtainTypedArray(R.array.project_imgs);
+        //inflate image view
+        holder.project_item_imageView.setImageResource(projectImagesArray.getResourceId(position, 0));
+
         //create a variable that gets the current instance of the project in the list
         final Project currentProject = projectsList.get(position);
         //populate Text Views with data, Image View has static image
@@ -84,7 +96,7 @@ public class ProjectsAdapter extends RecyclerView.Adapter<ProjectsAdapter.ViewHo
             public void onClick(View v){
                 //create an instance of thr developer list and initialize it
                 Project currentProject = projectsList.get(position);
-                //create an intent and specify the target class as Profile Activity
+                //create an intent and specify the target class as ProjectView Activity
                 Intent projectViewIntent = new Intent(v.getContext(), ProjectViewActivity.class);
                 //use intent EXTRA to pass data from MainActivity to ProfileActivity
                 projectViewIntent.putExtra(KEY_PROJECT_ID, currentProject.getProjectId());
@@ -104,9 +116,18 @@ public class ProjectsAdapter extends RecyclerView.Adapter<ProjectsAdapter.ViewHo
                 projectViewIntent.putExtra(KEY_PROJECT_REQUESTOR_NAME, currentProject.getProjectItemRequestorName());
                 projectViewIntent.putExtra(KEY_PROJECT_REQUESTOR_LOCATION, currentProject.getProjectItemRequestorLocation());
                 projectViewIntent.putExtra(KEY_PROJECT_REQUESTOR_PHONE, currentProject.getProjectItemRequestorPhone());
-                v.getContext().startActivity(projectViewIntent);
 
-                //Code to make PUT request to update status of project clicked
+                //if project is not competed, go to ProjectViewActivity else go to ProjectViewActivity2
+                if(currentProject.getProjectStatus() != "Completed"){
+                    v.getContext().startActivity(projectViewIntent);
+                }
+                else{
+                    Intent projectView2Intent = new Intent(v.getContext(), ProjectView2Activity.class);
+                    v.getContext().startActivity(projectView2Intent);
+                }
+
+                // not sure about what I meant below
+                // Code to make PUT request to update status of project clicked
 
             }
         });

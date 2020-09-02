@@ -17,7 +17,6 @@
     <string name="menu_profile">Profile</string>
 
 
-
     <string name="home_second">Home Second</string>
     <string name="category">Category</string>
     <string name="category_title">Category Title</string>
@@ -38,6 +37,21 @@
         <item>@drawable/composers_producers</item>
         <item>@drawable/singers_vocalist</item>
         <item>@drawable/voice_over</item>
+    </array>
+
+    <array name="project_imgs">
+        <item>@drawable/sproject1</item>
+        <item>@drawable/sproject2</item>
+        <item>@drawable/sproject3</item>
+        <item>@drawable/sproject1</item>
+        <item>@drawable/sproject2</item>
+        <item>@drawable/sproject3</item>
+        <item>@drawable/sproject1</item>
+        <item>@drawable/sproject2</item>
+        <item>@drawable/sproject3</item>
+        <item>@drawable/sproject1</item>
+        <item>@drawable/sproject2</item>
+        <item>@drawable/sproject3</item>
     </array>
 
 </resources>
