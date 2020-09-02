@@ -20,6 +20,7 @@ public class FreelancerHome extends AppCompatActivity {
 
         // LATER//
         // Anto group feedback on toolbar to use
+        //Already discussed
         Toolbar toolbar = findViewById(R.id.freelancer_toolbar);
         setSupportActionBar(toolbar);
     }
@@ -41,7 +42,7 @@ public class FreelancerHome extends AppCompatActivity {
     }
 
     public void openRequests(View view) {
-        // LATER
+        // TODO LATER
         // Israel will create this class
         // Go to Requests
         //Intent openRequestsIntent = new Intent(this, RequestsActivity.class);
@@ -49,7 +50,7 @@ public class FreelancerHome extends AppCompatActivity {
     }
 
     public void openAddSkill(View view) {
-        // LATER
+        // TODO LATER
         // Israel will create this class
         // Go to AddSkill
         //Intent openAddSkillIntent = new Intent(this, AddSkillActivity.class);

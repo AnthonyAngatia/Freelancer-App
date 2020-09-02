@@ -3,6 +3,8 @@
     package="com.example.freelancer">
     <uses-permission android:name="android.permission.INTERNET"/>
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -28,12 +30,16 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".FreelancerProfileActivity"></activity>
+        <activity android:name=".ProjectDescription" />
         <activity android:name=".FreelancerHome" />
         <activity android:name=".LoginActivity" />
         <activity android:name=".SuggestedProvidersActivity" />
         <activity android:name=".SpecificCategoryActivity" />
+        <activity android:name=".ProfileActivity" />
+        <activity android:name=".Signup" />
         <activity
-            android:name=".MainActivity"
+            android:name=".req.RequestActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar">
 

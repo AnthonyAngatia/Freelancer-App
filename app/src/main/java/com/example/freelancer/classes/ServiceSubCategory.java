@@ -1,30 +1,44 @@
 package com.example.freelancer.classes;
 
 import java.util.List;
-
+/*
+* This model class is used ti store information that populated the
+* recyclerview in ServiceSubCategoryAdapter
+* */
 public class ServiceSubCategory {
     //TODO Add subcategory name
-    private List<String> subCategoryTitles;
-    private List<Integer> subCategoryImages;//Might be changed to Uri
+    private String name;
+    private String imageUrl;//Might be changed to Uri
 
-    public ServiceSubCategory(List<String> subCategoryTitles, List<Integer> subCategoryImages) {
-        this.subCategoryTitles = subCategoryTitles;
-        this.subCategoryImages = subCategoryImages;
+    public String getDescription() {
+        return description;
     }
 
-    public List<String> getSubCategoryTitles() {
-        return subCategoryTitles;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
-    public void setSubCategoryTitles(List<String> subCategoryTitles) {
-        this.subCategoryTitles = subCategoryTitles;
+    private String description;
+
+    public ServiceSubCategory(String name, String imageUrl, String description) {
+        this.name = name;
+        this.imageUrl = imageUrl;
+        this.description = description;
     }
 
-    public List<Integer> getSubCategoryImages() {
-        return subCategoryImages;
+    public String getName() {
+        return name;
     }
 
-    public void setSubCategoryImages(List<Integer> subCategoryImages) {
-        this.subCategoryImages = subCategoryImages;
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
     }
 }
