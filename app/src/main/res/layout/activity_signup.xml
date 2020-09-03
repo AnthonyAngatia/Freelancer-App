@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:fillViewport="true"
     android:background="@drawable/bg"
-    tools:context=".Signup">
+    tools:context=".SignupActivity">
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -157,7 +157,7 @@
 
 
     <TextView
-        android:id="@+id/forgot_password"
+        android:id="@+id/textView_login"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"

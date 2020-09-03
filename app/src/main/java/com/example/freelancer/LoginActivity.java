@@ -1,7 +1,6 @@
 package com.example.freelancer;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -22,21 +21,21 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.freelancer.classes.FreelanceServiceManager;
-import com.example.freelancer.classes.ServiceSubCategory;
 
-import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.ArrayList;
+
+import static com.example.freelancer.classes.FreelanceServiceManager.loginPreference;
 
 public class LoginActivity extends AppCompatActivity {
     private EditText mUserEmailEditText;
     private EditText mUserPasswordEditText;
     private String mEmail;
     private String mPass;
+    private TextView mRegister;
+    private Button mLoginbtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,19 +43,37 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
         mUserEmailEditText = findViewById(R.id.username);
         mUserPasswordEditText = findViewById(R.id.password);
-        Button loginbtn = findViewById(R.id.btn_login);
-        loginbtn.setOnClickListener(new View.OnClickListener() {
+        mRegister = findViewById(R.id.textView_signup);
+        mLoginbtn = findViewById(R.id.btn_login);
+        login();
+        signUp();
+    }
+
+    private void login() {
+        mLoginbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //TODO:Check if the textviews are empty
                 mEmail = mUserEmailEditText.getText().toString();
                 mPass = mUserPasswordEditText.getText().toString();
                 String url = buildUrl();
+                //TODO Method to sign in
 //                volleyRequest(url, LoginActivity.this);
-                SharedPreferences preferences = getSharedPreferences(MainActivity.myPreference, MODE_PRIVATE);
+                SharedPreferences preferences = getSharedPreferences(loginPreference, MODE_PRIVATE);
                 SharedPreferences.Editor editor =  preferences.edit();
                 editor.putBoolean("IsUserLoggedIn", true);
                 editor.commit();
                 Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                startActivity(intent);
+            }
+        });
+    }
+
+    private void signUp() {
+        mRegister.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(LoginActivity.this, SignupActivity.class);
                 startActivity(intent);
             }
         });
