@@ -12,6 +12,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
+      <activity android:name=".FreelancerSignUp"></activity>
+        <activity android:name=".FreelancerProfileActivity" />
         <activity android:name=".ClientProjectsActivity"
                   android:exported="true">
 
@@ -25,24 +28,31 @@
         </activity>
         <activity android:name=".ProjectsActivity"
                   android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
-        <activity android:name=".FreelancerProfileActivity"></activity>
+ 
         <activity android:name=".ProjectDescription" />
         <activity android:name=".FreelancerHome" />
-        <activity android:name=".LoginActivity" />
+        <activity android:name=".req.RequestActivity" />
+        <activity
+            android:name=".MainActivity"
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter> 
+              <action android:name="android.intent.action.MAIN" />
+              <category android:name="android.intent.category.LAUNCHER" />
+             </intent-filter> 
+
+        </activity>
         <activity android:name=".SuggestedProvidersActivity" />
         <activity android:name=".SpecificCategoryActivity" />
         <activity android:name=".ProfileActivity" />
-        <activity android:name=".Signup" />
-        <activity
-            android:name=".req.RequestActivity"
-            android:label="@string/app_name"
-            android:theme="@style/AppTheme.NoActionBar">
+        <activity android:name=".LoginActivity" />
+        <activity android:name=".SignupActivity">
 
+            <!-- <intent-filter> -->
+            <!-- <action android:name="android.intent.action.MAIN" /> -->
+            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+            <!-- </intent-filter> -->
         </activity>
     </application>
 

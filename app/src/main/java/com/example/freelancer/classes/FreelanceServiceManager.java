@@ -23,6 +23,11 @@ public class FreelanceServiceManager {
 
     private static FreelanceServiceManager ourinstance = null;
     public static final String BASE_API_URL = "https://sheltered-plains-24359.herokuapp.com/api/";
+    //Preference variables
+    public static final String loginPreference = "LOGIN";
+    public static final String name = "NameKey";
+    public static final String isUserLogged = "IsUserLoggedIn";
+    public static final String email = "EmailKey";
     private ArrayList<FreeLancer> mFreeLancers = new ArrayList<>();
 
     public ArrayList<FreeLancer> getFreelancersList(){
