@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent" android:layout_height="wrap_content"
+    android:layout_margin="8dp"
+    android:layout_marginBottom="16dp"
+    >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/category_image"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+
+            android:adjustViewBounds="true"
+            android:background="@color/greyLight"
+            android:paddingBottom="10dp" />
+        <View
+            android:id="@+id/divider"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_below="@id/category_image"
+            android:background="#000000"/>
+
+        <TextView
+            android:id="@+id/specific_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/category_image"
+            android:layout_marginTop="2dp"
+            android:background="@color/greyDark"
+            android:drawableEnd="@drawable/ic_baseline_arrow_forward_24_orange_tint"
+            android:padding="10dp"
+            android:text="@string/category_title"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textColor="@color/design_default_color_background"
+            android:theme="@style/ThemeOverlay.AppCompat.Light"
+            app:drawableTint="@color/colorAccent" />
+
+    </RelativeLayout>
+
+
+</androidx.cardview.widget.CardView>

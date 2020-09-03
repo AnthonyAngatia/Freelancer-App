@@ -1,9 +1,16 @@
 package com.example.freelancer;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.Menu;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
@@ -18,6 +25,8 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -54,39 +63,7 @@ public class MainActivity extends AppCompatActivity {
 //        initializeDisplayContent();
     }
 
-//    private void initializeDisplayContent() {
-//        final RecyclerView recyclerView = findViewById(R.id.recycler_services);
-//        //LayoutManager
-//        final GridLayoutManager gridLayoutManager = new GridLayoutManager(this,2);
-//        recyclerView.setLayoutManager(gridLayoutManager);
-//        List<Integer> imageList = new ArrayList<>();
-//        imageList.add(R.drawable.song);
-//        imageList.add(R.drawable.development);
-//        imageList.add(R.drawable.multimedia);
-//        imageList.add(R.drawable.paint);
-//        imageList.add(R.drawable.development);
-//        imageList.add(R.drawable.song);
-//        imageList.add(R.drawable.song);
-//        imageList.add(R.drawable.development);
-//        imageList.add(R.drawable.multimedia);
-//        imageList.add(R.drawable.paint);
-//        imageList.add(R.drawable.development);
-//        imageList.add(R.drawable.song);
-//        List<String>  serviceName = new ArrayList<>();
-//        serviceName.add("Paint");
-//        serviceName.add("Artist");
-//        serviceName.add("Music");
-//        serviceName.add("Paint");
-//        serviceName.add("Artist");
-//        serviceName.add("Music");
-//        serviceName.add("Paint");
-//        serviceName.add("Artist");
-//        serviceName.add("Music");
-//        serviceName.add("Paint");
-//        serviceName.add("Artist");
-//        serviceName.add("Music");
-//        recyclerView.setAdapter(new ServicesAdapter(this,serviceName,imageList));
-//    }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

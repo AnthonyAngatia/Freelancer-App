@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SuggestedProvidersActivity">
+
+
+    <TextView
+        android:id="@+id/provider"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/rated_providers"
+        android:layout_marginTop="4dp"
+        android:layout_centerHorizontal="true"
+
+        android:textColor="@android:color/black"
+        android:textStyle="italic"
+        android:textSize="16sp" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_providers"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/provider"
+        tools:itemCount="4"
+        tools:listitem="@layout/item_suggested_provider" />
+
+
+</RelativeLayout>

@@ -17,6 +17,52 @@
     <string name="menu_profile">Profile</string>
 
 
-
     <string name="home_second">Home Second</string>
+    <string name="category">Category</string>
+    <string name="category_title">Category Title</string>
+    <string name="rated_providers">Rated Providers</string>
+
+    <string name="email_address">Email address</string>
+    <string name="password">Password</string>
+    <string name="login_now">Login Now</string>
+    <string name="don_t_remember_password">Don\'t Remember password?</string>
+    <string name="dont_have_an_account">Don\'t have an account?</string>
+    <string name="sign_in_with_facebook">Sign in with Facebook</string>
+    <string name="or">or</string>
+
+    <array name="music">
+        <item>@drawable/voice_over</item>
+        <item>@drawable/pianogrand</item>
+        <item>@drawable/voice_over</item>
+        <item>@drawable/composers_producers</item>
+        <item>@drawable/singers_vocalist</item>
+        <item>@drawable/voice_over</item>
+    </array>
+
+    <array name="project_imgs">
+        <item>@drawable/sproject1</item>
+        <item>@drawable/sproject2</item>
+        <item>@drawable/sproject3</item>
+        <item>@drawable/sproject1</item>
+        <item>@drawable/sproject2</item>
+        <item>@drawable/sproject3</item>
+        <item>@drawable/sproject1</item>
+        <item>@drawable/sproject2</item>
+        <item>@drawable/sproject3</item>
+        <item>@drawable/sproject1</item>
+        <item>@drawable/sproject2</item>
+        <item>@drawable/sproject3</item>
+    </array>
+
+    <string name="list">
+        <li>What the deliverable is</li>\n
+        <li>Type of freelancer or agency you\'re looking for</li>\n
+        <li>Anything unique about the project, team, or your company</li>\n
+    </string>
+
+    <string name="sign_in_with_google">Sign in with Google</string>
+    <string name="phone_number">Phone Number</string>
+    <string name="have_an_account_login">Have an account? Login</string>
+    <string name="sign_up">Sign up</string>
+    <string name="confirm_password">Confirm Password</string>
 </resources>
