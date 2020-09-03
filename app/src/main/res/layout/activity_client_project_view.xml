@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ProjectViewActivity">
+    tools:context=".ClientProjectViewActivity">
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
@@ -24,7 +24,7 @@
 
 
     <TextView
-        android:id="@+id/project_description_title"
+        android:id="@+id/client_project_description_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
@@ -35,12 +35,12 @@
         android:textSize="25sp"
         android:textStyle="bold"/>
     <TextView
-        android:id="@+id/project_description"
+        android:id="@+id/client_project_description"
         android:layout_width="wrap_content"
         android:layout_height="140dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/project_description_title"
+        app:layout_constraintTop_toBottomOf="@id/client_project_description_title"
         android:layout_marginTop="15dp"
         android:layout_marginStart="25dp"
         android:layout_marginEnd="25dp"
@@ -50,10 +50,10 @@
         android:textSize="18sp"
         android:textStyle="bold"/>
     <TextView
-        android:id="@+id/project_item_requestor_name2"
+        android:id="@+id/client_project_item_freelancer_name2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/project_description"
+        app:layout_constraintTop_toBottomOf="@id/client_project_description"
         android:gravity="center"
         android:background="#5E5E5E"
         style="@style/TextAppearance.AppCompat.Medium"
@@ -61,77 +61,83 @@
         android:textStyle="bold"
         android:theme="@style/ThemeOverlay.AppCompat.Dark"
         android:padding="8dp"
-        android:text="Project Requestor Name"/>
+        android:text="Project Freelancer Name"/>
 
     <TextView
-        android:id="@+id/project_item_requestor_phone2"
+        android:id="@+id/client_project_item_freelancer_phone2"
         android:layout_width="205dp"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/project_item_requestor_name2"
+        app:layout_constraintTop_toBottomOf="@id/client_project_item_freelancer_name2"
         android:textStyle="italic"
-        android:text="Requestor Phone"/>
+        android:text="Freelancer Phone"/>
     <TextView
-        android:id="@+id/project_item_requestor_location2"
+        android:id="@+id/client_project_item_freelancer_location2"
         android:layout_width="205dp"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/project_item_requestor_name2"
-        app:layout_constraintStart_toEndOf="@id/project_item_requestor_phone2"
+        app:layout_constraintTop_toBottomOf="@id/client_project_item_freelancer_name2"
+        app:layout_constraintStart_toEndOf="@id/client_project_item_freelancer_phone2"
         android:textStyle="italic"
-
-        android:text="Requestor Location"/>
-     <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Click"
-        android:onClick="finishProjectTemp"
-        app:layout_constraintStart_toEndOf="@id/progress_text"
-        app:layout_constraintTop_toBottomOf="@id/project_update_progress_title"/>
+        android:text="Freelancer Location"/>
 
     <TextView
-        android:id="@+id/project_update_progress_title"
+        android:id="@+id/client_project_progress_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/project_item_requestor_phone2"
+        app:layout_constraintTop_toBottomOf="@id/client_project_item_freelancer_phone2"
         android:layout_marginTop="30dp"
-        android:text="Update Project Progress"
+        android:text="Project Progress"
         android:textSize="25sp"
-
         android:textStyle="bold"/>
 
     <TextView
-        android:id="@+id/progress_text"
+        android:id="@+id/client_progress_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="@id/progress_seek_bar"
-        app:layout_constraintTop_toBottomOf="@id/project_update_progress_title"
+        app:layout_constraintTop_toBottomOf="@id/client_project_progress_title"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="30dp"
-        android:text="Progress"
-        android:textSize="15sp"
+        android:text="98%"
+        android:textSize="20sp"
         android:textStyle="italic"/>
 
-    <androidx.appcompat.widget.AppCompatSeekBar
-        android:id="@+id/progress_seek_bar"
-        android:layout_width="300dp"
-        android:layout_height="40dp"
-        app:layout_constraintTop_toBottomOf="@id/progress_text"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="15dp"
-        android:max="100"/>
-    <Button
-        android:id="@+id/complete_project_button"
+    <TextView
+        android:id="@+id/client_project_status_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/progress_seek_bar"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/client_progress_text"
         android:layout_marginTop="30dp"
-        android:text="Complete Project"
-        android:onClick="openProjectView2"/>
+        android:text="Project Status"
+        android:textSize="25sp"
+        android:textStyle="bold"/>
 
-
+    <TextView
+        android:id="@+id/client_project_status"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/client_project_status_title"
+        android:layout_marginTop="30dp"
+        android:text="In Progress"
+        android:textSize="20sp"
+        android:textStyle="italic"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+<!--<?xml version="1.0" encoding="utf-8"?>-->
+<!--<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
+<!--    xmlns:app="http://schemas.android.com/apk/res-auto"-->
+<!--    xmlns:tools="http://schemas.android.com/tools"-->
+<!--    android:layout_width="match_parent"-->
+<!--    android:layout_height="match_parent"-->
+<!--    tools:context=".ClientProjectViewActivity">-->
+
+<!--</androidx.constraintlayout.widget.ConstraintLayout>-->

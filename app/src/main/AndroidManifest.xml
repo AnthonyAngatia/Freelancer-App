@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.freelancer">
+    <uses-permission android:name="android.permission.INTERNET"/>
 
     <uses-permission android:name="android.permission.INTERNET" />
 
@@ -11,27 +12,62 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".FreelancerProfileActivity"></activity>
+
+      <activity android:name=".FreelancerSignUp"></activity>
+        <activity android:name=".FreelancerProfileActivity" />
+        <activity android:name=".ClientProjectsActivity"
+                  android:exported="true">
+
+        </activity>
+        <activity android:name=".ClientProjectViewActivity"
+                  android:exported="true"/>
+        <activity android:name=".ProjectView2Activity"
+                  android:exported="true"/>
+        <activity android:name=".ProjectViewActivity"
+                  android:exported="true">
+        </activity>
+        <activity android:name=".ProjectsActivity"
+                  android:exported="true">
+        </activity>
+ 
         <activity android:name=".ProjectDescription" />
-        <activity android:name=".ProjectView2Activity" />
-        <activity android:name=".ProjectViewActivity" />
-        <activity android:name=".ProjectsActivity" />
         <activity android:name=".FreelancerHome" />
+<<<<<<< HEAD
         <activity android:name=".LoginActivity" />
         <activity android:name=".SuggestedProvidersActivity" />
         <activity android:name=".SpecificCategoryActivity" />
         <activity android:name=".ProfileActivity" />
         <activity android:name=".Signup" />
         <activity android:name=".req.RequestDescrActivity" />
+=======
+        <activity android:name=".req.RequestActivity" />
+>>>>>>> 95dbbce3d18609265f872fc6395f7dc85f380683
         <activity
-            android:name=".req.RequestActivity"
+            android:name=".MainActivity"
             android:label="@string/app_name"
+<<<<<<< HEAD
             >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+=======
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter> 
+              <action android:name="android.intent.action.MAIN" />
+              <category android:name="android.intent.category.LAUNCHER" />
+             </intent-filter> 
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+        </activity>
+        <activity android:name=".SuggestedProvidersActivity" />
+        <activity android:name=".SpecificCategoryActivity" />
+        <activity android:name=".ProfileActivity" />
+        <activity android:name=".LoginActivity" />
+        <activity android:name=".SignupActivity">
+>>>>>>> 95dbbce3d18609265f872fc6395f7dc85f380683
+
+            <!-- <intent-filter> -->
+            <!-- <action android:name="android.intent.action.MAIN" /> -->
+            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+            <!-- </intent-filter> -->
         </activity>
     </application>
 

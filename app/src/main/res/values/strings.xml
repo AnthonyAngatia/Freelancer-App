@@ -26,7 +26,7 @@
     <string name="password">Password</string>
     <string name="login_now">Login Now</string>
     <string name="don_t_remember_password">Don\'t Remember password?</string>
-    <string name="dont_have_an_account">Don\'t have an account?</string>
+    <string name="dont_have_an_account">Don\'t have an account? Sign Up</string>
     <string name="sign_in_with_facebook">Sign in with Facebook</string>
     <string name="or">or</string>
 
@@ -37,6 +37,21 @@
         <item>@drawable/composers_producers</item>
         <item>@drawable/singers_vocalist</item>
         <item>@drawable/voice_over</item>
+    </array>
+
+    <array name="project_imgs">
+        <item>@drawable/sproject1</item>
+        <item>@drawable/sproject2</item>
+        <item>@drawable/sproject3</item>
+        <item>@drawable/sproject1</item>
+        <item>@drawable/sproject2</item>
+        <item>@drawable/sproject3</item>
+        <item>@drawable/sproject1</item>
+        <item>@drawable/sproject2</item>
+        <item>@drawable/sproject3</item>
+        <item>@drawable/sproject1</item>
+        <item>@drawable/sproject2</item>
+        <item>@drawable/sproject3</item>
     </array>
 
     <string name="list">
@@ -50,4 +65,5 @@
     <string name="have_an_account_login">Have an account? Login</string>
     <string name="sign_up">Sign up</string>
     <string name="confirm_password">Confirm Password</string>
+    <string name="logo">logo</string>
 </resources>
