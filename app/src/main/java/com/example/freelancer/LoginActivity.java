@@ -1,7 +1,6 @@
 package com.example.freelancer;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -22,15 +21,13 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.freelancer.classes.FreelanceServiceManager;
-import com.example.freelancer.classes.ServiceSubCategory;
 
-import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.ArrayList;
+
+import static com.example.freelancer.classes.FreelanceServiceManager.loginPreference;
 
 public class LoginActivity extends AppCompatActivity {
     private EditText mUserEmailEditText;
@@ -60,8 +57,9 @@ public class LoginActivity extends AppCompatActivity {
                 mEmail = mUserEmailEditText.getText().toString();
                 mPass = mUserPasswordEditText.getText().toString();
                 String url = buildUrl();
+                //TODO Method to sign in
 //                volleyRequest(url, LoginActivity.this);
-                SharedPreferences preferences = getSharedPreferences(MainActivity.myPreference, MODE_PRIVATE);
+                SharedPreferences preferences = getSharedPreferences(loginPreference, MODE_PRIVATE);
                 SharedPreferences.Editor editor =  preferences.edit();
                 editor.putBoolean("IsUserLoggedIn", true);
                 editor.commit();
