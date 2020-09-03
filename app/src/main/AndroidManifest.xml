@@ -11,7 +11,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".FreelancerProfileActivity"/>
+        <activity android:name=".FreelancerSignUp"></activity>
+        <activity android:name=".FreelancerProfileActivity" />
         <activity android:name=".ProjectDescription" />
         <activity android:name=".ProjectView2Activity" />
         <activity android:name=".ProjectViewActivity" />
