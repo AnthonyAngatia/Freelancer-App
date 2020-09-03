@@ -64,7 +64,7 @@
             android:id="@+id/spinner1"
             android:layout_width="0dip"
             android:layout_height="wrap_content"
-            android:prompt="Choose Job Category"
+
             app:layout_constraintStart_toEndOf="@id/text1"
             app:layout_constraintLeft_toRightOf="@id/text1"
 
@@ -92,7 +92,7 @@
             android:id="@+id/spinner2"
             android:layout_width="0dip"
             android:layout_height="wrap_content"
-            android:prompt="Choose Job Category"
+
             app:layout_constraintStart_toEndOf="@id/text2"
             app:layout_constraintLeft_toRightOf="@id/text2"
 
@@ -133,6 +133,38 @@
             app:layout_constraintTop_toBottomOf="@id/Description" />
 
         <TextView
+            android:id="@+id/education"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+
+            android:text="Indicate education background"
+            android:textColor="#81000000"
+            android:textStyle="bold"
+            android:textSize="16sp"
+
+            app:layout_constraintStart_toStartOf="@id/guideline_left"
+            app:layout_constraintTop_toBottomOf="@id/shortDescription" />
+
+        <EditText
+            android:id="@+id/educationText"
+            android:layout_width="0dip"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/et_bg"
+
+
+            android:inputType="textCapSentences|textMultiLine"
+            android:maxLength="2000"
+            android:maxLines="4"
+            android:padding="16dp"
+            android:textColorHint="@android:color/darker_gray"
+            app:layout_constraintEnd_toStartOf="@id/guideline_right"
+            app:layout_constraintStart_toStartOf="@id/guideline_left"
+            app:layout_constraintTop_toBottomOf="@id/education" />
+
+
+        <TextView
             android:id="@+id/skills"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -144,7 +176,7 @@
             android:textSize="16sp"
 
             app:layout_constraintStart_toStartOf="@id/guideline_left"
-            app:layout_constraintTop_toBottomOf="@id/shortDescription" />
+            app:layout_constraintTop_toBottomOf="@id/educationText" />
 
         <EditText
             android:id="@+id/skillsText"
