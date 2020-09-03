@@ -8,7 +8,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="8dp"
-
         >
         <RelativeLayout
             android:id="@+id/project_item_rellayout"
@@ -24,8 +23,8 @@
                 android:paddingBottom="2dp"
                 android:scaleType="fitXY"
                 android:adjustViewBounds="false"
-                android:src="@drawable/sproject3"
-                android:contentDescription="Project item image icon"/>
+                android:src="@drawable/requestor"
+                android:contentDescription="Requestor profile"/>
             <TextView
                 android:id="@+id/project_item_requestor_name"
                 android:layout_width="match_parent"
@@ -38,7 +37,7 @@
                 android:textStyle="bold"
                 android:theme="@style/ThemeOverlay.AppCompat.Dark"
                 android:padding="8dp"
-                android:text="Project Requestor Name"/>
+                android:text="Requestor Name"/>
             <TextView
                 android:id="@+id/project_item_requestor_location"
                 android:layout_width="190dp"
@@ -63,30 +62,5 @@
     </androidx.cardview.widget.CardView>
 
 </LinearLayout>
-<!--<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
-<!--    android:layout_width="match_parent"-->
-<!--    android:layout_height="match_parent"-->
-<!--    xmlns:app="http://schemas.android.com/apk/res-auto">-->
-
-<!--    <TextView-->
-<!--        android:id="@+id/invite_name"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:text="Invite Name"-->
-<!--        android:textStyle="bold"-->
-<!--        android:textSize="18sp"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toTopOf="parent"-->
-<!--        />-->
-<!--    <TextView-->
-<!--        android:id="@+id/invite_description"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:text="Invite Description"-->
-<!--        android:textStyle="bold"-->
-<!--        android:size="18sp"-->
-<!--        app:layout_constraintTop_toBottomOf="@id/invite_name"-->
-<!--        />-->
 
 
-<!--</androidx.constraintlayout.widget.ConstraintLayout>-->

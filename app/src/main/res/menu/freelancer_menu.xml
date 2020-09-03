@@ -3,10 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
         android:id="@+id/back_to_client"
+        android:icon="@drawable/ic_back_to_client"
         android:title="Back to Client"
-        app:showAsAction="never"/>
-    <item
-        android:id="@+id/logout"
-        android:title="Logout"
-        app:showAsAction="never"/>
+        app:showAsAction="withText"/>
+
 </menu>
