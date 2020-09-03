@@ -22,10 +22,11 @@
         <activity android:name=".SpecificCategoryActivity" />
         <activity android:name=".ProfileActivity" />
         <activity android:name=".Signup" />
+        <activity android:name=".req.RequestDescrActivity" />
         <activity
             android:name=".req.RequestActivity"
             android:label="@string/app_name"
-            android:theme="@style/AppTheme.NoActionBar">
+            >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

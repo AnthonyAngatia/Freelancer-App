@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -18,6 +19,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.freelancer.Project;
+import com.example.freelancer.req.RequestsList;
 import com.example.freelancer.ProjectsActivity;
 import com.example.freelancer.ProjectsAdapter;
 import com.example.freelancer.R;
@@ -35,24 +37,24 @@ public class RequestActivity extends AppCompatActivity {
     //api
     //get userid from eg sharedPreference...(for now I'm using static data)
     private static int userId = 1;
-    private static final String URL_DATA = "http://sheltered-plains-24359.herokuapp.com/api/appusers/" + userId+"/projects";
+    private static final String URL_DATA = "http://192.168.43.242:80/Freelancer_API_V1/public/api/appusers/freelancer/1/projects";
     //declare recycler view
     private RecyclerView projectsRecyclerView;
     //declare adapter
-    private ProjectsAdapter projectsAdapter;
+    private RequestsAdapter projectsAdapter;
     //declare Developers list
-    private List<Project> projectList;
+    private List<RequestsList> projectList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_projects);
+        setContentView(R.layout.activity_request);
 
         //receive intent from FreelancerHome
-        Intent openProjectsIntent = getIntent();
+       // Intent openProjectsIntent = getIntent();
 
         //initialize recycler view
-        projectsRecyclerView = findViewById(R.id.projects_recycler_view);
+        projectsRecyclerView = findViewById(R.id.req_recycler_view);
         projectsRecyclerView.setHasFixedSize(true);
         projectsRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         //initialize the projectsList... THIS LIST WILL HOLD THE CONTENTS OF OUR REMOTE JSON AND PASS IT TO RECYCLERVIEW
@@ -74,11 +76,11 @@ public class RequestActivity extends AppCompatActivity {
                 progressDialog.dismiss();
                 try{
                     JSONObject jsonObject = new JSONObject(response);
-                    JSONArray projectsArrayJSON = jsonObject.getJSONArray("projects");
+                    JSONArray projectsArrayJSON = jsonObject.getJSONArray("data");
                     for(int i=0; i < projectsArrayJSON.length();i++){
                         JSONObject projectJSONObject = projectsArrayJSON.getJSONObject(i);
 
-                        Project project = new Project(Integer.parseInt(projectJSONObject.getString("project_id")),
+                        RequestsList request = new RequestsList(Integer.parseInt(projectJSONObject.getString("project_id")),
                                 projectJSONObject.getString("project_status"),
                                 projectJSONObject.getString("project_review"),
                                 projectJSONObject.getString("project_description"),
@@ -91,10 +93,10 @@ public class RequestActivity extends AppCompatActivity {
                                 projectJSONObject.getString("project_item_requestor_location"),
                                 projectJSONObject.getString("project_item_requestor_phone")
                         );
-                        projectList.add(project);
+                        projectList.add(request);
                         Log.d("res", "developers"+projectList);
                     }
-                    projectsAdapter = new ProjectsAdapter(projectList, getApplicationContext());
+                    projectsAdapter = new RequestsAdapter(projectList, getApplicationContext());
                     projectsRecyclerView.setAdapter(projectsAdapter);
                 }
                 catch(JSONException e){
@@ -108,6 +110,13 @@ public class RequestActivity extends AppCompatActivity {
                 Toast.makeText(RequestActivity.this, "Error"+error.toString(), Toast.LENGTH_SHORT).show();
             }
         });
+
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        requestQueue.add(stringRequest);
+
+        int MY_SOCKET_TIMEOUT_MS = 5000;
+        stringRequest.setRetryPolicy(new DefaultRetryPolicy(MY_SOCKET_TIMEOUT_MS,DefaultRetryPolicy.DEFAULT_MAX_RETRIES,DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+
     }
 
 

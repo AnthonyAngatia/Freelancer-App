@@ -1,4 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ScrollView01"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -11,12 +16,12 @@
         android:layout_margin="8dp"
         >
         <RelativeLayout
-            android:id="@+id/project_item_rellayout"
+            android:id="@+id/reqdes_item_rellayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="8dp">
             <ImageView
-                android:id="@+id/project_item_imageView"
+                android:id="@+id/reqdes_item_imageView"
                 android:layout_width="match_parent"
                 android:layout_height="300dp"
                 android:layout_alignParentTop="true"
@@ -24,13 +29,14 @@
                 android:paddingBottom="2dp"
                 android:scaleType="fitXY"
                 android:adjustViewBounds="false"
-                android:src="@drawable/requestor"
+                android:background="#10c8cd"
+                android:src="@drawable/crea"
                 android:contentDescription="Requestor profile"/>
             <TextView
-                android:id="@+id/project_item_requestor_name"
+                android:id="@+id/reqdes_item_requestor_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/project_item_imageView"
+                android:layout_below="@id/reqdes_item_imageView"
                 android:gravity="center"
                 android:background="#5E5E5E"
                 style="@style/TextAppearance.AppCompat.Medium"
@@ -40,19 +46,19 @@
                 android:padding="8dp"
                 android:text="Requestor Name"/>
             <TextView
-                android:id="@+id/project_item_requestor_location"
+                android:id="@+id/reqdes_item_requestor_location"
                 android:layout_width="190dp"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/project_item_requestor_name"
+                android:layout_below="@id/reqdes_item_requestor_name"
                 android:textColor="?android:textColorSecondary"
                 android:textStyle="italic"
                 android:text="Requestor Location"/>
             <TextView
-                android:id="@+id/project_item_requestor_phone"
+                android:id="@+id/reqdes_item_requestor_phone"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/project_item_requestor_name"
-                android:layout_toRightOf="@id/project_item_requestor_location"
+                android:layout_below="@id/reqdes_item_requestor_name"
+                android:layout_toRightOf="@id/reqdes_item_requestor_location"
                 android:textColor="?android:textColorSecondary"
                 android:textStyle="italic"
                 android:text="Requestor Phone"/>
@@ -68,7 +74,7 @@
         android:layout_weight="1">
 
         <TextView
-            android:id="@+id/project_description_title"
+            android:id="@+id/reqdes_description_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColor="?android:textColorSecondary"
@@ -80,11 +86,11 @@
             />
 
         <TextView
-            android:id="@+id/project_description"
+            android:id="@+id/reqdes_description"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
 
-            android:layout_below="@id/project_description_title"
+            android:layout_below="@id/reqdes_description_title"
             android:textColor="?android:textColorSecondary"
             android:textStyle="bold"
             android:layout_marginLeft="20dp"
@@ -93,19 +99,20 @@
             />
 
         <ImageButton
-            android:id="@+id/shareProfile"
+            android:id="@+id/approve_req"
             android:layout_width="120dp"
             android:layout_height="70dp"
-            android:layout_below="@id/project_description"
+            android:layout_below="@id/reqdes_description"
             android:background="#10c8cd"
             android:layout_centerInParent="true"
-
+            android:onClick="changeRequestStatus"
             android:src="@drawable/ic_check"/>
 
 
     </RelativeLayout>
 
 </LinearLayout>
+</ScrollView>
 
 
 
