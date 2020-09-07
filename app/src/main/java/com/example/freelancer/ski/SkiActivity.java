@@ -30,7 +30,7 @@ public class SkiActivity extends AppCompatActivity{
         //api
         //ngejeje ngaha sha 
         private static int userId = 1;
-        private static final String URL_DATA = "http://192.168.43.242:80/Freelancer_API_V1/public/api/categories";
+        private static final String URL_DATA = "https://sheltered-plains-24359.herokuapp.com/api/categories";
         //ndahejej guhindura endpoint, hasigay kuyipima
         private RecyclerView skiRecyclerView;
 

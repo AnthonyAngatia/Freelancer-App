@@ -49,7 +49,7 @@ import java.util.List;
 
             Intent intent = getIntent();
             final String categoryName = intent.getStringExtra(SkiAdapter.KEY_SKILL_NAME);
-            URL_DATA = "http://192.168.43.242:80/Freelancer_API_V1/public/api/categories/"+categoryName;
+            URL_DATA = "https://sheltered-plains-24359.herokuapp.com/api/categories/"+categoryName;
 
             //initialize recycler view
             desRecyclerView = findViewById(R.id.ski_des_recycler_view);
