@@ -26,6 +26,8 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
+import static com.example.freelancer.classes.FreelanceServiceManager.isFreelancer;
+import static com.example.freelancer.classes.FreelanceServiceManager.isUserLogged;
 import static com.example.freelancer.classes.FreelanceServiceManager.loginPreference;
 import static java.lang.Integer.parseInt;
 
@@ -143,7 +145,8 @@ public class SignupActivity extends AppCompatActivity {
         SharedPreferences.Editor editor =preferences.edit();
         editor.putString("username", mUsername);//Username gottenn from the api
         editor.putInt("id", mId );//Id gotten from the api
-        editor.putBoolean("IsUserLoggedIn", true);
+        editor.putBoolean(isUserLogged, true);
+        editor.putBoolean(isFreelancer, false);
         editor.commit();
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
