@@ -37,7 +37,7 @@ public class RequestActivity extends AppCompatActivity {
     //api
     //get userid from eg sharedPreference...(for now I'm using static data)
     private static int userId = 1;
-    private static final String URL_DATA = "https://sheltered-plains-24359.herokuapp.com/api/appusers/freelancer/1/projects";
+    private static final String URL_DATA = "http://192.168.43.242:80/Freelancer_API_V1/public/api/appusers/freelancer/1/projects";
     //declare recycler view
     private RecyclerView projectsRecyclerView;
     //declare adapter
