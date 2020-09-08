@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<<<<<<< HEAD
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+=======
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+>>>>>>> e1c9935f0fa43a93903cd8d8ec770bfcb3138857
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+<<<<<<< HEAD
+    tools:context=".requests.RequestsActivity">
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+
+        />
+
+</RelativeLayout>
+=======
+    tools:context=".req.RequestActivity">
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/req_recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="vertical"
+        tools:listitem="@layout/request_list" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+>>>>>>> e1c9935f0fa43a93903cd8d8ec770bfcb3138857

@@ -39,6 +39,21 @@
         <item>@drawable/voice_over</item>
     </array>
 
+    <array name="project_imgs">
+        <item>@drawable/sproject1</item>
+        <item>@drawable/sproject2</item>
+        <item>@drawable/sproject3</item>
+        <item>@drawable/sproject1</item>
+        <item>@drawable/sproject2</item>
+        <item>@drawable/sproject3</item>
+        <item>@drawable/sproject1</item>
+        <item>@drawable/sproject2</item>
+        <item>@drawable/sproject3</item>
+        <item>@drawable/sproject1</item>
+        <item>@drawable/sproject2</item>
+        <item>@drawable/sproject3</item>
+    </array>
+
     <string name="list">
         <li>What the deliverable is</li>\n
         <li>Type of freelancer or agency you\'re looking for</li>\n

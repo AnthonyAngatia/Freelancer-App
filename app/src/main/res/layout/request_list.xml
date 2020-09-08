@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+
+            >
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent">
+
+                            <ImageView
+                                android:id="@+id/req_item_imageView"
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:layout_alignParentTop="true"
+                                android:layout_alignParentStart="true"
+                                android:paddingBottom="2dp"
+                                android:scaleType="fitXY"
+                                android:layout_centerInParent="true"
+                                android:gravity="center_vertical"
+                                android:adjustViewBounds="false"
+                                android:src="@mipmap/ic_optimized_creativity_round"
+                                android:contentDescription="Requestor profile"/>
+
+            </RelativeLayout>
+
+
+        <RelativeLayout
+            android:id="@+id/req_item_rellayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="8dp">
+<!--            <ImageView-->
+<!--                android:id="@+id/req_item_imageView"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="300dp"-->
+<!--                android:layout_alignParentTop="true"-->
+<!--                android:layout_alignParentStart="true"-->
+<!--                android:paddingBottom="2dp"-->
+<!--                android:scaleType="fitXY"-->
+<!--                android:adjustViewBounds="false"-->
+<!--                android:src="@drawable/requestor"-->
+<!--                android:contentDescription="Requestor profile"/>-->
+            <TextView
+                android:id="@+id/req_item_requestor_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableEnd="@drawable/ic_menu_send"
+
+
+
+                style="@style/TextAppearance.AppCompat.Medium"
+                android:textColor="#5E5E5E"
+                android:textStyle="bold"
+                android:theme="@style/ThemeOverlay.AppCompat.Dark"
+                android:padding="8dp"
+                android:text="Requestor Name"/>
+            <TextView
+                android:id="@+id/req_item_requestor_location"
+                android:layout_width="190dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/req_item_requestor_name"
+                android:textColor="?android:textColorSecondary"
+                android:textStyle="italic"
+                android:text="Requestor Location"/>
+            <TextView
+                android:id="@+id/req_item_requestor_phone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/req_item_requestor_name"
+                android:layout_toRightOf="@id/req_item_requestor_location"
+                android:textColor="?android:textColorSecondary"
+                android:textStyle="italic"
+                android:text="Requestor Phone"/>
+
+
+        </RelativeLayout>
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</LinearLayout>
+
+
