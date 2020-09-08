@@ -24,7 +24,7 @@ import java.util.List;
 public class RequestsAdapter extends RecyclerView.Adapter<RequestsAdapter.ViewHolder> {
 
         // declare Projects private member variable
-        private List<Project> projectsList;
+        private List<RequestsList> projectsList;
         // context variable
         private Context mContext;
         // keys for the intents(these will be needed when one clicks on the image view,
@@ -45,7 +45,7 @@ public class RequestsAdapter extends RecyclerView.Adapter<RequestsAdapter.ViewHo
         public static final String KEY_PROJECT_REQUESTOR_LOCATION = "project_requestor_location";
         public static final String KEY_PROJECT_REQUESTOR_PHONE = "project_requestor_phone";
 
-        public RequestsAdapter(List<Project> projectsList, Context context) {
+        public RequestsAdapter(List<RequestsList> projectsList, Context context) {
             this.projectsList = projectsList;
             this.mContext = context;
         }
@@ -62,24 +62,24 @@ public class RequestsAdapter extends RecyclerView.Adapter<RequestsAdapter.ViewHo
             // inner class Viewholder constructor
             public ViewHolder(@NonNull View itemView){
                 super(itemView);
-                project_item_rellayout = itemView.findViewById(R.id.project_item_rellayout);
-                project_item_imageView = itemView.findViewById(R.id.project_item_imageView);
-                project_item_requestor_location = itemView.findViewById(R.id.project_item_requestor_location);
-                project_item_requestor_name = itemView.findViewById(R.id.project_item_requestor_name);
-                project_item_requestor_phone = itemView.findViewById(R.id.project_item_requestor_phone);
+                project_item_rellayout = itemView.findViewById(R.id.req_item_rellayout);
+                project_item_imageView = itemView.findViewById(R.id.req_item_imageView);
+                project_item_requestor_location = itemView.findViewById(R.id.req_item_requestor_location);
+                project_item_requestor_name = itemView.findViewById(R.id.req_item_requestor_name);
+                project_item_requestor_phone = itemView.findViewById(R.id.req_item_requestor_phone);
             }
         }
 
         @NonNull
         @Override
         public com.example.freelancer.req.RequestsAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-            return new com.example.freelancer.req.RequestsAdapter.ViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.item_project, parent, false));
+            return new ViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.request_list, parent, false));
         }
 
         @Override
         public void onBindViewHolder(@NonNull com.example.freelancer.req.RequestsAdapter.ViewHolder holder, final int position) {
             //create a variable that gets the current instance of the project in the list
-            final Project currentProject = projectsList.get(position);
+            final RequestsList currentProject = projectsList.get(position);
             //populate Text Views with data, Image View has static image
             holder.project_item_requestor_name.setText(currentProject.getProjectItemRequestorName());
             holder.project_item_requestor_location.setText(currentProject.getProjectItemRequestorLocation());
@@ -91,9 +91,9 @@ public class RequestsAdapter extends RecyclerView.Adapter<RequestsAdapter.ViewHo
                 //ensure you override the onClick method
                 public void onClick(View v){
                     //create an instance of thr developer list and initialize it
-                    Project currentProject = projectsList.get(position);
+                    RequestsList currentProject = projectsList.get(position);
                     //create an intent and specify the target class as Profile Activity
-                    Intent projectViewIntent = new Intent(v.getContext(), ProjectViewActivity.class);
+                    Intent projectViewIntent = new Intent(v.getContext(), RequestDescrActivity.class);
                     //use intent EXTRA to pass data from RequestActivity to RequestDescrActivity
                     projectViewIntent.putExtra(KEY_PROJECT_ID, currentProject.getProjectId());
                     projectViewIntent.putExtra(KEY_PROJECT_STATUS, currentProject.getProjectStatus());

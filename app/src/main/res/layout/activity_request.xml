@@ -23,7 +23,7 @@
     tools:context=".req.RequestActivity">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/projects_recycler_view"
+        android:id="@+id/req_recycler_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scrollbars="vertical"
