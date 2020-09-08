@@ -29,6 +29,7 @@
         android:layout_marginLeft="30dp"
         android:layout_marginTop="85dp"
         android:src="@drawable/requests"
+        android:onClick="openRequests"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"/>
     <TextView
@@ -49,6 +50,7 @@
         android:layout_marginLeft="30dp"
         android:layout_marginTop="50dp"
         android:src="@drawable/projects"
+        android:onClick="openProjects"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/invites_icon"/>
     <TextView
@@ -69,6 +71,7 @@
         android:layout_marginLeft="30dp"
         android:layout_marginTop="50dp"
         android:src="@drawable/add_skill"
+        android:onClick="openAddSkill"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/jobs_icon"/>
     <TextView

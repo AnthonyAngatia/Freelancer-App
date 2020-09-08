@@ -1,5 +1,6 @@
 package com.example.freelancer;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -8,12 +9,17 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.android.volley.Request;
+import com.android.volley.RequestQueue;
 import com.android.volley.Response;
+import com.android.volley.RetryPolicy;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -25,8 +31,10 @@ import java.util.List;
 public class ProjectsActivity extends AppCompatActivity {
     //api
     //get userid from eg sharedPreference...(for now I'm using static data)
-    private static int userId = 1;
-    private static final String URL_DATA = "http://localhost:8000/api/appusers/" + userId+"/projects";
+    private static int userId = 3;
+    //private static final String URL_DATA = "http://localhost:8000/api/appusers/freelancer/" + userId + "/projects";
+    private static final String URL_DATA = "http://172.20.10.2:80/FreelancerAPIV1/Freelancer_API_V1/freelancer_api_v1/public/api/appusers/freelancer/" + userId + "/projects";
+
     //declare recycler view
     private RecyclerView projectsRecyclerView;
     //declare adapter
@@ -39,7 +47,7 @@ public class ProjectsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_projects);
 
-        //receive intent from FreelancerHome
+        //receive intent from FreelancerHomeIntent
         Intent openProjectsIntent = getIntent();
 
         //initialize recycler view
@@ -52,7 +60,26 @@ public class ProjectsActivity extends AppCompatActivity {
         loadUrlData();
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.freelancer_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch(item.getItemId()){
+            case R.id.back_to_client:
+                Intent backToClientIntent = new Intent(this, MainActivity.class);
+                startActivity(backToClientIntent);
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
     private void loadUrlData() {
+        projectsRecyclerView.setHasFixedSize(true);
+        projectsRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+
         final ProgressDialog progressDialog = new ProgressDialog(this);
         progressDialog.setMessage("Loading");
         progressDialog.show();
@@ -61,11 +88,17 @@ public class ProjectsActivity extends AppCompatActivity {
         StringRequest stringRequest = new StringRequest(Request.Method.GET, URL_DATA, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
-                Log.w("res", "Response:"+ response);
+                Log.d("res", "Response:"+ response);
                 progressDialog.dismiss();
+
                 try{
                     JSONObject jsonObject = new JSONObject(response);
-                    JSONArray projectsArrayJSON = jsonObject.getJSONArray("projects");
+                    JSONArray projectsArrayJSON = jsonObject.getJSONArray("data");
+                    //logging response
+                    //String responseValue = jsonObject.getString("response");
+                    Log.d("Response", response);
+
+
                     for(int i=0; i < projectsArrayJSON.length();i++){
                         JSONObject projectJSONObject = projectsArrayJSON.getJSONObject(i);
 
@@ -85,6 +118,8 @@ public class ProjectsActivity extends AppCompatActivity {
                         projectList.add(project);
                         Log.d("res", "developers"+projectList);
                     }
+
+
                     projectsAdapter = new ProjectsAdapter(projectList, getApplicationContext());
                     projectsRecyclerView.setAdapter(projectsAdapter);
                 }
@@ -97,7 +132,30 @@ public class ProjectsActivity extends AppCompatActivity {
             @Override
             public void onErrorResponse(VolleyError error) {
                 Toast.makeText(ProjectsActivity.this, "Error"+error.toString(), Toast.LENGTH_SHORT).show();
+                Log.d("Response", error.toString());
             }
         });
+
+        //Increase timeout of StringRequest
+        stringRequest.setRetryPolicy(new RetryPolicy() {
+            @Override
+            public int getCurrentTimeout() {
+                return 900000000;
+            }
+
+            @Override
+            public int getCurrentRetryCount() {
+                return 900000000;
+            }
+
+            @Override
+            public void retry(VolleyError error) throws VolleyError {
+                Log.d("Request Timeout Error:", error.toString());
+            }
+        });
+
+        //adding request to queue
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        requestQueue.add(stringRequest);
     }
 }
