@@ -8,19 +8,15 @@ public class DesList {
         private String skillSubImage;
         private String skillSubCreatedAt;
         private String skillSubUpdatedAt;
-        private String skillSubDescription;
-        private int skillSubAppUserId;
         private int skillSuperCategoryId;
 
 
-    public DesList(int skillSubId, String skillSubName, String skillSubImage, String skillSubCreatedAt, String skillSubUpdatedAt, String skillSubDescription, int skillSubAppUserId, int skillSuperCategoryId) {
+    public DesList(int skillSubId, String skillSubName, String skillSubImage, String skillSubCreatedAt, String skillSubUpdatedAt, int skillSuperCategoryId) {
         this.skillSubId = skillSubId;
         this.skillSubName = skillSubName;
         this.skillSubImage = skillSubImage;
         this.skillSubCreatedAt = skillSubCreatedAt;
         this.skillSubUpdatedAt = skillSubUpdatedAt;
-        this.skillSubDescription = skillSubDescription;
-        this.skillSubAppUserId = skillSubAppUserId;
         this.skillSuperCategoryId = skillSuperCategoryId;
     }
 
@@ -45,13 +41,8 @@ public class DesList {
         return skillSubUpdatedAt;
     }
 
-    public String getSkillSubDescription() {
-        return skillSubDescription;
-    }
 
-    public int getSkillSubAppUserId() {
-        return skillSubAppUserId;
-    }
+
 
     public int getSkillSuperCategoryId() {
         return skillSuperCategoryId;
@@ -75,14 +66,6 @@ public class DesList {
 
     public void setSkillSubUpdatedAt(String skillSubUpdatedAt) {
         this.skillSubUpdatedAt = skillSubUpdatedAt;
-    }
-
-    public void setSkillSubDescription(String skillSubDescription) {
-        this.skillSubDescription = skillSubDescription;
-    }
-
-    public void setSkillSubAppUserId(int skillSubAppUserId) {
-        this.skillSubAppUserId = skillSubAppUserId;
     }
 
     public void setSkillSuperCategoryId(int skillSuperCategoryId) {

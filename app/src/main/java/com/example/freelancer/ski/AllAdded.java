@@ -49,7 +49,7 @@ import java.util.List;
 
             Intent intent = getIntent();
             final String categoryName = intent.getStringExtra(DesAdapter.KEY_SUB_SKILL_NAME);
-            URL_DATA = "https://sheltered-plains-24359.herokuapp.com/api/categories/"+categoryName;
+            URL_DATA = "https://sheltered-plains-24359.herokuapp.com/api/categories/" + categoryName;
 
             //initialize recycler view
             desRecyclerView = findViewById(R.id.ski_all_recycler_view);
@@ -84,8 +84,6 @@ import java.util.List;
                                     jSONObject.getString("image_url"),
                                     jSONObject.getString("created_at"),
                                     jSONObject.getString("updated_at"),
-                                    jSONObject.getString("description"),
-                                    Integer.parseInt(jSONObject.getString("appuser_id")),
                                     Integer.parseInt(jSONObject.getString("skillsupercategory_id"))
 
                             );

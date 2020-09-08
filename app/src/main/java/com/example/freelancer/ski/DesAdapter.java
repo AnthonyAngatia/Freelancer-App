@@ -89,8 +89,6 @@ import java.util.List;
                     viewIntent.putExtra(KEY_SUB_SKILL_IMAGE, current.getSkillSubImage());
                     viewIntent.putExtra(KEY_SUB_SKILL_CREATED_AT, current.getSkillSubCreatedAt());
                     viewIntent.putExtra(KEY_SUB_SKILL_UPDATED_AT, current.getSkillSubUpdatedAt());
-                    viewIntent.putExtra(KEY_SUB_SKILL_APPUSER_ID, current.getSkillSubAppUserId());
-                    viewIntent.putExtra(KEY_SUB_SKILL_DESCRIPTION, current.getSkillSubDescription());
                     viewIntent.putExtra(KEY_SUB_SKILL_SUPERID, current.getSkillSuperCategoryId());
 
                     v.getContext().startActivity(viewIntent);
