@@ -4,14 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.freelancer.req.RequestActivity">
+    tools:context="com.example.freelancer.ski.SkiActivity">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/req_recycler_view"
+        android:id="@+id/ski_recycler_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scrollbars="vertical"
-        tools:listitem="@layout/request_list" />
+        tools:listitem="@layout/ski_list" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 

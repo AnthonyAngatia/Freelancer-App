@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.example.freelancer">
     <uses-permission android:name="android.permission.INTERNET"/>
 
@@ -13,7 +14,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-      <activity android:name=".FreelancerSignUp"></activity>
+      <activity android:name=".FreelancerSignUp"/>
         <activity android:name=".FreelancerProfileActivity" />
         <activity android:name=".ClientProjectsActivity"
                   android:exported="true">
@@ -32,37 +33,51 @@
  
         <activity android:name=".ProjectDescription" />
         <activity android:name=".FreelancerHome" />
-<<<<<<< HEAD
         <activity android:name=".LoginActivity" />
         <activity android:name=".SuggestedProvidersActivity" />
         <activity android:name=".SpecificCategoryActivity" />
         <activity android:name=".ProfileActivity" />
-        <activity android:name=".Signup" />
+<!--        <activity android:name=".Signup" />-->
         <activity android:name=".req.RequestDescrActivity" />
-=======
-        <activity android:name=".req.RequestActivity" />
->>>>>>> 95dbbce3d18609265f872fc6395f7dc85f380683
+
         <activity
-            android:name=".MainActivity"
-            android:label="@string/app_name"
-<<<<<<< HEAD
-            >
+            android:name=".req.RequestActivity"
+            android:label="Requests"
+            android:theme="@style/AppTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-=======
-            android:theme="@style/AppTheme.NoActionBar">
-            <intent-filter> 
-              <action android:name="android.intent.action.MAIN" />
-              <category android:name="android.intent.category.LAUNCHER" />
-             </intent-filter> 
-
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
-        <activity android:name=".SuggestedProvidersActivity" />
-        <activity android:name=".SpecificCategoryActivity" />
-        <activity android:name=".ProfileActivity" />
-        <activity android:name=".LoginActivity" />
+        <activity android:name=".ski.SkiDescr"/>
+        <activity android:name=".ski.AllAdded"/>
+        <activity
+            android:name="com.example.freelancer.ski.SkiActivity"
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme"
+            >
+<!--            <intent-filter>-->
+<!--                <action android:name="android.intent.action.MAIN" />-->
+<!--                <category android:name="android.intent.category.LAUNCHER" />-->
+<!--            </intent-filter>-->
+        </activity>
+
+<!--        <activity-->
+<!--            android:name=".MainActivity"-->
+<!--            android:label="@string/app_name"-->
+<!--            android:theme="@style/AppTheme.NoActionBar">-->
+
+<!--            <intent-filter>-->
+<!--              <action android:name="android.intent.action.MAIN" />-->
+<!--              <category android:name="android.intent.category.LAUNCHER" />-->
+<!--             </intent-filter> -->
+
+<!--        </activity>-->
+        <activity android:name=".SuggestedProvidersActivity"
+            tools:ignore="DuplicateActivity" />
+
         <activity android:name=".SignupActivity">
->>>>>>> 95dbbce3d18609265f872fc6395f7dc85f380683
+
 
             <!-- <intent-filter> -->
             <!-- <action android:name="android.intent.action.MAIN" /> -->
