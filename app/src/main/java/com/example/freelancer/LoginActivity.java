@@ -1,13 +1,17 @@
 package com.example.freelancer;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -48,6 +52,25 @@ public class LoginActivity extends AppCompatActivity {
         mLoginbtn = findViewById(R.id.btn_login);
         login();
         signUp();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.client_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch(item.getItemId()){
+            case R.id.freelancer_mode:
+                Intent toFreelancerMode = new Intent(this, FreelancerHomeActivity.class);
+                startActivity(toFreelancerMode);
+            case R.id.client_projects:
+                Intent toClientProjects = new Intent(this, ClientProjectsActivity.class);
+                startActivity(toClientProjects);
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     private void login() {

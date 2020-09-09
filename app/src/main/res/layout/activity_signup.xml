@@ -154,8 +154,6 @@
         app:layout_constraintStart_toStartOf="@+id/guideline_left"
         app:layout_constraintTop_toBottomOf="@id/confirmPassword" />
 
-
-
     <TextView
         android:id="@+id/textView_login"
         android:layout_width="wrap_content"

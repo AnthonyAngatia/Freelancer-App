@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+      xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/freelancer_mode"
+        android:icon="@drawable/ic_freelancer_mode"
+        android:title="Freelancer"
+        app:showAsAction="never"/>
+    <item
+        android:id="@+id/client_projects"
+        android:icon="@drawable/ic_client_projects"
+        android:title="My Projects"
+        app:showAsAction="never"/>
+
+</menu>

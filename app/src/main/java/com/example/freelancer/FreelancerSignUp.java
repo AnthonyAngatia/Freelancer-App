@@ -1,5 +1,6 @@
 package com.example.freelancer;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
@@ -16,6 +17,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -328,6 +333,22 @@ public class FreelancerSignUp extends AppCompatActivity implements AdapterView.O
     }
 
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.client_menu, menu);
+        return true;
+    }
 
-
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch(item.getItemId()){
+            case R.id.freelancer_mode:
+                Intent toFreelancerMode = new Intent(this, FreelancerHomeActivity.class);
+                startActivity(toFreelancerMode);
+            case R.id.client_projects:
+                Intent toClientProjects = new Intent(this, ClientProjectsActivity.class);
+                startActivity(toClientProjects);
+        }
+        return super.onOptionsItemSelected(item);
+    }
 }

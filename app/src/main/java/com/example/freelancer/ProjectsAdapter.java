@@ -22,7 +22,6 @@ public class ProjectsAdapter extends RecyclerView.Adapter<ProjectsAdapter.ViewHo
     private Context mContext;
 
 
-
     // keys for the intents(these will be needed when one clicks on the image view,
     // to be directed to a specific project's dashboard activity )
     public static final String KEY_PROJECT_ID = "project_id";
@@ -44,7 +43,6 @@ public class ProjectsAdapter extends RecyclerView.Adapter<ProjectsAdapter.ViewHo
     public ProjectsAdapter(List<Project> projectsList, Context context) {
         this.projectsList = projectsList;
         this.mContext = context;
-
     }
 
     // inner class ViewHolder
@@ -55,6 +53,7 @@ public class ProjectsAdapter extends RecyclerView.Adapter<ProjectsAdapter.ViewHo
         public TextView project_item_requestor_location;
         public TextView project_item_requestor_name;
         public TextView project_item_requestor_phone;
+        public TextView project_item_status_display;
 
         // inner class Viewholder constructor
         public ViewHolder(@NonNull View itemView){
@@ -64,6 +63,8 @@ public class ProjectsAdapter extends RecyclerView.Adapter<ProjectsAdapter.ViewHo
             project_item_requestor_location = itemView.findViewById(R.id.project_item_requestor_location);
             project_item_requestor_name = itemView.findViewById(R.id.project_item_requestor_name);
             project_item_requestor_phone = itemView.findViewById(R.id.project_item_requestor_phone);
+
+            project_item_status_display = itemView.findViewById(R.id.project_item_status_display);
         }
     }
 
@@ -89,6 +90,14 @@ public class ProjectsAdapter extends RecyclerView.Adapter<ProjectsAdapter.ViewHo
         holder.project_item_requestor_location.setText(currentProject.getProjectItemRequestorLocation());
         holder.project_item_requestor_phone.setText(currentProject.getProjectItemRequestorPhone());
 
+        // if project is completed then display so and if not display otherwise
+        if(currentProject.getProjectStatus().equals("complete")){
+            holder.project_item_status_display.setText("Completed");
+        }
+        else{
+            holder.project_item_status_display.setText("In Progress");
+        }
+
         //set onclick listener to handle click events
         holder.project_item_rellayout.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -99,7 +108,7 @@ public class ProjectsAdapter extends RecyclerView.Adapter<ProjectsAdapter.ViewHo
                 //create an intent and specify the target class as ProjectView Activity
                 Intent projectViewIntent = new Intent(v.getContext(), ProjectViewActivity.class);
                 //use intent EXTRA to pass data from RequestActivity to RequestDescrActivity
-                projectViewIntent.putExtra(KEY_PROJECT_ID, currentProject.getProjectId());
+                projectViewIntent.putExtra(KEY_PROJECT_ID, String.valueOf(currentProject.getProjectId()));
                 projectViewIntent.putExtra(KEY_PROJECT_STATUS, currentProject.getProjectStatus());
                 projectViewIntent.putExtra(KEY_PROJECT_REVIEW, currentProject.getProjectItemRequestorName());
                 projectViewIntent.putExtra(KEY_PROJECT_DESCRIPTION, currentProject.getProjectItemRequestorLocation());
@@ -118,7 +127,7 @@ public class ProjectsAdapter extends RecyclerView.Adapter<ProjectsAdapter.ViewHo
                 projectViewIntent.putExtra(KEY_PROJECT_REQUESTOR_PHONE, currentProject.getProjectItemRequestorPhone());
 
                 //if project is not competed, go to ProjectViewActivity else go to ProjectViewActivity2
-                if(currentProject.getProjectStatus() != "Completed"){
+                if(currentProject.getProjectStatus().equals("uncomplete")){
                     v.getContext().startActivity(projectViewIntent);
                 }
                 else{

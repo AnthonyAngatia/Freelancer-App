@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".FreelancerHome">
+    tools:context=".FreelancerHomeActivity">
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
@@ -26,8 +26,8 @@
         android:id="@+id/invites_icon"
         android:layout_width="150dp"
         android:layout_height="150dp"
-        android:layout_marginLeft="30dp"
-        android:layout_marginTop="85dp"
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="115dp"
         android:src="@drawable/requests"
         android:onClick="openRequests"
         app:layout_constraintStart_toStartOf="parent"
@@ -47,7 +47,7 @@
         android:id="@+id/jobs_icon"
         android:layout_width="150dp"
         android:layout_height="150dp"
-        android:layout_marginLeft="30dp"
+        android:layout_marginLeft="50dp"
         android:layout_marginTop="50dp"
         android:src="@drawable/projects"
         android:onClick="openProjects"
@@ -68,7 +68,7 @@
         android:id="@+id/add_skill_icon"
         android:layout_width="150dp"
         android:layout_height="150dp"
-        android:layout_marginLeft="30dp"
+        android:layout_marginLeft="50dp"
         android:layout_marginTop="50dp"
         android:src="@drawable/add_skill"
         android:onClick="openAddSkill"

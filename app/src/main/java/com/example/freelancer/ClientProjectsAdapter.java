@@ -2,6 +2,7 @@ package com.example.freelancer;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.TypedArray;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -55,6 +56,8 @@ public class ClientProjectsAdapter extends RecyclerView.Adapter<ClientProjectsAd
         public TextView client_project_item_freelancer_name;
         public TextView client_project_item_freelancer_phone;
 
+        public TextView client_project_item_status_display;
+
         // inner class Viewholder constructor
         public ViewHolder(@NonNull View itemView){
             super(itemView);
@@ -63,6 +66,8 @@ public class ClientProjectsAdapter extends RecyclerView.Adapter<ClientProjectsAd
             client_project_item_freelancer_location = itemView.findViewById(R.id.client_project_item_requestor_location);
             client_project_item_freelancer_name = itemView.findViewById(R.id.client_project_item_requestor_name);
             client_project_item_freelancer_phone = itemView.findViewById(R.id.client_project_item_requestor_phone);
+
+            client_project_item_status_display = itemView.findViewById(R.id.client_project_item_status_display);
         }
     }
 
@@ -74,12 +79,26 @@ public class ClientProjectsAdapter extends RecyclerView.Adapter<ClientProjectsAd
 
     @Override
     public void onBindViewHolder(@NonNull ClientProjectsAdapter.ViewHolder holder, final int position) {
+        // dealing with the images
+        // get array from strings.xml file
+        TypedArray projectImagesArray = this.mContext.getResources().obtainTypedArray(R.array.project_imgs);
+        //inflate image view
+        holder.client_project_item_imageView.setImageResource(projectImagesArray.getResourceId(position, 0));
+
         //create a variable that gets the current instance of the project in the list
         final ClientProject currentProject = clientProjectsList.get(position);
         //populate Text Views with data, Image View has static image
         holder.client_project_item_freelancer_name.setText(currentProject.getProjectItemRequestorName());
         holder.client_project_item_freelancer_location.setText(currentProject.getProjectItemRequestorLocation());
         holder.client_project_item_freelancer_phone.setText(currentProject.getProjectItemRequestorPhone());
+
+        // if project is completed then display so and if not display otherwise
+        if(currentProject.getProjectStatus().equals("complete")){
+            holder.client_project_item_status_display.setText("Completed");
+        }
+        else{
+            holder.client_project_item_status_display.setText("In Progress");
+        }
 
         //set onclick listener to handle click events
         holder.client_project_item_rellayout.setOnClickListener(new View.OnClickListener(){
@@ -106,8 +125,8 @@ public class ClientProjectsAdapter extends RecyclerView.Adapter<ClientProjectsAd
                 clientProjectViewIntent.putExtra(KEY_PROJECT_FREELANCER_LOCATION, currentProject.getProjectItemRequestorLocation());
                 clientProjectViewIntent.putExtra(KEY_PROJECT_FREELANCER_PHONE, currentProject.getProjectItemRequestorPhone());
 
-                //if project is not competed, we'll go with 'completed' as the display otherwise it's 'In Progress'
-                if(currentProject.getProjectStatus() != "Completed"){
+                //if project is competed, we'll go with 'Completed' as the display otherwise it's 'In Progress'
+                if(currentProject.getProjectStatus() == "complete"){
                     clientProjectViewIntent.putExtra(KEY_PROJECT_STATUS_DISPLAY, "Completed");
                     v.getContext().startActivity(clientProjectViewIntent);
                 }

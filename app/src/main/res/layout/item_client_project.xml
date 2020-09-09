@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="8dp"
+        app:cardCornerRadius="5dp"
+        app:cardElevation="5dp"
         >
         <RelativeLayout
             android:id="@+id/client_project_item_rellayout"
@@ -30,32 +32,50 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/client_project_item_imageView"
+                android:layout_marginBottom="6dp"
                 android:gravity="center"
-                android:background="#5E5E5E"
+                android:background="@color/login_form_details"
                 style="@style/TextAppearance.AppCompat.Medium"
-                android:textColor="#FFFF00"
+                android:textColor="@color/colorPrimaryLight"
                 android:textStyle="bold"
                 android:theme="@style/ThemeOverlay.AppCompat.Dark"
                 android:padding="8dp"
                 android:text="Project Freelancer Name"/>
             <TextView
                 android:id="@+id/client_project_item_requestor_location"
-                android:layout_width="190dp"
-                android:layout_height="wrap_content"
+                android:layout_width="177dp"
+                android:layout_height="30dp"
                 android:layout_below="@id/client_project_item_requestor_name"
-                android:textColor="?android:textColorSecondary"
-                android:textStyle="italic"
+                android:textColor="@color/login_form_details"
+                android:gravity="center"
+                android:textStyle=""
+                android:background="@color/colorPrimary"
                 android:text="Freelancer Location"/>
             <TextView
                 android:id="@+id/client_project_item_requestor_phone"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="30dp"
                 android:layout_below="@id/client_project_item_requestor_name"
                 android:layout_toRightOf="@id/client_project_item_requestor_location"
-                android:textColor="?android:textColorSecondary"
-                android:textStyle="italic"
+                android:textColor="@color/login_form_details"
+                android:gravity="center"
+                android:textStyle=""
+                android:background="@color/colorPrimary"
                 android:text="Freelancer Phone"/>
-
+            <TextView
+                android:id="@+id/client_project_item_status_display"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/client_project_item_requestor_phone"
+                android:layout_marginBottom="6dp"
+                android:gravity="center"
+                android:background="@color/login_form_details"
+                style="@style/TextAppearance.AppCompat.Medium"
+                android:textColor="@color/colorPrimaryLight"
+                android:textStyle="bold"
+                android:theme="@style/ThemeOverlay.AppCompat.Dark"
+                android:padding="8dp"
+                android:text="Project Status"/>
 
         </RelativeLayout>
 
