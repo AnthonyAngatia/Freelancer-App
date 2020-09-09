@@ -48,8 +48,9 @@ import java.util.List;
             //Intent openProjectsIntent = getIntent();
 
             Intent intent = getIntent();
-            final String categoryName = intent.getStringExtra(DesAdapter.KEY_SUB_SKILL_NAME);
-            URL_DATA = "https://sheltered-plains-24359.herokuapp.com/api/categories/" + categoryName;
+            //we are using a static data, but a shared preference storing the user session id should be used
+            final int appUserId = 1;
+            URL_DATA = "http://sheltered-plains-24359.herokuapp.com/api/userskills/" + appUserId;
 
             //initialize recycler view
             desRecyclerView = findViewById(R.id.ski_all_recycler_view);

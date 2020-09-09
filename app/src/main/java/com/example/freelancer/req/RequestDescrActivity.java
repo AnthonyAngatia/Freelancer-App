@@ -55,7 +55,7 @@ public class RequestDescrActivity extends AppCompatActivity {
         final String reqlocation = intent.getStringExtra(RequestsAdapter.KEY_PROJECT_REQUESTOR_LOCATION);
 
         final String projectId = intent.getStringExtra(RequestsAdapter.KEY_PROJECT_ID);
-        URL_DATA_UPDATE_PROGRESS = "http://192.168.43.242:80/Freelancer_API_V1/public/api/projects/approve/" + projectId;
+        URL_DATA_UPDATE_PROGRESS = "http://sheltered-plains-24359.herokuapp.com/api/projects/approve/" + projectId;
 
 
         //userNameTextView.setText(userName);

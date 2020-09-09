@@ -95,7 +95,7 @@ public class RequestsAdapter extends RecyclerView.Adapter<RequestsAdapter.ViewHo
                     //create an intent and specify the target class as Profile Activity
                     Intent projectViewIntent = new Intent(v.getContext(), RequestDescrActivity.class);
                     //use intent EXTRA to pass data from RequestActivity to RequestDescrActivity
-                    projectViewIntent.putExtra(KEY_PROJECT_ID, currentProject.getProjectId());
+                    projectViewIntent.putExtra(KEY_PROJECT_ID, String.valueOf(currentProject.getProjectId()));
                     projectViewIntent.putExtra(KEY_PROJECT_STATUS, currentProject.getProjectStatus());
                     projectViewIntent.putExtra(KEY_PROJECT_REVIEW, currentProject.getProjectItemRequestorName());
                     projectViewIntent.putExtra(KEY_PROJECT_DESCRIPTION, currentProject.getProjectItemRequestorLocation());
