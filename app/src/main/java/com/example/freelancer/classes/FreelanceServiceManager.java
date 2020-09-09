@@ -1,6 +1,7 @@
 package com.example.freelancer.classes;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.util.Log;
 
 import com.android.volley.Request;
@@ -17,6 +18,9 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import static android.content.Context.MODE_PRIVATE;
+
 /*
 * This class processes the freelancing data gotten from the API*/
 public class FreelanceServiceManager {
@@ -27,6 +31,7 @@ public class FreelanceServiceManager {
     public static final String loginPreference = "LOGIN";
     public static final String name = "NameKey";
     public static final String isUserLogged = "IsUserLoggedIn";
+    public static final String isFreelancer = "isFreelancer";
     public static final String email = "EmailKey";
     private ArrayList<FreeLancer> mFreeLancers = new ArrayList<>();
 
@@ -51,20 +56,13 @@ public class FreelanceServiceManager {
 
     }
 
+
+
     private  void initializeData() {
-        getServicesData();
+
 
     }
 
-
-    /*
-* @returns a list of service objects from the API e.g music, art, design etc.
-*
-* TODO: Change the return type
-*  */
-    public void getServicesData(){
-
-    }
     /*
     * @returns a list<string> of services*/
     public List<String> getServicesNames(){
@@ -77,6 +75,23 @@ public class FreelanceServiceManager {
         servicesNames.add("ETC");
         return servicesNames;
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     public List<Integer> getServicesImages(){
         List<Integer> imageList = new ArrayList<>();
         imageList.add(R.drawable.song);
@@ -122,35 +137,6 @@ public class FreelanceServiceManager {
                 });
         requestQueue.add(getRequest);
         return responseString[0];
-    }
-//Not in use
-    public ArrayList<ServiceSubCategory> processSubCategories(String jsonStringResponse){
-        final String DATA = "data";
-        final String NAME = "name";
-        final String IMAGE = "image_url";
-        final String DESCRIPTION = "description";
-        ArrayList<ServiceSubCategory> serviceSubCategoriesArrayList = new ArrayList<>();
-
-        try {
-            JSONObject jsonObject  = new JSONObject(jsonStringResponse);
-            JSONArray arrayOfSubCategories = jsonObject.getJSONArray(DATA);
-            int numberOfSubCategories = arrayOfSubCategories.length();
-            for (int i=0; i< numberOfSubCategories; i++){
-                JSONObject subCategoryJson = arrayOfSubCategories.getJSONObject(i);
-                ServiceSubCategory subCategories = new ServiceSubCategory(
-                        subCategoryJson.getString(NAME),
-                        subCategoryJson.getString(IMAGE),
-                        subCategoryJson.getString(DESCRIPTION)
-                );
-                serviceSubCategoriesArrayList.add(subCategories);
-            }
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-        return serviceSubCategoriesArrayList;
-
-
-
     }
 
 //Not in use deprecated

@@ -13,6 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.freelancer.classes.ServiceSubCategory;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -37,8 +38,8 @@ public class ServiceSubCategoryAdapter extends RecyclerView.Adapter<ServiceSubCa
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.mTextSubCategory.setText(mServiceSubCategoryList.get(position).getName());
-//        holder.mImageSubCategory.setImageResource(mServiceSubCategoryList.get(position).getImageUrl());
-        holder.mImageSubCategory.setImageResource(R.drawable.song);
+        Picasso.with(mContext).load(mServiceSubCategoryList.get(position).getImageUrl()).into(holder.mImageSubCategory);
+//        holder.mImageSubCategory.setImageResource(R.drawable.song);
         holder.mCurrentPosition = position;
 
     }

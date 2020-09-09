@@ -31,6 +31,7 @@ import org.json.JSONObject;
 import java.net.MalformedURLException;
 import java.net.URL;
 
+import static com.example.freelancer.classes.FreelanceServiceManager.isFreelancer;
 import static com.example.freelancer.classes.FreelanceServiceManager.loginPreference;
 
 public class LoginActivity extends AppCompatActivity {

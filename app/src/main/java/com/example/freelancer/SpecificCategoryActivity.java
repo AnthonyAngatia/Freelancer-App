@@ -11,6 +11,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.Toast;
 import android.view.Menu;
 import android.view.MenuItem;
 
@@ -54,28 +55,13 @@ public class SpecificCategoryActivity extends AppCompatActivity {
         String url = buildUrl(name);
         volleyRequest(url, this);
 
-        //RecyclerView stuff & adapter
-
-        //get The items under the general category
-
-//        String serviceSubCategoryObjects = FreelanceServiceManager.getInstance().volleyRequest(url, this);
-
-
-
-//        List<ServiceSubCategory> serviceSubCategoryList = processSubCategories(serviceSubCategoryObjects);
-////
-////        //Pass the SubCategory Object to the adapter
-//        ServiceSubCategoryAdapter subCategoryAdapter = new ServiceSubCategoryAdapter(this,serviceSubCategoryList);
-//        recyclerSubCategories.setAdapter(subCategoryAdapter);
-
-
     }
     private String buildUrl(String subCategory){
 
         Uri uri =Uri.parse(FreelanceServiceManager.BASE_API_URL)
                 .buildUpon()
                 .appendPath("categories")
-                .appendPath("music")
+                .appendPath(subCategory)
                 .build();
         URL url = null;
         try {
@@ -90,7 +76,7 @@ public class SpecificCategoryActivity extends AppCompatActivity {
         final ProgressDialog progressDialog = new ProgressDialog(this);
         progressDialog.setMessage("Loading....");
         progressDialog.show();
-        final String TAG = "VolleyRequest";
+        final String TAG = "SpecCatAct";
         RequestQueue requestQueue = Volley.newRequestQueue(context);
         JsonObjectRequest getRequest = new JsonObjectRequest(Request.Method.GET, url, null,
                 new Response.Listener<JSONObject>() {
@@ -110,7 +96,8 @@ public class SpecificCategoryActivity extends AppCompatActivity {
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Log.d(TAG, error.getMessage());
+//                        Log.d(TAG, error.getMessage());
+                        Toast.makeText(SpecificCategoryActivity.this, error.toString(), Toast.LENGTH_SHORT).show();
                     }
                 });
         requestQueue.add(getRequest);
@@ -119,7 +106,6 @@ public class SpecificCategoryActivity extends AppCompatActivity {
         final String DATA = "data";
         final String NAME = "name";
         final String IMAGE = "image_url";
-        final String DESCRIPTION = "description";
         ArrayList<ServiceSubCategory> serviceSubCategoriesArrayList = new ArrayList<>();
 
         try {
@@ -130,8 +116,7 @@ public class SpecificCategoryActivity extends AppCompatActivity {
                 JSONObject subCategoryJson = arrayOfSubCategories.getJSONObject(i);
                 ServiceSubCategory subCategories = new ServiceSubCategory(
                         subCategoryJson.getString(NAME),
-                        subCategoryJson.getString(IMAGE),
-                        subCategoryJson.getString(DESCRIPTION)
+                        subCategoryJson.getString(IMAGE)
                 );
                 serviceSubCategoriesArrayList.add(subCategories);
             }

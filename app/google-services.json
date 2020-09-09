@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "576836383580",
+    "firebase_url": "https://freelancer-3795f.firebaseio.com",
+    "project_id": "freelancer-3795f",
+    "storage_bucket": "freelancer-3795f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:576836383580:android:1c6ed84511a5b103274799",
+        "android_client_info": {
+          "package_name": "com.example.freelancer"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "576836383580-hcgfp2fpl133r64rnub9trm1c5mea9ka.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyByyQ6Q57dWpKvKb_TI7eHY5MrGrhLoTF4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "576836383580-hcgfp2fpl133r64rnub9trm1c5mea9ka.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

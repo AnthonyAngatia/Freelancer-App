@@ -14,4 +14,3 @@
         tools:listitem="@layout/request_list" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
-
