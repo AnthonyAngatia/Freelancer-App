@@ -138,35 +138,6 @@ public class FreelanceServiceManager {
         requestQueue.add(getRequest);
         return responseString[0];
     }
-//Not in use
-    public ArrayList<ServiceSubCategory> processSubCategories(String jsonStringResponse){
-        final String DATA = "data";
-        final String NAME = "name";
-        final String IMAGE = "image_url";
-        final String DESCRIPTION = "description";
-        ArrayList<ServiceSubCategory> serviceSubCategoriesArrayList = new ArrayList<>();
-
-        try {
-            JSONObject jsonObject  = new JSONObject(jsonStringResponse);
-            JSONArray arrayOfSubCategories = jsonObject.getJSONArray(DATA);
-            int numberOfSubCategories = arrayOfSubCategories.length();
-            for (int i=0; i< numberOfSubCategories; i++){
-                JSONObject subCategoryJson = arrayOfSubCategories.getJSONObject(i);
-                ServiceSubCategory subCategories = new ServiceSubCategory(
-                        subCategoryJson.getString(NAME),
-                        subCategoryJson.getString(IMAGE),
-                        subCategoryJson.getString(DESCRIPTION)
-                );
-                serviceSubCategoriesArrayList.add(subCategories);
-            }
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-        return serviceSubCategoriesArrayList;
-
-
-
-    }
 
 //Not in use deprecated
     public ArrayList<ServiceSuperCategory> processCategories(String requestString)  {
