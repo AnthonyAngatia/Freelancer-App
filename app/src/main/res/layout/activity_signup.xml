@@ -1,11 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:fillViewport="true"
     android:background="@drawable/bg"
-    tools:context=".Signup">
+    tools:context=".SignupActivity">
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
 
     <androidx.constraintlayout.widget.Guideline
@@ -21,6 +28,8 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintGuide_end="24dp" />
+
+
 
     <TextView
         android:id="@+id/text_intro"
@@ -39,10 +48,43 @@
 
 
     <EditText
-        android:id="@+id/username"
+        android:id="@+id/FirstName"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="60dp"
+
+        android:background="@drawable/et_bg"
+        android:hint="First Name"
+        android:inputType="text"
+        android:padding="16dp"
+        android:textColorHint="@android:color/darker_gray"
+        app:layout_constraintEnd_toStartOf="@id/guideline_right"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@id/guideline_left"
+        app:layout_constraintTop_toBottomOf="@+id/text_intro" />
+
+    <EditText
+        android:id="@+id/LastName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+
+        android:background="@drawable/et_bg"
+        android:hint="Last Name"
+        android:inputType="text"
+        android:padding="16dp"
+        android:textColorHint="@android:color/darker_gray"
+        app:layout_constraintEnd_toStartOf="@id/guideline_right"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@id/guideline_left"
+        app:layout_constraintTop_toBottomOf="@+id/FirstName" />
+
+
+    <EditText
+        android:id="@+id/username"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
 
         android:background="@drawable/et_bg"
         android:hint="@string/email_address"
@@ -52,7 +94,7 @@
         app:layout_constraintEnd_toStartOf="@id/guideline_right"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@id/guideline_left"
-        app:layout_constraintTop_toBottomOf="@+id/text_intro" />
+        app:layout_constraintTop_toBottomOf="@+id/LastName" />
 
     <EditText
         android:id="@+id/phone"
@@ -103,7 +145,7 @@
         android:id="@+id/btn_signUp"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="60dp"
         android:background="@android:color/holo_blue_light"
         android:text="@string/sign_up"
         android:textAllCaps="false"
@@ -113,10 +155,11 @@
         app:layout_constraintTop_toBottomOf="@id/confirmPassword" />
 
     <TextView
-        android:id="@+id/forgot_password"
+        android:id="@+id/textView_login"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
+        android:paddingBottom="70dp"
         android:text="@string/have_an_account_login"
         android:textColor="#812196F3"
         android:textSize="16sp"
@@ -124,34 +167,20 @@
         app:layout_constraintStart_toStartOf="@id/guideline_left"
         app:layout_constraintTop_toBottomOf="@id/btn_signUp" />
 
-    <View
-        android:id="@+id/footer_line"
-        android:layout_width="0dp"
-        android:layout_height="1dp"
-        android:layout_marginBottom="30dp"
-        android:background="#fff"
-        app:layout_constraintBottom_toBottomOf="parent"
-        tools:ignore="MissingConstraints" />
 
-    <View
-        android:id="@+id/line1"
-        android:layout_width="120dp"
-        android:layout_height="1dp"
-        android:background="@color/login_form_details_medium"
-        app:layout_constraintBottom_toTopOf="@+id/facebook_login"
-        app:layout_constraintEnd_toStartOf="@+id/or"
-        app:layout_constraintHorizontal_chainStyle="spread_inside"
-        app:layout_constraintStart_toStartOf="@id/guideline_left"
-        app:layout_constraintTop_toBottomOf="@+id/forgot_password" />
 
-    <View
-        android:id="@+id/line2"
-        android:layout_width="120dp"
-        android:layout_height="1dp"
-        android:background="@color/login_form_details_medium"
-        app:layout_constraintBottom_toBottomOf="@+id/or"
-        app:layout_constraintEnd_toEndOf="@id/guideline_right"
-        app:layout_constraintStart_toEndOf="@+id/or"
-        app:layout_constraintTop_toTopOf="@+id/or" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+
+
+
+
+
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.core.widget.NestedScrollView>
