@@ -1,5 +1,6 @@
 package com.example.freelancer;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -8,8 +9,11 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.Toast;
 
+import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -29,9 +33,9 @@ public class ClientProjectsActivity extends AppCompatActivity {
 
     //api
     //get userid from eg sharedPreference...(for now I'm using static data)
-    private static int userId = 1;
+    private static int userId = 16;
     //private static final String URL_DATA = "http://localhost:8000/api/appusers/client/" + userId + "/projects"; //TO CHANGE
-    private static final String URL_DATA = "http://172.20.10.2:80/FreelancerAPIV1/Freelancer_API_V1/freelancer_api_v1/public/api/appusers/client/" + userId + "/projects";
+    private static final String URL_DATA = "http://172.20.10.2:80/FreelancerAPIV1/Freelancer_API_V1/public/api/appusers/client/" + userId + "/projects";
     //declare recycler view
     private RecyclerView clientProjectsRecyclerView;
     //declare adapter
@@ -45,7 +49,7 @@ public class ClientProjectsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_client_projects);
 
         //receive intent from Client Home
-        //Intent openClientProjectsIntent = getIntent();
+        Intent openClientProjectsIntent = getIntent();
 
         //initialize recycler view
         clientProjectsRecyclerView = findViewById(R.id.client_projects_recycler_view);
@@ -110,26 +114,48 @@ public class ClientProjectsActivity extends AppCompatActivity {
         });
 
         //Increase timeout of StringRequest
-        stringRequest.setRetryPolicy(new RetryPolicy() {
-            @Override
-            public int getCurrentTimeout() {
-                return 900000000;
-            }
-
-            @Override
-            public int getCurrentRetryCount() {
-                return 900000000;
-            }
-
-            @Override
-            public void retry(VolleyError error) throws VolleyError {
-                Log.d("Request Timeout Error:", error.toString());
-            }
-        });
+//        stringRequest.setRetryPolicy(new RetryPolicy() {
+//            @Override
+//            public int getCurrentTimeout() {
+//                return 900000000;
+//            }
+//
+//            @Override
+//            public int getCurrentRetryCount() {
+//                return 900000000;
+//            }
+//
+//            @Override
+//            public void retry(VolleyError error) throws VolleyError {
+//                Log.d("Request Timeout Error:", error.toString());
+//            }
+//        });
+        int socketTimeout = 600000;
+        RetryPolicy policy = new DefaultRetryPolicy(socketTimeout, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT);
+        stringRequest.setRetryPolicy(policy);
 
         //Add request to queue
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         requestQueue.add(stringRequest);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.client_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch(item.getItemId()){
+            case R.id.freelancer_mode:
+                Intent toFreelancerMode = new Intent(this, FreelancerHomeActivity.class);
+                startActivity(toFreelancerMode);
+            case R.id.client_projects:
+                Intent toClientProjects = new Intent(this, ClientProjectsActivity.class);
+                startActivity(toClientProjects);
+        }
+        return super.onOptionsItemSelected(item);
     }
 
 }

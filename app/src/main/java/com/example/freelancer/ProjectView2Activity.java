@@ -19,6 +19,8 @@ public class ProjectView2Activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_project_view2);
 
+        // receive intent from Projects view
+        Intent openProjectView2Intent = getIntent();
 
         // the plan for the commented code below was abandoned, might be revisited later
         // get views in layout

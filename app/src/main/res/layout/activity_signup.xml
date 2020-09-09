@@ -112,8 +112,6 @@
         app:layout_constraintStart_toStartOf="@+id/guideline_left"
         app:layout_constraintTop_toBottomOf="@id/confirmPassword" />
 
-
-
     <TextView
         android:id="@+id/forgot_password"
         android:layout_width="wrap_content"
@@ -135,10 +133,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         tools:ignore="MissingConstraints" />
 
-
-
-
-
     <View
         android:id="@+id/line1"
         android:layout_width="120dp"
@@ -149,8 +143,6 @@
         app:layout_constraintHorizontal_chainStyle="spread_inside"
         app:layout_constraintStart_toStartOf="@id/guideline_left"
         app:layout_constraintTop_toBottomOf="@+id/forgot_password" />
-
-
 
     <View
         android:id="@+id/line2"

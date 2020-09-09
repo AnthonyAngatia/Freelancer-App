@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.freelancer">
-    <uses-permission android:name="android.permission.INTERNET"/>
 
     <uses-permission android:name="android.permission.INTERNET" />
 
@@ -11,28 +10,38 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
-        <activity android:name=".ClientProjectsActivity"
-                  android:exported="true">
-
-        </activity>
-        <activity android:name=".ClientProjectViewActivity"
-                  android:exported="true"/>
-        <activity android:name=".ProjectView2Activity"
-                  android:exported="true"/>
-        <activity android:name=".ProjectViewActivity"
-                  android:exported="true">
-        </activity>
-        <activity android:name=".ProjectsActivity"
-                  android:exported="true">
+        android:theme="@style/AppTheme"
+        android:usesCleartextTraffic="true">
+        <activity android:name=".FreelancerHomeActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".FreelancerProfileActivity"></activity>
+        <activity
+            android:name=".MainActivity"
+            android:exported="true">
+
+        </activity>
+        <activity
+            android:name=".ClientProjectsActivity"
+            android:exported="true" />
+        <activity
+            android:name=".ClientProjectViewActivity"
+            android:exported="true" />
+        <activity
+            android:name=".ProjectView2Activity"
+            android:exported="true" />
+        <activity
+            android:name=".ProjectViewActivity"
+            android:exported="true" />
+        <activity
+            android:name=".ProjectsActivity"
+            android:exported="true" />
+        <activity android:name=".FreelancerProfileActivity" />
         <activity android:name=".ProjectDescription" />
-        <activity android:name=".FreelancerHome" />
         <activity android:name=".LoginActivity" />
         <activity android:name=".SuggestedProvidersActivity" />
         <activity android:name=".SpecificCategoryActivity" />
@@ -41,9 +50,7 @@
         <activity
             android:name=".req.RequestActivity"
             android:label="@string/app_name"
-            android:theme="@style/AppTheme.NoActionBar">
-
-        </activity>
+            android:theme="@style/AppTheme.NoActionBar" />
     </application>
 
 </manifest>

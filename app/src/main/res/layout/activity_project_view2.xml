@@ -39,14 +39,16 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="285dp"
-        android:text="Project Status"
+        android:layout_marginTop="335dp"
+        android:text="Completed"
+        android:textColor="@color/colorPrimaryLight"
         android:textSize="30sp"
         android:textStyle="bold"/>
-    <TextView
+    <View
         android:id="@+id/status_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="35dp"
+        android:layout_height="2dp"
+        android:background="@color/colorPrimaryLight"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/status_title"
@@ -55,7 +57,6 @@
         android:layout_marginEnd="25dp"
         android:paddingStart="25dp"
         android:paddingEnd="25dp"
-        android:text="Completed"
         android:textSize="25sp" />
 
     <ImageView

@@ -7,22 +7,24 @@ import androidx.appcompat.widget.Toolbar;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 
-public class FreelancerHome extends AppCompatActivity {
+public class FreelancerHomeActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_freelancer_home);
 
-        // LATER//
+        // Receive intent
+        Intent toFreelancerHome = getIntent();
+
+        // LATER //
         // Anto group feedback on toolbar to use
-        //Already discussed
-        Toolbar toolbar = findViewById(R.id.freelancer_toolbar);
-        setSupportActionBar(toolbar);
+        // Already discussed
+        //Toolbar toolbar = findViewById(R.id.freelancer_toolbar);
+        //setSupportActionBar(toolbar);
     }
 
     @Override
