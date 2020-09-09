@@ -50,7 +50,7 @@ import java.util.List;
             Intent intent = getIntent();
             //we are using a static data, but a shared preference storing the user session id should be used
             final int appUserId = 1;
-            URL_DATA = "http://sheltered-plains-24359.herokuapp.com/api/userskills/" + appUserId;
+            URL_DATA = "http://sheltered-plains-24359.herokuapp.com/api/userskills/1";
 
             //initialize recycler view
             desRecyclerView = findViewById(R.id.ski_all_recycler_view);
@@ -80,7 +80,6 @@ import java.util.List;
                             JSONObject jSONObject = arrayJSON.getJSONObject(i);
 
                             DesList request = new DesList(
-                                    Integer.parseInt(jSONObject.getString("id")),
                                     jSONObject.getString("name"),
                                     jSONObject.getString("image_url"),
                                     jSONObject.getString("created_at"),

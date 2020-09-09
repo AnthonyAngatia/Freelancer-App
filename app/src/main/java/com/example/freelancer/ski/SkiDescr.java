@@ -81,7 +81,6 @@ import java.util.List;
                             JSONObject jSONObject = arrayJSON.getJSONObject(i);
 
                             DesList request = new DesList(
-                                    Integer.parseInt(jSONObject.getString("id")),
                                     jSONObject.getString("name"),
                                     jSONObject.getString("image_url"),
                                     jSONObject.getString("created_at"),

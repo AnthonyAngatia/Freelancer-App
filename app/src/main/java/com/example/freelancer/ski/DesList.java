@@ -3,7 +3,6 @@ package com.example.freelancer.ski;
 public class DesList {
 
 
-        private int skillSubId;
         private String skillSubName;
         private String skillSubImage;
         private String skillSubCreatedAt;
@@ -11,8 +10,8 @@ public class DesList {
         private int skillSuperCategoryId;
 
 
-    public DesList(int skillSubId, String skillSubName, String skillSubImage, String skillSubCreatedAt, String skillSubUpdatedAt, int skillSuperCategoryId) {
-        this.skillSubId = skillSubId;
+    public DesList(String skillSubName, String skillSubImage, String skillSubCreatedAt, String skillSubUpdatedAt, int skillSuperCategoryId) {
+
         this.skillSubName = skillSubName;
         this.skillSubImage = skillSubImage;
         this.skillSubCreatedAt = skillSubCreatedAt;
@@ -21,9 +20,7 @@ public class DesList {
     }
 
 
-    public int getSkillSubId() {
-        return skillSubId;
-    }
+
 
     public String getSkillSubName() {
         return skillSubName;
@@ -48,9 +45,6 @@ public class DesList {
         return skillSuperCategoryId;
     }
 
-    public void setSkillSubId(int skillSubId) {
-        this.skillSubId = skillSubId;
-    }
 
     public void setSkillSubName(String skillSubName) {
         this.skillSubName = skillSubName;

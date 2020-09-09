@@ -86,7 +86,6 @@ import java.util.List;
 
                     Intent viewIntent = new Intent(v.getContext(), AllAdded.class);
                     //use intent EXTRA to pass data from SkiActivity to SkiDescrActivity
-                    viewIntent.putExtra(KEY_SUB_SKILL_ID, current.getSkillSubId());
                     viewIntent.putExtra(KEY_SUB_SKILL_NAME, current.getSkillSubName());
                     viewIntent.putExtra(KEY_SUB_SKILL_IMAGE, current.getSkillSubImage());
                     viewIntent.putExtra(KEY_SUB_SKILL_CREATED_AT, current.getSkillSubCreatedAt());
