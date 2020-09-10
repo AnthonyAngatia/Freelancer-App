@@ -99,14 +99,16 @@ public class MainActivity extends AppCompatActivity {
                     Intent toAddSkill = new Intent(this, FreelancerSignUp.class);
                     startActivity(toAddSkill);
                 }
-                Intent toFreelancerMode = new Intent(this, FreelancerHomeActivity.class);
-                startActivity(toFreelancerMode);
+
+                break;
             case R.id.client_projects:
                 Intent toClientProjects = new Intent(this, ClientProjectsActivity.class);
                 startActivity(toClientProjects);
+                break;
             case R.id.login_option:
                 Intent toLogin = new Intent(this, LoginActivity.class);
                 startActivity(toLogin);
+                break;
         }
         return super.onOptionsItemSelected(item);
     }
