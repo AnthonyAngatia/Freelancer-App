@@ -50,9 +50,7 @@ public class FreelanceServiceManager {
             if(freeLancer.getId() == id){
                 return freeLancer;
             }
-            else{
-                return null;
-            }
+
         }
         return null;
     }
