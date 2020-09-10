@@ -99,8 +99,6 @@ public class MainActivity extends AppCompatActivity {
                     Intent toAddSkill = new Intent(this, FreelancerSignUp.class);
                     startActivity(toAddSkill);
                 }
-                Intent toFreelancerMode = new Intent(this, FreelancerHomeActivity.class);
-                startActivity(toFreelancerMode);
                 break;
             case R.id.client_projects:
                 Intent toClientProjects = new Intent(this, ClientProjectsActivity.class);

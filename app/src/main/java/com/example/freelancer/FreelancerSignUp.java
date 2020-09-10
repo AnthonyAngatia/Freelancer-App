@@ -1,10 +1,12 @@
 package com.example.freelancer;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
@@ -48,7 +50,7 @@ import static com.example.freelancer.classes.FreelanceServiceManager.isFreelance
 import static com.example.freelancer.classes.FreelanceServiceManager.isUserLogged;
 import static com.example.freelancer.classes.FreelanceServiceManager.loginPreference;
 
-public class FreelancerSignUp extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
+public class FreelancerSignUp extends AppCompatActivity {
 
     private Spinner mSpinnerSubCategory;
     private Spinner mSpinnerCategory;
@@ -60,6 +62,7 @@ public class FreelancerSignUp extends AppCompatActivity implements AdapterView.O
     private List<String> mSubCategoryName;
     private int mUser_id;
     private int mSub_skill_id;
+    private String mSelectedCategory;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -83,6 +86,7 @@ public class FreelancerSignUp extends AppCompatActivity implements AdapterView.O
             startActivity(intent);
             finish();
         }
+        displayDialogBox1();
 
         mSubCategoryName = new ArrayList<>();
         mCategoryName = new ArrayList<>();
@@ -93,20 +97,20 @@ public class FreelancerSignUp extends AppCompatActivity implements AdapterView.O
 //        mCategoryName.add("Programming");
         mCategoryName.add("Art");
 
-        ArrayAdapter<String> adapterSuperCategory =
-                new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, mCategoryName);
-        adapterSuperCategory.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        mSpinnerCategory.setAdapter(adapterSuperCategory);
-        mSpinnerCategory.setOnItemSelectedListener(this);
+//        ArrayAdapter<String> adapterSuperCategory =
+//                new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, mCategoryName);
+//        adapterSuperCategory.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+//        mSpinnerCategory.setAdapter(adapterSuperCategory);
+//        mSpinnerCategory.setOnItemSelectedListener(this);
 
         mSignUpButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //Check if the inputs are not empty
-//                boolean isValid = validateInput();
-//                if(!isValid){
-//                    return;
-//                }
+//                Check if the inputs are not empty
+                boolean isValid = validateInput();
+                if(!isValid){
+                    return;
+                }
                 //Extract the content
                 final String description = mDescription.getText().toString();
                 String education = mEducation.getText().toString();
@@ -119,6 +123,123 @@ public class FreelancerSignUp extends AppCompatActivity implements AdapterView.O
             }
         });
 
+    }
+//    @Override
+//    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+//        String item = parent.getItemAtPosition(position).toString();
+////        Toast.makeText(this, item, Toast.LENGTH_SHORT).show();
+////        mSubCategoryName = new ArrayList<>();
+//
+////        populateSubcategory(item);
+//    }
+//
+//    @Override
+//    public void onNothingSelected(AdapterView<?> parent) {
+//        Toast.makeText(this, "Please select a category first", Toast.LENGTH_SHORT).show();
+//
+//    }
+
+    private void displayDialogBox1() {
+        AlertDialog.Builder alert = new AlertDialog.Builder(FreelancerSignUp.this);
+        alert.setTitle("Freelancer Registration");
+        alert.setMessage("We have noticed that you are not a freelancer. Please register to continue as a freelancer" );
+
+        alert.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int whichButton) {
+                //Your action here
+                displayDialogBox2();
+
+            }
+        });
+
+        alert.setNegativeButton("Cancel",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int whichButton) {
+                    }
+                });
+
+        alert.show();
+    }
+    private void displayDialogBox2() {
+        final String [] categories = new String[]{"Music", "Videography", "Art", "Programming"};
+        AlertDialog.Builder alert = new AlertDialog.Builder(FreelancerSignUp.this);
+        alert.setTitle("Please select category of your skill");
+       alert.setSingleChoiceItems(categories, 0, new DialogInterface.OnClickListener() {
+           @Override
+           public void onClick(DialogInterface dialog, int which) {
+               mSelectedCategory = categories[which];
+
+
+           }
+       });
+
+
+        alert.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int whichButton) {
+                //Your action here
+                populateSubcategory(mSelectedCategory);
+
+            }
+        });
+
+        alert.setNegativeButton("Cancel",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int whichButton) {
+                        Intent intent = new Intent(FreelancerSignUp.this, MainActivity.class);
+                        startActivity(intent);
+                    }
+                });
+
+        alert.show();
+    }
+    private void displayDialogBox3() {
+        String [] categories = mSubCategoryName.toArray(new String[0]);
+        AlertDialog.Builder alert = new AlertDialog.Builder(FreelancerSignUp.this);
+        alert.setTitle("Please select sub category of your skill");
+        alert.setSingleChoiceItems(categories, 0, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                mSub_skill_id = which +1;//Ideally it should be the subcat id
+
+
+            }
+        });
+
+
+        alert.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int whichButton) {
+                //Your action here
+
+
+
+            }
+        });
+
+        alert.setNegativeButton("Cancel",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int whichButton) {
+                        displayDialogBox2();
+                    }
+                });
+
+        alert.show();
+    }
+    private void displayDialogBox4() {
+        AlertDialog.Builder alert = new AlertDialog.Builder(FreelancerSignUp.this);
+        alert.setTitle("Success");
+        alert.setMessage("Successfully added a skill");
+
+        alert.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int whichButton) {
+                //Your action here
+                Intent toFreelancerMode = new Intent(FreelancerSignUp.this, FreelancerHomeActivity.class);
+                startActivity(toFreelancerMode);
+
+
+            }
+        });
+
+        alert.show();
     }
 
     private void volleyRequestOnUserSkill(final String description, final String qualifications, final int sub_skill_id, final int appuser_id) {
@@ -137,6 +258,7 @@ public class FreelancerSignUp extends AppCompatActivity implements AdapterView.O
                         Log.d("Response", response);
                         //TODO IMPLEMENT PREFERENCE isFreelancer true
                                 storePreference();
+                                displayDialogBox4();
                     }
                 },
                 new Response.ErrorListener() {
@@ -172,20 +294,7 @@ public class FreelancerSignUp extends AppCompatActivity implements AdapterView.O
         queue.add(postRequest);
     }
 
-    @Override
-    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-        String item = parent.getItemAtPosition(position).toString();
-        Toast.makeText(this, item, Toast.LENGTH_SHORT).show();
-//        mSubCategoryName = new ArrayList<>();
 
-        populateSubcategory(item);
-    }
-
-    @Override
-    public void onNothingSelected(AdapterView<?> parent) {
-        Toast.makeText(this, "Please select a category first", Toast.LENGTH_SHORT).show();
-
-    }
 
 
     private void populateSubcategory(String category) {
@@ -205,25 +314,26 @@ public class FreelancerSignUp extends AppCompatActivity implements AdapterView.O
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Log.d(TAG, error.getMessage());
+//                        Log.d(TAG, error.getMessage());
+                        Toast.makeText(FreelancerSignUp.this, error.toString(), Toast.LENGTH_SHORT).show();
                     }
                 });
         requestQueue.add(getRequest);
-        ArrayAdapter<String> adapterSubCategory =
-                new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, mSubCategoryName);
-        adapterSubCategory.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        mSpinnerSubCategory.setAdapter(adapterSubCategory);
-        mSpinnerSubCategory.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                mSub_skill_id = position + 1;
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
-            }
-        });
+//        ArrayAdapter<String> adapterSubCategory =
+//                new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, mSubCategoryName);
+//        adapterSubCategory.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+//        mSpinnerSubCategory.setAdapter(adapterSubCategory);
+//        mSpinnerSubCategory.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+//            @Override
+//            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+////                mSub_skill_id = position + 1;
+//            }
+//
+//            @Override
+//            public void onNothingSelected(AdapterView<?> parent) {
+//
+//            }
+//        });
 
     }
     public List<String> processSubCategories(String jsonStringResponse){
@@ -240,6 +350,7 @@ public class FreelancerSignUp extends AppCompatActivity implements AdapterView.O
                 JSONObject subCategoryJson = arrayOfSubCategories.getJSONObject(i);
                 mSubCategoryName.add(subCategoryJson.getString(NAME));
             }
+            displayDialogBox3();
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -282,7 +393,7 @@ public class FreelancerSignUp extends AppCompatActivity implements AdapterView.O
 
 
 
-
+//Not in use Dprecated
     private void requestForCategories() {
         final ProgressDialog progressDialog = new ProgressDialog(this);
         progressDialog.setMessage("Loading....");
