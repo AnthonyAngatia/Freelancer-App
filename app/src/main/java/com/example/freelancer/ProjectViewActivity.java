@@ -210,7 +210,7 @@ public class ProjectViewActivity extends AppCompatActivity {
         queue.add(putRequest);
     }
 
-    public void finishProject(){
+    public void finishProject(View view){
         StringRequest putRequest = new StringRequest(Request.Method.PUT, URL_DATA_FINISH_PROJECT,
                 new Response.Listener<String>()
                 {
@@ -236,7 +236,7 @@ public class ProjectViewActivity extends AppCompatActivity {
             protected Map<String, String> getParams()
             {
                 Map<String, String>  params = new HashMap<String, String>();
-                params.put("project_status", "completed");
+                params.put("project_status", "complete");
                 //params.put("domain", "http://itsalif.info");
 
                 return params;

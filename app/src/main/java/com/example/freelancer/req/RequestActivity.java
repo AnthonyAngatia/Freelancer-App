@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.app.ProgressDialog;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Toast;
@@ -31,13 +32,15 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.example.freelancer.classes.FreelanceServiceManager.loginPreference;
+
 public class RequestActivity extends AppCompatActivity {
     //api
-
-    //api
     //get userid from eg sharedPreference...(for now I'm using static data)
-    private static int userId = 1;
-    private static final String URL_DATA = "http://192.168.43.242:80/Freelancer_API_V1/public/api/appusers/freelancer/1/projects";
+    SharedPreferences preferences;
+    private int userId;
+    private String URL_DATA;
+
     //declare recycler view
     private RecyclerView projectsRecyclerView;
     //declare adapter
@@ -51,7 +54,15 @@ public class RequestActivity extends AppCompatActivity {
         setContentView(R.layout.activity_request);
 
         //receive intent from FreelancerHome
-       // Intent openProjectsIntent = getIntent();
+        Intent openProjectsIntent = getIntent();
+
+        //get userid from eg sharedPreference...(for now I'm using static data)
+        //userId = 17;
+        preferences = getSharedPreferences(loginPreference, MODE_PRIVATE);
+        userId = preferences.getInt("id", 19);
+
+        //URL_DATA = "http://172.20.10.2:80/FreelancerAPIV1/Freelancer_API_V1/public/api/appusers/freelancer/"+ userId +"/requests";
+        URL_DATA = "http://sheltered-plains-24359.herokuapp.com/api/appusers/freelancer/"+ userId +"/requests";
 
         //initialize recycler view
         projectsRecyclerView = findViewById(R.id.req_recycler_view);

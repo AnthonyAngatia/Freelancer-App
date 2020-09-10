@@ -37,7 +37,6 @@ public class ClientProjectsActivity extends AppCompatActivity {
 
     //api
     //get userid from eg sharedPreference...(for now I'm using static data)
-    //private static int userId = 16;
     SharedPreferences preferences;
     private int userId;
     private String URL_DATA;
@@ -58,11 +57,10 @@ public class ClientProjectsActivity extends AppCompatActivity {
         Intent openClientProjectsIntent = getIntent();
 
         //get userid from eg sharedPreference...(for now I'm using static data)
-        //private static int userId = 16;
+        //userId = 16;
         preferences = getSharedPreferences(loginPreference, MODE_PRIVATE);
         userId = preferences.getInt("id", 18);
-
-        //private static final String URL_DATA = "http://localhost:8000/api/appusers/client/" + userId + "/projects"; //TO CHANGE
+		//URL_DATA = "http://sheltered-plains-24359.herokuapp.com/api/appusers/client/" + userId + "/projects";
         URL_DATA = "http://172.20.10.2:80/FreelancerAPIV1/Freelancer_API_V1/public/api/appusers/client/" + userId + "/projects";
 
         //Test

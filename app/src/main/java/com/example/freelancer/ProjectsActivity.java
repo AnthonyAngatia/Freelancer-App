@@ -34,13 +34,12 @@ import static com.example.freelancer.classes.FreelanceServiceManager.loginPrefer
 public class ProjectsActivity extends AppCompatActivity {
     //api
     //get userid from eg sharedPreference...(for now I'm using static data)
-    //private static int userId = 17;
-    SharedPreferences preferences = getSharedPreferences(loginPreference, MODE_PRIVATE);
-    private int userId = Integer.getInteger(preferences.getString("id", "19"));
-    //private static final String URL_DATA = "http://localhost:8000/api/appusers/freelancer/" + userId + "/projects";
-    private final String URL_DATA = "http://172.20.10.2:80/FreelancerAPIV1/Freelancer_API_V1/public/api/appusers/freelancer/" + userId + "/projects";
+    SharedPreferences preferences;
+    private int userId;
+    private String URL_DATA;
 
-    //declare recycler view
+
+    // declare recycler view
     private RecyclerView projectsRecyclerView;
     //declare adapter
     private ProjectsAdapter projectsAdapter;
@@ -54,6 +53,16 @@ public class ProjectsActivity extends AppCompatActivity {
 
         //receive intent from FreelancerHomeIntent
         Intent openProjectsIntent = getIntent();
+
+        //get userid from eg sharedPreference...(for now I'm using static data)
+        //userId = 17;
+        preferences = getSharedPreferences(loginPreference, MODE_PRIVATE);
+        userId = preferences.getInt("id", 19);
+		//URL_DATA = "http://sheltered-plains-24359.herokuapp.com/api/appusers/freelancer/" + userId + "/projects";
+        URL_DATA = "http://172.20.10.2:80/FreelancerAPIV1/Freelancer_API_V1/public/api/appusers/freelancer/" + userId + "/projects";
+
+        //Test
+        Log.d("User ID", String.valueOf(userId));
 
         //initialize recycler view
         projectsRecyclerView = findViewById(R.id.projects_recycler_view);

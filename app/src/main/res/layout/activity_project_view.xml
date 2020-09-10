@@ -98,13 +98,13 @@
         android:textStyle=""
         android:background="@color/colorPrimary"
         android:text="Requestor Location"/>
-     <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Click"
-        android:onClick="finishProjectTemp"
-        app:layout_constraintStart_toEndOf="@id/progress_text"
-        app:layout_constraintTop_toBottomOf="@id/project_update_progress_title"/>
+<!--     <Button-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="Click"-->
+<!--        android:onClick="finishProjectTemp"-->
+<!--        app:layout_constraintStart_toEndOf="@id/progress_text"-->
+<!--        app:layout_constraintTop_toBottomOf="@id/project_update_progress_title"/>-->
 
     <TextView
         android:id="@+id/project_update_progress_title"
@@ -155,7 +155,7 @@
         android:background="@color/colorPrimary"
         android:text="Complete Project"
         android:textColor="@color/login_form_details"
-        android:onClick="openProjectView2"/>
+        android:onClick="finishProject"/>
 
 
 

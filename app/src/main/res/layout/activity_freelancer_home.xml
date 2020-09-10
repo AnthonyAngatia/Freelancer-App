@@ -79,9 +79,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="30dp"
-        android:text="Add Skill"
+        android:text="My Skills"
         android:textSize="25sp"
-        android:onClick="openAddSkill"
+        android:onClick="openMySkills"
         app:layout_constraintLeft_toRightOf="@id/add_skill_icon"
         app:layout_constraintTop_toTopOf="@id/add_skill_icon"
         app:layout_constraintBottom_toBottomOf="@id/add_skill_icon"/>
