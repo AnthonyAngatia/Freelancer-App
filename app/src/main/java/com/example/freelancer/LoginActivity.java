@@ -189,8 +189,8 @@ public class LoginActivity extends AppCompatActivity {
 
 
         String URL_DATA;
-        URL_DATA = "http://172.20.10.2:80/FreelancerAPIV1/Freelancer_API_V1/public/api/appusers/login/" + appUserEmail;
-        //URL_DATA = "http://sheltered-plains-24359.herokuapp.com/api/appusers/login/" + appUserEmail;
+//        URL_DATA = "http://172.20.10.2:80/FreelancerAPIV1/Freelancer_API_V1/public/api/appusers/login/" + appUserEmail;
+        URL_DATA = "http://sheltered-plains-24359.herokuapp.com/api/appusers/login/" + appUserEmail;
 
         // Making HTTP Request and getting Response
         StringRequest stringRequest = new StringRequest(Request.Method.GET, URL_DATA, new Response.Listener<String>() {

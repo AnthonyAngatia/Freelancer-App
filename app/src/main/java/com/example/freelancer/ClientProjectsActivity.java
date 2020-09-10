@@ -60,8 +60,8 @@ public class ClientProjectsActivity extends AppCompatActivity {
         //userId = 16;
         preferences = getSharedPreferences(loginPreference, MODE_PRIVATE);
         userId = preferences.getInt("id", 18);
-		//URL_DATA = "http://sheltered-plains-24359.herokuapp.com/api/appusers/client/" + userId + "/projects";
-        URL_DATA = "http://172.20.10.2:80/FreelancerAPIV1/Freelancer_API_V1/public/api/appusers/client/" + userId + "/projects";
+		URL_DATA = "http://sheltered-plains-24359.herokuapp.com/api/appusers/client/" + userId + "/projects";
+//        URL_DATA = "http://172.20.10.2:80/FreelancerAPIV1/Freelancer_API_V1/public/api/appusers/client/" + userId + "/projects";
 
         //Test
         Log.d("User ID", String.valueOf(userId));
