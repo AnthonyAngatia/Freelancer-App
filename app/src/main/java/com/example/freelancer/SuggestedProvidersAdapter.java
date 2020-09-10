@@ -39,6 +39,7 @@ public class SuggestedProvidersAdapter extends RecyclerView.Adapter<SuggestedPro
         holder.mTextDescription.setText(mFreeLancers.get(position).toString());
         holder.mUserImage.setImageResource(R.drawable.song);
         holder.mCurrentPosition = position;
+        holder.freelancerId = mFreeLancers.get(position).getId();
 
 //        Picasso.with(mContext).load(mFreeLancers.get(position).getImageUrl()).into(holder.mUserImage);
     }
@@ -53,6 +54,7 @@ public class SuggestedProvidersAdapter extends RecyclerView.Adapter<SuggestedPro
         public final ImageView mUserImage;
         public final TextView mTextDescription;
         public int mCurrentPosition;
+        public int freelancerId;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -64,7 +66,7 @@ public class SuggestedProvidersAdapter extends RecyclerView.Adapter<SuggestedPro
                 @Override
                 public void onClick(View v) {
                     Intent anotherIntent = new Intent(mContext, FreelancerProfileActivity.class);
-                    anotherIntent.putExtra(FreelancerProfileActivity.LIST_POSITION, mCurrentPosition);//ID of the user
+                    anotherIntent.putExtra(FreelancerProfileActivity.FREELANCER_ID, freelancerId);//ID of the user
                     mContext.startActivity(anotherIntent);
                 }
             });

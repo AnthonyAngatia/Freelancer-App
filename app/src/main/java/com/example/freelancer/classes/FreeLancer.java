@@ -1,16 +1,18 @@
 package com.example.freelancer.classes;
 
+import androidx.annotation.NonNull;
+
 public class FreeLancer  {
     private int id;
     private String name;
     private String imageUrl;
     private String location;
-    private String phone_no;
-    private String rating;
+    private int phone_no;
+    private int rating;
     private String qualification;
     private String portfolio;
 
-    public FreeLancer(int id, String name, String imageUrl, String location, String phone_no, String rating, String qualification, String portfolio) {
+    public FreeLancer(int id, String name, String imageUrl, String location, int phone_no, int rating, String qualification, String portfolio) {
         this.id = id;
         this.name = name;
         this.imageUrl = imageUrl;
@@ -37,13 +39,7 @@ public class FreeLancer  {
         this.imageUrl = imageUrl;
     }
 
-    public String getRating() {
-        return rating;
-    }
 
-    public void setRating(String rating) {
-        this.rating = rating;
-    }
 
     public String getQualification() {
         return qualification;
@@ -73,20 +69,31 @@ public class FreeLancer  {
         this.location = location;
     }
 
-    public String getPhone_no() {
+    public int getPhone_no() {
         return phone_no;
     }
 
-    public void setPhone_no(String phone_no) {
+    public void setPhone_no(int phone_no) {
         this.phone_no = phone_no;
+    }
+
+    public int getRating() {
+        return rating;
+    }
+
+    public void setRating(int rating) {
+        this.rating = rating;
     }
 
     @Override
     public String toString() {
         return "FreeLancer{" +
-                "name='" + name + '\'' +
+                "id=" + id +
+                ", name='" + name + '\'' +
                 ", imageUrl='" + imageUrl + '\'' +
-                ", rating='" + rating + '\'' +
+                ", location='" + location + '\'' +
+                ", phone_no=" + phone_no +
+                ", rating=" + rating +
                 ", qualification='" + qualification + '\'' +
                 ", portfolio='" + portfolio + '\'' +
                 '}';

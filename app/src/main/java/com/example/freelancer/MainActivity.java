@@ -11,6 +11,7 @@ import android.view.MenuItem;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Menu;
+import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
@@ -25,6 +26,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import static com.example.freelancer.classes.FreelanceServiceManager.isFreelancer;
 import static com.example.freelancer.classes.FreelanceServiceManager.isUserLogged;
 import static com.example.freelancer.classes.FreelanceServiceManager.loginPreference;
 
@@ -36,8 +38,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        //Toolbar toolbar = findViewById(R.id.toolbar);
-        //setSupportActionBar(toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
 
         // Getting intent from Freelancer mode
         Intent backToClient = getIntent();
@@ -45,11 +47,7 @@ public class MainActivity extends AppCompatActivity {
         //Sigin intent
         final SharedPreferences sharedPreferences = getSharedPreferences(loginPreference, MODE_PRIVATE);
         if( sharedPreferences.getBoolean(isUserLogged, false)){
-            //Continue
-            //For debugging purpose to clear the shared preference
-//            SharedPreferences.Editor editor = sharedPreferences.edit();
-//            editor.remove(isUserLogged);
-//            editor.commit();
+
         }
         else{
             //Login
@@ -93,6 +91,14 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch(item.getItemId()){
             case R.id.freelancer_mode:
+                final SharedPreferences sharedPreferences = getSharedPreferences(loginPreference, MODE_PRIVATE);
+                if( sharedPreferences.getBoolean(isFreelancer, false)){
+                    Intent toFreelancerMode = new Intent(this, FreelancerHomeActivity.class);
+                    startActivity(toFreelancerMode);
+                }else{
+                    Intent toAddSkill = new Intent(this, FreelancerSignUp.class);
+                    startActivity(toAddSkill);
+                }
                 Intent toFreelancerMode = new Intent(this, FreelancerHomeActivity.class);
                 startActivity(toFreelancerMode);
             case R.id.client_projects:
