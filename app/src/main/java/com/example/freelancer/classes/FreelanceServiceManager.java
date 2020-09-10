@@ -28,7 +28,7 @@ public class FreelanceServiceManager {
     private static FreelanceServiceManager ourinstance = null;
     public static final String BASE_API_URL = "https://sheltered-plains-24359.herokuapp.com/api/";
     //Preference variables
-    public static final String loginPreference = "LOGIN";
+        public static final String loginPreference = "LOGIN";
     public static final String name = "NameKey";
     public static final String isUserLogged = "IsUserLoggedIn";
     public static final String isFreelancer = "isFreelancer";
@@ -44,6 +44,17 @@ public class FreelanceServiceManager {
     }
     public void setFreelancersList(FreeLancer freeLancer){
         this.mFreeLancers.add(freeLancer);
+    }
+    public FreeLancer getFreelancerFromArrayList(int id){
+        for(FreeLancer freeLancer: mFreeLancers){
+            if(freeLancer.getId() == id){
+                return freeLancer;
+            }
+            else{
+                return null;
+            }
+        }
+        return null;
     }
 
     public static FreelanceServiceManager getInstance(){

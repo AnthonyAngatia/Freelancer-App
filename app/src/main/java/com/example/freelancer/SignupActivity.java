@@ -146,7 +146,7 @@ public class SignupActivity extends AppCompatActivity {
         editor.putString("username", mUsername);//Username gottenn from the api
         editor.putInt("id", mId );//Id gotten from the api
         editor.putBoolean(isUserLogged, true);
-        editor.putBoolean(isFreelancer, false);
+        editor.putBoolean(isFreelancer, false);//UIser type
         editor.commit();
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);

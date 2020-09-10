@@ -28,6 +28,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 
 import static com.example.freelancer.classes.FreelanceServiceManager.isFreelancer;
+import static com.example.freelancer.classes.FreelanceServiceManager.isUserLogged;
 import static com.example.freelancer.classes.FreelanceServiceManager.loginPreference;
 
 public class LoginActivity extends AppCompatActivity {
@@ -62,7 +63,7 @@ public class LoginActivity extends AppCompatActivity {
 //                volleyRequest(url, LoginActivity.this);
                 SharedPreferences preferences = getSharedPreferences(loginPreference, MODE_PRIVATE);
                 SharedPreferences.Editor editor =  preferences.edit();
-                editor.putBoolean("IsUserLoggedIn", true);
+                editor.putBoolean(isUserLogged, true); //updating
                 editor.commit();
                 Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                 startActivity(intent);

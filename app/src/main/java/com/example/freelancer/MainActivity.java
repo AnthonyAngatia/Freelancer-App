@@ -34,11 +34,7 @@ public class MainActivity extends AppCompatActivity {
         //Sigin intent
         final SharedPreferences sharedPreferences = getSharedPreferences(loginPreference, MODE_PRIVATE);
         if( sharedPreferences.getBoolean(isUserLogged, false)){
-            //Continue
-            //For debugging purpose to clear the shared preference
-//            SharedPreferences.Editor editor = sharedPreferences.edit();
-//            editor.remove(isUserLogged);
-//            editor.commit();
+
         }
         else{
             //Login

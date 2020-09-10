@@ -3,6 +3,7 @@ package com.example.freelancer;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,6 +20,7 @@ import java.util.List;
 
 public class ServiceSubCategoryAdapter extends RecyclerView.Adapter<ServiceSubCategoryAdapter.ViewHolder> {
     private Context mContext;
+    private String  TAG = "SubCatAdapter";
 //    private ServiceSubCategory mServiceSubCategory;
     private List<ServiceSubCategory> mServiceSubCategoryList;
 
@@ -66,7 +68,8 @@ public class ServiceSubCategoryAdapter extends RecyclerView.Adapter<ServiceSubCa
                 @Override
                 public void onClick(View v) {
                     Intent intent = new Intent(mContext, SuggestedProvidersActivity.class);
-                    intent.putExtra(SuggestedProvidersActivity.SUB_CATEGORY_NAME, mServiceSubCategoryList.get(mCurrentPosition).getName());
+                    intent.putExtra(SuggestedProvidersActivity.SUB_CATEGORY_ID, mCurrentPosition);
+                    Log.d(TAG, Integer.toString(mCurrentPosition));
                     mContext.startActivity(intent);
                 }
             });
