@@ -43,7 +43,7 @@ import java.util.List;
 * */
 public class SuggestedProvidersActivity extends AppCompatActivity {
 
-    public final static String SUB_CATEGORY_NAME = "com.example.freelancer.SUB_CATEGORY_NAME";
+    public final static String SUB_CATEGORY_ID = "com.example.freelancer.SUB_CATEGORY_ID";
     private static final int POSITION_NOT_SET = -1;
     private RecyclerView mFreelancersRecycler;
 
@@ -57,8 +57,13 @@ public class SuggestedProvidersActivity extends AppCompatActivity {
         mFreelancersRecycler.setLayoutManager(linearLayoutManager);
 
         Intent intent = getIntent();
-        String subcategory = intent.getStringExtra(SUB_CATEGORY_NAME);
-        String url = buildUrl(subcategory);
+        int subcategory = 1 + intent.getIntExtra(SUB_CATEGORY_ID, -1);
+        if(subcategory == 0){
+            Toast.makeText(this, "The chooses subcategory has no freelancers.", Toast.LENGTH_SHORT).show();
+        }
+        String subcat = Integer.toString(subcategory);
+        Toast.makeText(this, "Id is"+ subcat, Toast.LENGTH_SHORT).show();
+        String url = buildUrl(subcat);
         volleyRequest(url);
 
     }
@@ -110,7 +115,7 @@ public class SuggestedProvidersActivity extends AppCompatActivity {
 //        There is an unresolved error here
         final String DATA = "data";
         final String ID = "appuser_id";
-        final String NAME = "appuser_name";
+        final String NAME = "appuser_fname";
         final String QUALIFICATION = "appuser_qualifications";
         final String PORTFOLIO ="appuser_portfolio";
         final String RATING ="appuser_rating";
@@ -130,8 +135,8 @@ public class SuggestedProvidersActivity extends AppCompatActivity {
                         freelancerJsonObject.getString(NAME),
                         freelancerJsonObject.getString(IMAGE),
                         freelancerJsonObject.getString(LOCATION),
-                        freelancerJsonObject.getString(PHONE),
-                        freelancerJsonObject.getString(RATING),
+                        freelancerJsonObject.getInt(PHONE),
+                        freelancerJsonObject.getInt(RATING),
                         freelancerJsonObject.getString(QUALIFICATION),
                         freelancerJsonObject.getString(PORTFOLIO)
 
