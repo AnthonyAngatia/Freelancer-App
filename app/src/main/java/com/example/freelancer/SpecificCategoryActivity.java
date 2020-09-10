@@ -13,6 +13,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -105,12 +106,17 @@ public class SpecificCategoryActivity extends AppCompatActivity {
                         mRecyclerSubCategories.setLayoutManager(linearLayoutManager);
                         ServiceSubCategoryAdapter subCategoryAdapter = new ServiceSubCategoryAdapter(SpecificCategoryActivity.this,serviceSubCategories);
                          mRecyclerSubCategories.setAdapter(subCategoryAdapter);
+
+                        Toast toast = Toast.makeText(getApplicationContext(), response.toString(), Toast.LENGTH_LONG);
+                        toast.show();
                     }
                 },
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
                         Log.d(TAG, error.getMessage());
+                        Toast toast = Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_LONG);
+                        toast.show();
                     }
                 });
         requestQueue.add(getRequest);

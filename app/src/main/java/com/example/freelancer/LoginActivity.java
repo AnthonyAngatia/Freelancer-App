@@ -17,17 +17,21 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
+import com.android.volley.RetryPolicy;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.freelancer.classes.FreelanceServiceManager;
 
+import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
-
 import java.net.MalformedURLException;
 import java.net.URL;
 
@@ -51,6 +55,8 @@ public class LoginActivity extends AppCompatActivity {
         mLoginbtn = findViewById(R.id.btn_login);
         login();
         signUp();
+
+        Intent arrivedAtLogin = getIntent();
     }
 
     @Override
@@ -81,11 +87,15 @@ public class LoginActivity extends AppCompatActivity {
                 mPass = mUserPasswordEditText.getText().toString();
                 String url = buildUrl();
                 //TODO Method to sign in
-//                volleyRequest(url, LoginActivity.this);
+                //volleyRequest(url, LoginActivity.this);
                 SharedPreferences preferences = getSharedPreferences(loginPreference, MODE_PRIVATE);
-                SharedPreferences.Editor editor =  preferences.edit();
+                SharedPreferences.Editor editor = preferences.edit();
                 editor.putBoolean("IsUserLoggedIn", true);
                 editor.commit();
+
+                //call function to get user details and put ID in SharedPreference
+                getLoginDetails(mUserEmailEditText.getText().toString());
+
                 Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                 startActivity(intent);
             }
@@ -169,5 +179,84 @@ public class LoginActivity extends AppCompatActivity {
 //            e.printStackTrace();
 //        }
 //    }
+
+    public void getLoginDetails(String appUserEmail){
+        final ProgressDialog progressDialog = new ProgressDialog(this);
+        progressDialog.setMessage("Loading");
+        progressDialog.show();
+
+
+        String URL_DATA;
+        URL_DATA = "http://172.20.10.2:80/FreelancerAPIV1/Freelancer_API_V1/public/api/appusers/login/" + appUserEmail;
+
+        // Making HTTP Request and getting Response
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, URL_DATA, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                Toast.makeText(LoginActivity.this, "Response"+response.toString(), Toast.LENGTH_LONG).show();
+                Log.d("res", "Response:"+ response);
+                progressDialog.dismiss();
+
+                //getting the data
+                try {
+                    int mId = 1000;
+                    //JSONObject jsonObject = new JSONObject(response);
+                    //JSONObject userJsonObject = jsonObject.getJSONObject("data");
+                    //mId = userJsonObject.getInt("appuser_id");
+
+                    JSONObject jsonObject2 = new JSONObject(response);
+                    JSONArray appUserArrayJSON = jsonObject2.getJSONArray("data");
+                    //logging response
+                    //String responseValue = jsonObject.getString("response");
+                    Log.d("Response", response);
+
+
+                    for(int i=0; i < appUserArrayJSON.length();i++){
+                        JSONObject appUserJSONObject = appUserArrayJSON.getJSONObject(i);
+                        String mIdTemp = appUserJSONObject.getString("appuser_id");
+                        mId = Integer.parseInt(mIdTemp);
+                    }
+                    //put data in sharedPreference
+                    SharedPreferences preferences = getSharedPreferences(loginPreference, MODE_PRIVATE);
+                    SharedPreferences.Editor editor =preferences.edit();
+                    editor.putInt("id", mId );//Id gotten from the api
+                    editor.commit();
+                    Log.d("mId", String.valueOf(mId));
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                    Log.d("RespError", e.getMessage());
+                }
+            }
+        }, new Response.ErrorListener(){
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(LoginActivity.this, "Error"+error.toString(), Toast.LENGTH_LONG).show();
+                Log.d("ErrorLogin", error.toString());
+            }
+        });
+
+        //Increase timeout of StringRequest
+        stringRequest.setRetryPolicy(new RetryPolicy() {
+            @Override
+            public int getCurrentTimeout() {
+                return 900000000;
+            }
+
+            @Override
+            public int getCurrentRetryCount() {
+                return 900000000;
+            }
+
+            @Override
+            public void retry(VolleyError error) throws VolleyError {
+                Log.d("Request Timeout Error:", error.toString());
+            }
+        });
+
+        //adding request to queue
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        requestQueue.add(stringRequest);
+    }
 
 }

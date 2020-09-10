@@ -36,8 +36,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+        //Toolbar toolbar = findViewById(R.id.toolbar);
+        //setSupportActionBar(toolbar);
 
         // Getting intent from Freelancer mode
         Intent backToClient = getIntent();
@@ -98,6 +98,9 @@ public class MainActivity extends AppCompatActivity {
             case R.id.client_projects:
                 Intent toClientProjects = new Intent(this, ClientProjectsActivity.class);
                 startActivity(toClientProjects);
+            case R.id.login_option:
+                Intent toLogin = new Intent(this, LoginActivity.class);
+                startActivity(toLogin);
         }
         return super.onOptionsItemSelected(item);
     }
