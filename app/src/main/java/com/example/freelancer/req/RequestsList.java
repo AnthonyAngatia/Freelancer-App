@@ -12,6 +12,7 @@ public class RequestsList {
     private int appuser_inviter_id;
     private int appuser_freelancer_id;
 
+    //others
     private String projectItemRequestorName;
     private String projectItemRequestorLocation;
     private String projectItemRequestorPhone;
@@ -27,6 +28,13 @@ public class RequestsList {
         this.appuser_inviter_id = appuser_inviter_id;
         this.appuser_freelancer_id = appuser_freelancer_id;
 
+        //
+        this.projectItemRequestorName = projectItemRequestorName;
+        this.projectItemRequestorLocation = projectItemRequestorLocation;
+        this.projectItemRequestorPhone = projectItemRequestorPhone;
+    }
+
+    public RequestsList( String projectItemRequestorName, String projectItemRequestorLocation, String projectItemRequestorPhone) {
         this.projectItemRequestorName = projectItemRequestorName;
         this.projectItemRequestorLocation = projectItemRequestorLocation;
         this.projectItemRequestorPhone = projectItemRequestorPhone;
@@ -135,5 +143,4 @@ public class RequestsList {
     public void setProjectProgress(String projectProgress) {
         this.projectProgress = projectProgress;
     }
-
 }

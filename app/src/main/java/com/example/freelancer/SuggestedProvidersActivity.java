@@ -57,8 +57,8 @@ public class SuggestedProvidersActivity extends AppCompatActivity {
         mFreelancersRecycler.setLayoutManager(linearLayoutManager);
 
         Intent intent = getIntent();
-        String name = intent.getStringExtra(SUB_CATEGORY_NAME);
-        String url = buildUrl(name);
+        String subcategory = intent.getStringExtra(SUB_CATEGORY_NAME);
+        String url = buildUrl(subcategory);
         volleyRequest(url);
 
     }
@@ -68,7 +68,7 @@ public class SuggestedProvidersActivity extends AppCompatActivity {
                 .buildUpon()
                 .appendPath("categories")
                 .appendPath("music")
-                .appendPath(subCategory.toString())
+                .appendPath(subCategory)
                 .build();
         URL url = null;
         try {
@@ -83,7 +83,7 @@ public class SuggestedProvidersActivity extends AppCompatActivity {
         final ProgressDialog progressDialog = new ProgressDialog(this);
         progressDialog.setMessage("Loading....");
         progressDialog.show();
-        final String TAG = "VolleyRequest";
+        final String TAG = "Freelancers";
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         JsonObjectRequest getRequest = new JsonObjectRequest(Request.Method.GET, url, null,
                 new Response.Listener<JSONObject>() {
@@ -100,12 +100,14 @@ public class SuggestedProvidersActivity extends AppCompatActivity {
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Log.d(TAG, error.getMessage());
+//                        Log.d(TAG, error.getMessage());
+                        Toast.makeText(SuggestedProvidersActivity.this, error.toString(), Toast.LENGTH_SHORT).show();
                     }
                 });
         requestQueue.add(getRequest);
     }
     public ArrayList<FreeLancer> processFreelancer(String jsonStringResponse){
+//        There is an unresolved error here
         final String DATA = "data";
         final String ID = "appuser_id";
         final String NAME = "appuser_name";
