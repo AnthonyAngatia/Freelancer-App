@@ -9,36 +9,48 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
-        <activity android:name=".FreelancerSignUp">
-
-        </activity>
-
+        android:theme="@style/AppTheme"
+        android:usesCleartextTraffic="true">
+        <activity android:name=".FreelancerSignUp"/>
         <activity android:name=".FreelancerProfileActivity" />
         <activity android:name=".ClientProjectsActivity"
                   android:exported="true">
+        <activity android:name=".FreelancerSignUp"/>
+        <activity
+            android:name=".FreelancerHomeActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
-        <activity android:name=".ClientProjectViewActivity"
-                  android:exported="true"/>
-        <activity android:name=".ProjectView2Activity"
-                  android:exported="true"/>
-        <activity android:name=".ProjectViewActivity"
-                  android:exported="true">
+        <activity
+            android:name=".MainActivity"
+            android:exported="true">
         </activity>
-        <activity android:name=".ProjectsActivity"
-                  android:exported="true">
-        </activity>
- 
+        <activity
+            android:name=".ClientProjectsActivity"
+            android:exported="true" />
+        <activity
+            android:name=".ClientProjectViewActivity"
+            android:exported="true" />
+        <activity
+            android:name=".ProjectView2Activity"
+            android:exported="true" />
+        <activity
+            android:name=".ProjectViewActivity"
+            android:exported="true" />
+        <activity
+            android:name=".ProjectsActivity"
+            android:exported="true" />
+        <activity android:name=".FreelancerProfileActivity" />
         <activity android:name=".ProjectDescription" />
-        <activity android:name=".FreelancerHome" />
         <activity android:name=".LoginActivity" />
-        <activity android:name=".SuggestedProvidersActivity" />
         <activity android:name=".SpecificCategoryActivity" />
         <activity android:name=".ProfileActivity" />
         <activity android:name=".SignupActivity" />
         <activity android:name=".req.RequestDescrActivity" />
-        <activity android:name=".req.RequestActivity" />
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name"
@@ -49,6 +61,37 @@
              </intent-filter> 
 
         </activity>
+        <activity
+            android:name=".req.RequestActivity"
+            android:label="Requests"
+            android:theme="@style/AppTheme">
+        </activity>
+        <activity android:name=".ski.SkiDescr"/>
+        <activity android:name=".ski.AllAdded"/>
+        <activity
+            android:name="com.example.freelancer.ski.SkiActivity"
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme">
+        </activity>
+        <activity android:name=".SuggestedProvidersActivity"
+            tools:ignore="DuplicateActivity" />
+        <activity android:name=".SignupActivity">
+        </activity>
+
+        <!--        <activity-->
+        <!--            android:name=".MainActivity"-->
+        <!--            android:label="@string/app_name"-->
+        <!--            android:theme="@style/AppTheme.NoActionBar">-->
+
+        <!--            <intent-filter>-->
+        <!--              <action android:name="android.intent.action.MAIN" />-->
+        <!--              <category android:name="android.intent.category.LAUNCHER" />-->
+        <!--             </intent-filter> -->
+
+        <!--        </activity>-->
+        <!--    <activity android:name=".Signup" />-->
+        <!--    <activity android:name=".req.RequestDescrActivity" />-->
+
 
     </application>
 

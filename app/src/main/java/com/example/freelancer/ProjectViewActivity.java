@@ -31,7 +31,7 @@ public class ProjectViewActivity extends AppCompatActivity {
     RequestQueue queue;
 
     //(TO DO LATER)store project id in a shared preference for easier access
-    private static int projectId;
+    private static String projectId;
     private static String URL_DATA_FINISH_PROJECT;
     private static String URL_DATA_UPDATE_PROGRESS;
 
@@ -45,36 +45,46 @@ public class ProjectViewActivity extends AppCompatActivity {
 
         // receive intent from Projects view
         Intent openProjectViewIntent = getIntent();
-        //get projectId from eg sharedPreference...(for now I'm using static data)
-        projectId = 1;
+
+        //get projectId from intent data
+        //projectId = Integer.parseInt(openProjectViewIntent.getStringExtra("project_id"));
+        //projectId = 3;
+        projectId = openProjectViewIntent.getStringExtra("project_id");
+
         //projectId = openProjectViewIntent.getIntExtra("project_id", 1);
         //URL_DATA_FINISH_PROJECT = "http://localhost:8000/api/projects/finish/" + projectId;
-        URL_DATA_FINISH_PROJECT = "http://172.20.10.2:80/FreelancerAPIV1/Freelancer_API_V1/freelancer_api_v1/public/api/projects/finish/" + projectId;
+        URL_DATA_FINISH_PROJECT = "http://172.20.10.2:80/FreelancerAPIV1/Freelancer_API_V1/public/api/projects/finish/" + projectId;
 
         //URL_DATA_UPDATE_PROGRESS = "http://localhost:8000/api/projects/progress" + projectId;
-        URL_DATA_UPDATE_PROGRESS = "http://172.20.10.2:80/FreelancerAPIV1/Freelancer_API_V1/freelancer_api_v1/public/api/projects/progress/" + projectId;
+        URL_DATA_UPDATE_PROGRESS = "http://172.20.10.2:80/FreelancerAPIV1/Freelancer_API_V1/public/api/projects/progress/" + projectId;
 
-//        String projectItemDescription = openProjectViewIntent.getStringExtra("project_description");
-//        String projectItemRequestorName = openProjectViewIntent.getStringExtra("project_requestor_name");
-//        String projectItemRequestorPhone = openProjectViewIntent.getStringExtra("project_requestor_phone");
-//        String projectItemRequestorLocation = openProjectViewIntent.getStringExtra("project_requestor_location");
+        String projectItemDescription = openProjectViewIntent.getStringExtra("project_description");
+        String projectItemRequestorName = openProjectViewIntent.getStringExtra("project_requestor_name");
+        String projectItemRequestorPhone = openProjectViewIntent.getStringExtra("project_requestor_phone");
+        String projectItemRequestorLocation = openProjectViewIntent.getStringExtra("project_requestor_location");
         // get the views
         projectDescription = findViewById(R.id.project_description);
         projectRequestorName = findViewById(R.id.project_item_requestor_name2);
         projectRequestorPhone = findViewById(R.id.project_item_requestor_phone2);
         projectRequestorLocation = findViewById(R.id.project_item_requestor_location2);
         // set the views with the intent data
-//        projectDescription.setText(projectItemDescription);
-//        projectRequestorName.setText(projectItemRequestorName);
-//        projectRequestorPhone.setText(projectItemRequestorPhone);
-//        projectRequestorLocation.setText(projectItemRequestorLocation);
+        projectDescription.setText(projectItemDescription);
+        projectRequestorName.setText(projectItemRequestorName);
+        projectRequestorPhone.setText(projectItemRequestorPhone);
+        projectRequestorLocation.setText(projectItemRequestorLocation);
+
+        //set project progress
+        SeekBar seekBar = findViewById(R.id.progress_seek_bar);
+        tvProgressLabel = findViewById(R.id.progress_text);
+        seekBar.setMax(100);
+        int initProgress = Integer.parseInt(openProjectViewIntent.getStringExtra("project_progress"));
+        seekBar.setProgress(initProgress);
+        tvProgressLabel.setText("Progress: "+ initProgress);
 
         // set a change listener for SeekBar
-        SeekBar seekBar = findViewById(R.id.progress_seek_bar);
-        seekBar.setMax(100);
         //seekBar.OnSeekBarChangeListener(seekBarChangeListener);
         int progress = seekBar.getProgress();
-        tvProgressLabel = findViewById(R.id.progress_text);
+
         tvProgressLabel.setText("Progress: "+ progress);
 
         seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
@@ -151,7 +161,7 @@ public class ProjectViewActivity extends AppCompatActivity {
             protected Map<String, String> getParams()
             {
                 Map<String, String>  params = new HashMap<String, String>();
-                params.put("project_progress", /*project_progress*/ "250");
+                params.put("project_progress", projectProgress);
                 //params.put("domain", "http://itsalif.info");
 
                 return params;
@@ -159,7 +169,7 @@ public class ProjectViewActivity extends AppCompatActivity {
 
         };
 
-        //queue.add(putRequest);
+        queue.add(putRequest);
     }
 
     public void updateProjectProgressTemp(View v){
@@ -226,7 +236,7 @@ public class ProjectViewActivity extends AppCompatActivity {
             protected Map<String, String> getParams()
             {
                 Map<String, String>  params = new HashMap<String, String>();
-                params.put("project_status", "pending10");
+                params.put("project_status", "completed");
                 //params.put("domain", "http://itsalif.info");
 
                 return params;
@@ -234,7 +244,11 @@ public class ProjectViewActivity extends AppCompatActivity {
 
         };
 
-        //queue.add(putRequest);
+        queue.add(putRequest);
+
+        // Go to ProjectView2Activity
+        Intent openProjectView2 = new Intent(this, ProjectView2Activity.class);
+        startActivity(openProjectView2);
     }
 
     public void finishProjectTemp(View view) {
@@ -263,7 +277,7 @@ public class ProjectViewActivity extends AppCompatActivity {
             protected Map<String, String> getParams()
             {
                 Map<String, String>  params = new HashMap<String, String>();
-                params.put("project_status", "pending10");
+                params.put("project_status", "completed");
                 //params.put("domain", "http://itsalif.info");
 
                 return params;
@@ -272,5 +286,8 @@ public class ProjectViewActivity extends AppCompatActivity {
         };
 
         queue.add(putRequest);
+        // Go to ProjectView2Activity
+        Intent openProjectView2 = new Intent(this, ProjectView2Activity.class);
+        startActivity(openProjectView2);
     }
 }

@@ -31,9 +31,9 @@ import java.util.List;
 public class ProjectsActivity extends AppCompatActivity {
     //api
     //get userid from eg sharedPreference...(for now I'm using static data)
-    private static int userId = 3;
+    private static int userId = 17;
     //private static final String URL_DATA = "http://localhost:8000/api/appusers/freelancer/" + userId + "/projects";
-    private static final String URL_DATA = "http://172.20.10.2:80/FreelancerAPIV1/Freelancer_API_V1/freelancer_api_v1/public/api/appusers/freelancer/" + userId + "/projects";
+    private static final String URL_DATA = "http://172.20.10.2:80/FreelancerAPIV1/Freelancer_API_V1/public/api/appusers/freelancer/" + userId + "/projects";
 
     //declare recycler view
     private RecyclerView projectsRecyclerView;
