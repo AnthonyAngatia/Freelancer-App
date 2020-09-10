@@ -53,10 +53,12 @@ public class ProjectViewActivity extends AppCompatActivity {
 
         //projectId = openProjectViewIntent.getIntExtra("project_id", 1);
         //URL_DATA_FINISH_PROJECT = "http://localhost:8000/api/projects/finish/" + projectId;
-        URL_DATA_FINISH_PROJECT = "http://172.20.10.2:80/FreelancerAPIV1/Freelancer_API_V1/public/api/projects/finish/" + projectId;
+        //URL_DATA_FINISH_PROJECT = "http://172.20.10.2:80/FreelancerAPIV1/Freelancer_API_V1/public/api/projects/finish/" + projectId;
+        URL_DATA_FINISH_PROJECT = "http://sheltered-plains-24359.herokuapp.com/api/projects/finish/" + projectId;
 
         //URL_DATA_UPDATE_PROGRESS = "http://localhost:8000/api/projects/progress" + projectId;
-        URL_DATA_UPDATE_PROGRESS = "http://172.20.10.2:80/FreelancerAPIV1/Freelancer_API_V1/public/api/projects/progress/" + projectId;
+        //URL_DATA_UPDATE_PROGRESS = "http://172.20.10.2:80/FreelancerAPIV1/Freelancer_API_V1/public/api/projects/progress/" + projectId;
+        URL_DATA_UPDATE_PROGRESS = "http://sheltered-plains-24359.herokuapp.com/api/projects/progress/" + projectId;
 
         String projectItemDescription = openProjectViewIntent.getStringExtra("project_description");
         String projectItemRequestorName = openProjectViewIntent.getStringExtra("project_requestor_name");
