@@ -94,6 +94,9 @@ public class MainActivity extends AppCompatActivity {
             case R.id.client_projects:
                 Intent toClientProjects = new Intent(this, ClientProjectsActivity.class);
                 startActivity(toClientProjects);
+            case R.id.login_option:
+                Intent toLogin = new Intent(this, LoginActivity.class);
+                startActivity(toLogin);
         }
         return super.onOptionsItemSelected(item);
     }

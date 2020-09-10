@@ -129,8 +129,6 @@ public class SignupActivity extends AppCompatActivity {
         final String FNAME="appuser_fname";
         final String ID="appuser_id";
 
-
-
         try {
             JSONObject jsonObject = new JSONObject(response);
             JSONObject userJsonObject = jsonObject.getJSONObject(DATA);

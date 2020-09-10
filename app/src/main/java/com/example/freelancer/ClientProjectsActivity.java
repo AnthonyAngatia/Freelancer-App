@@ -7,7 +7,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -29,13 +31,17 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.example.freelancer.classes.FreelanceServiceManager.loginPreference;
+
 public class ClientProjectsActivity extends AppCompatActivity {
 
     //api
     //get userid from eg sharedPreference...(for now I'm using static data)
-    private static int userId = 16;
-    //private static final String URL_DATA = "http://localhost:8000/api/appusers/client/" + userId + "/projects"; //TO CHANGE
-    private static final String URL_DATA = "http://172.20.10.2:80/FreelancerAPIV1/Freelancer_API_V1/public/api/appusers/client/" + userId + "/projects";
+    //private static int userId = 16;
+    SharedPreferences preferences;
+    private int userId;
+    private String URL_DATA;
+
     //declare recycler view
     private RecyclerView clientProjectsRecyclerView;
     //declare adapter
@@ -50,6 +56,17 @@ public class ClientProjectsActivity extends AppCompatActivity {
 
         //receive intent from Client Home
         Intent openClientProjectsIntent = getIntent();
+
+        //get userid from eg sharedPreference...(for now I'm using static data)
+        //private static int userId = 16;
+        preferences = getSharedPreferences(loginPreference, MODE_PRIVATE);
+        userId = preferences.getInt("id", 18);
+
+        //private static final String URL_DATA = "http://localhost:8000/api/appusers/client/" + userId + "/projects"; //TO CHANGE
+        URL_DATA = "http://172.20.10.2:80/FreelancerAPIV1/Freelancer_API_V1/public/api/appusers/client/" + userId + "/projects";
+
+        //Test
+        Log.d("User ID", String.valueOf(userId));
 
         //initialize recycler view
         clientProjectsRecyclerView = findViewById(R.id.client_projects_recycler_view);
@@ -74,8 +91,6 @@ public class ClientProjectsActivity extends AppCompatActivity {
                 Log.d("res", "Response:"+ response);
                 progressDialog.dismiss();
                 try{
-
-
                     JSONObject jsonObject = new JSONObject(response);
                     JSONArray clientProjectsArrayJSON = jsonObject.getJSONArray("data");
                     for(int i=0; i < clientProjectsArrayJSON.length();i++){

@@ -11,5 +11,10 @@
         android:icon="@drawable/ic_client_projects"
         android:title="My Projects"
         app:showAsAction="never"/>
+    <item
+        android:id="@+id/login_option"
+
+        android:title="Login"
+        app:showAsAction="never"/>
 
 </menu>

@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -28,12 +29,16 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.example.freelancer.classes.FreelanceServiceManager.loginPreference;
+
 public class ProjectsActivity extends AppCompatActivity {
     //api
     //get userid from eg sharedPreference...(for now I'm using static data)
-    private static int userId = 17;
+    //private static int userId = 17;
+    SharedPreferences preferences = getSharedPreferences(loginPreference, MODE_PRIVATE);
+    private int userId = Integer.getInteger(preferences.getString("id", "19"));
     //private static final String URL_DATA = "http://localhost:8000/api/appusers/freelancer/" + userId + "/projects";
-    private static final String URL_DATA = "http://172.20.10.2:80/FreelancerAPIV1/Freelancer_API_V1/public/api/appusers/freelancer/" + userId + "/projects";
+    private final String URL_DATA = "http://172.20.10.2:80/FreelancerAPIV1/Freelancer_API_V1/public/api/appusers/freelancer/" + userId + "/projects";
 
     //declare recycler view
     private RecyclerView projectsRecyclerView;

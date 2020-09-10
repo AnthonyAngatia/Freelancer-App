@@ -50,7 +50,7 @@ public class FreelancerProfileActivity extends AppCompatActivity {
         if( sharedPreferences.getBoolean(isUserLogged, false)){
             mUser_id = sharedPreferences.getInt("id",-1);
             if(mUser_id == -1)
-                Toast.makeText(this, "ID is -1", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Please signUp!!", Toast.LENGTH_SHORT).show();
         }else{
             //Login
             Intent intent = new Intent(this, LoginActivity.class);
