@@ -52,8 +52,8 @@ import static com.example.freelancer.classes.FreelanceServiceManager.loginPrefer
 
 public class FreelancerSignUp extends AppCompatActivity {
 
-    private Spinner mSpinnerSubCategory;
-    private Spinner mSpinnerCategory;
+    private EditText mCategory;
+    private EditText mSubCategory;
     private Button mSignUpButton;
     private EditText mDescription;
     private EditText mEducation;
@@ -68,12 +68,13 @@ public class FreelancerSignUp extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_freelancer_sign_up);
-        mSpinnerCategory = findViewById(R.id.spinner1);
-        mSpinnerSubCategory = findViewById(R.id.spinner2);
+
         mSignUpButton = findViewById(R.id.btn_signUp);
         mDescription = findViewById(R.id.shortDescription);
         mEducation = findViewById(R.id.educationText);
         mSkill = findViewById(R.id.skillsText);
+        mCategory = findViewById(R.id.category_edit);
+        mSubCategory = findViewById(R.id.sub_category);
 
         final SharedPreferences sharedPreferences = getSharedPreferences(loginPreference, MODE_PRIVATE);
         if( sharedPreferences.getBoolean(isUserLogged, false)){
@@ -89,19 +90,7 @@ public class FreelancerSignUp extends AppCompatActivity {
         displayDialogBox1();
 
         mSubCategoryName = new ArrayList<>();
-        mCategoryName = new ArrayList<>();
-        //Request for super categories
-//        requestForCategories();
-        mCategoryName.add("Music");
-        mCategoryName.add("Videography");
-//        mCategoryName.add("Programming");
-        mCategoryName.add("Art");
 
-//        ArrayAdapter<String> adapterSuperCategory =
-//                new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, mCategoryName);
-//        adapterSuperCategory.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-//        mSpinnerCategory.setAdapter(adapterSuperCategory);
-//        mSpinnerCategory.setOnItemSelectedListener(this);
 
         mSignUpButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -124,20 +113,6 @@ public class FreelancerSignUp extends AppCompatActivity {
         });
 
     }
-//    @Override
-//    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-//        String item = parent.getItemAtPosition(position).toString();
-////        Toast.makeText(this, item, Toast.LENGTH_SHORT).show();
-////        mSubCategoryName = new ArrayList<>();
-//
-////        populateSubcategory(item);
-//    }
-//
-//    @Override
-//    public void onNothingSelected(AdapterView<?> parent) {
-//        Toast.makeText(this, "Please select a category first", Toast.LENGTH_SHORT).show();
-//
-//    }
 
     private void displayDialogBox1() {
         AlertDialog.Builder alert = new AlertDialog.Builder(FreelancerSignUp.this);
@@ -168,6 +143,7 @@ public class FreelancerSignUp extends AppCompatActivity {
            @Override
            public void onClick(DialogInterface dialog, int which) {
                mSelectedCategory = categories[which];
+               mCategory.setText(categories[which]);
 
 
            }
@@ -193,13 +169,20 @@ public class FreelancerSignUp extends AppCompatActivity {
         alert.show();
     }
     private void displayDialogBox3() {
-        String [] categories = mSubCategoryName.toArray(new String[0]);
+        final String [] categories = mSubCategoryName.toArray(new String[0]);
         AlertDialog.Builder alert = new AlertDialog.Builder(FreelancerSignUp.this);
         alert.setTitle("Please select sub category of your skill");
         alert.setSingleChoiceItems(categories, 0, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 mSub_skill_id = which +1;//Ideally it should be the subcat id
+                mSubCategory.setText(categories[which]);
+                mSubCategory.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        displayDialogBox3();
+                    }
+                });
 
 
             }
@@ -314,7 +297,7 @@ public class FreelancerSignUp extends AppCompatActivity {
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-//                        Log.d(TAG, error.getMessage());
+                        Log.d(TAG, error.toString());
                         Toast.makeText(FreelancerSignUp.this, error.toString(), Toast.LENGTH_SHORT).show();
                     }
                 });

@@ -52,68 +52,72 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
 
-            android:text="Choose a job category"
+            android:text="Category"
             android:textStyle="bold"
             android:textColor="#81000000"
             android:textSize="16sp"
             app:layout_constraintStart_toStartOf="@id/guideline_left"
             app:layout_constraintTop_toBottomOf="@id/text_intro"/>
 
-
-        <Spinner
-            android:id="@+id/spinner1"
+        <EditText
+            android:id="@+id/category_edit"
             android:layout_width="0dip"
             android:layout_height="wrap_content"
+            android:background="@drawable/et_bg"
 
-            app:layout_constraintStart_toEndOf="@id/text1"
-            app:layout_constraintLeft_toRightOf="@id/text1"
 
-            app:layout_constraintRight_toLeftOf="@id/text1"
-            app:layout_constraintTop_toBottomOf="@id/text1"
-            app:layout_constraintBottom_toTopOf="@id/text1"
+            android:focusableInTouchMode="false"
+            android:inputType="textCapSentences|textMultiLine"
+            android:maxLength="2000"
+            android:maxLines="4"
+            android:padding="16dp"
+            android:textColorHint="@android:color/darker_gray"
+            app:layout_constraintEnd_toStartOf="@id/guideline_right"
+            app:layout_constraintStart_toStartOf="@+id/guideline_left"
+            app:layout_constraintTop_toBottomOf="@+id/text1" />
 
-            />
 
         <TextView
             android:id="@+id/text2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
 
             android:text="Choose a job sub-category"
-            android:textStyle="bold"
             android:textColor="#81000000"
             android:textSize="16sp"
+            android:textStyle="bold"
             app:layout_constraintStart_toStartOf="@id/guideline_left"
-            app:layout_constraintTop_toBottomOf="@id/text1"/>
+            app:layout_constraintTop_toBottomOf="@+id/category_edit" />
 
-
-        <Spinner
-            android:id="@+id/spinner2"
+        <EditText
+            android:id="@+id/sub_category"
             android:layout_width="0dip"
             android:layout_height="wrap_content"
+            android:background="@drawable/et_bg"
 
-            app:layout_constraintStart_toEndOf="@id/text2"
-            app:layout_constraintLeft_toRightOf="@id/text2"
 
-            app:layout_constraintRight_toLeftOf="@id/text2"
-            app:layout_constraintTop_toBottomOf="@id/text2"
-            app:layout_constraintBottom_toTopOf="@id/text2"
+            android:focusableInTouchMode="false"
+            android:inputType="textCapSentences|textMultiLine"
+            android:maxLength="2000"
+            android:maxLines="4"
+            android:padding="16dp"
+            android:textColorHint="@android:color/darker_gray"
+            app:layout_constraintEnd_toStartOf="@id/guideline_right"
+            app:layout_constraintStart_toStartOf="@id/guideline_left"
+            app:layout_constraintTop_toBottomOf="@+id/text2" />
 
-            />
         <TextView
             android:id="@+id/Description"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
 
             android:text="Write a short description about yourself"
-            android:textStyle="bold"
             android:textColor="#81000000"
             android:textSize="16sp"
+            android:textStyle="bold"
 
             app:layout_constraintStart_toStartOf="@id/guideline_left"
-            app:layout_constraintTop_toBottomOf="@id/text2" />
+            app:layout_constraintTop_toBottomOf="@+id/sub_category" />
 
         <EditText
             android:id="@+id/shortDescription"
