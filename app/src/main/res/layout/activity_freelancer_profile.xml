@@ -92,7 +92,7 @@
                 android:layout_below="@+id/name"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="10dp"
-                android:text="(Adhyaksh)"
+                android:text="Musician"
                 android:textColor="#fff"
                 android:textSize="18sp" />
         </RelativeLayout>
@@ -120,22 +120,25 @@
                         android:layout_width="36dp"
                         android:layout_height="36dp"
                         android:src="@drawable/ic_language_"/>
-                <TextView
-                    android:textStyle="bold"
-                    android:layout_gravity="center_vertical"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:paddingLeft="20dp"
-                    android:text="Languages"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:paddingLeft="20dp"
+                        android:text="Languages"
+                        android:textSize="24sp"
+                        android:textStyle="bold" />
             </LinearLayout>
 
                 <TextView
-                    android:layout_marginLeft="25dp"
-                    android:layout_gravity="center_vertical"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="25dp"
                     android:paddingLeft="20dp"
-                    android:text="English, French"/>
+                    android:text="English, French"
+                    android:textSize="18sp" />
 
             </LinearLayout>
             <LinearLayout
@@ -148,14 +151,16 @@
                     android:layout_width="36dp"
                     android:layout_height="36dp"
                     android:src="@drawable/ic_phone"/>
+
                 <TextView
                     android:id="@+id/phone_freelancer_profile"
-                    android:textStyle="bold"
-                    android:layout_gravity="center_vertical"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
                     android:paddingLeft="20dp"
-                    android:text="+266 225 225"/>
+                    android:text="+266 225 225"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
             </LinearLayout>
             <LinearLayout
                 android:layout_marginTop="25dp"
@@ -167,22 +172,26 @@
                     android:layout_width="36dp"
                     android:layout_height="36dp"
                     android:src="@drawable/ic_star_black_24dp"/>
-                <TextView
-                    android:textStyle="bold"
 
-                    android:layout_gravity="center_vertical"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:paddingLeft="20dp"
-                    android:text="Seller Level:   "/>
                 <TextView
-                    android:textStyle="bold"
-
-                    android:layout_gravity="center_vertical"
                     android:layout_width="wrap_content"
+
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
                     android:paddingLeft="20dp"
-                    android:text="Top rated seller"/>
+                    android:text="Seller Level:   "
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:paddingLeft="20dp"
+                    android:text="Top rated seller"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
 
             </LinearLayout>
             <LinearLayout
@@ -193,20 +202,23 @@
                 android:layout_height="wrap_content">
 
                 <TextView
-                    android:textStyle="bold"
-
-                    android:layout_gravity="center_vertical"
                     android:layout_width="wrap_content"
+
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
                     android:paddingLeft="20dp"
-                    android:text="Description"/>
+                    android:text="Description"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
+
                 <TextView
                     android:id="@+id/description_freelancer_profile"
-                    android:layout_gravity="center_vertical"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
                     android:paddingLeft="20dp"
-                    android:text="I'm a freelance graphic designer with lots of experience. Most of my work involves Adobe Photoshop and Illustrator."/>
+                    android:text="I'm a freelance graphic designer with lots of experience. Most of my work involves Adobe Photoshop and Illustrator."
+                    android:textSize="18sp" />
 
             </LinearLayout>
             <LinearLayout
@@ -217,29 +229,25 @@
                 android:layout_height="wrap_content">
 
                 <TextView
-                    android:textStyle="bold"
-
-                    android:layout_gravity="center_vertical"
+                    android:id="@+id/skills_heading"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
                     android:paddingLeft="20dp"
-                    android:text="Skills and Qualifications"/>
+                    android:text="Skills and Qualifications"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
+
                 <TextView
-                    android:textStyle="bold"
-
-                    android:layout_gravity="center_vertical"
+                    android:id="@+id/skills_text"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:paddingLeft="20dp"
-                    android:text="Skills"/>
-                <TextView
-                    android:textStyle="bold"
-
                     android:layout_gravity="center_vertical"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
                     android:paddingLeft="20dp"
-                    android:text="Skills"/>
+                    android:text="Musician Skills"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
 
             </LinearLayout>
 

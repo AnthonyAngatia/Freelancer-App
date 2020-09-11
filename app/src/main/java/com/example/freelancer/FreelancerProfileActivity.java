@@ -24,6 +24,7 @@ import com.android.volley.toolbox.Volley;
 import com.example.freelancer.classes.FreeLancer;
 import com.example.freelancer.classes.FreelanceServiceManager;
 import com.google.android.material.snackbar.Snackbar;
+import com.squareup.picasso.Picasso;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -47,19 +48,9 @@ public class FreelancerProfileActivity extends AppCompatActivity {
         TextView textViewName = findViewById(R.id.name);
         TextView textViewPhone = findViewById(R.id.phone_freelancer_profile);
         TextView textViewLocation = findViewById(R.id.location);
-        TextView textViewDescription = findViewById(R.id.description_freelancer_profile);
+        TextView textViewSkills = findViewById(R.id.skills_text);
 
-        final SharedPreferences sharedPreferences = getSharedPreferences(loginPreference, MODE_PRIVATE);
-        if( sharedPreferences.getBoolean(isUserLogged, false)){
-            mUser_id = sharedPreferences.getInt("id",-1);
-            if(mUser_id == -1)
-                Toast.makeText(this, "Please signUp!!", Toast.LENGTH_SHORT).show();
-        }else{
-            //Login
-            Intent intent = new Intent(this, LoginActivity.class);
-            startActivity(intent);
-            finish();
-        }
+        getUserId();
 
 
         Intent intent = getIntent();
@@ -73,10 +64,10 @@ public class FreelancerProfileActivity extends AppCompatActivity {
         }
         Log.d("FREELANCER", mFreeLancer.toString());
 
-
+//        Picasso.with(this).load(mFreeLancer.getImageUrl()).into(imageViewProfile);
         textViewName.setText(mFreeLancer.getName());
         textViewPhone.setText(Integer.toString(mFreeLancer.getPhone_no()));
-        textViewDescription.setText(mFreeLancer.getQualification());
+        textViewSkills.setText(mFreeLancer.getQualification());
         textViewLocation.setText(mFreeLancer.getLocation());
         requestBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -87,6 +78,20 @@ public class FreelancerProfileActivity extends AppCompatActivity {
 
             }
         });
+    }
+
+    private void getUserId() {
+        final SharedPreferences sharedPreferences = getSharedPreferences(loginPreference, MODE_PRIVATE);
+        if( sharedPreferences.getBoolean(isUserLogged, false)){
+            mUser_id = sharedPreferences.getInt("id",-1);
+            if(mUser_id == -1)
+                Toast.makeText(this, "Please signUp!!", Toast.LENGTH_SHORT).show();
+        }else{
+            //Login
+            Intent intent = new Intent(this, LoginActivity.class);
+            startActivity(intent);
+            finish();
+        }
     }
 
     private void displayDialogBox() {
